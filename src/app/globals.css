@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #2e353b;
+  --primary: #509ee3;
+  --primary-dark: #4a90d9;
+  --primary-light: #e6f0fa;
+  --secondary: #74838f;
+  --accent: #88bf4d;
+  --text-dark: #2e353b;
+  --text-medium: #74838f;
+  --text-light: #949aab;
+  --border: #e0e4e9;
+  --surface: #f9fbfc;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-inter);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Metabase-style subtle gradient background for hero */
+.hero-gradient {
+  background: linear-gradient(180deg, #f9fbfc 0%, #ffffff 100%);
+  position: relative;
+}
+
+/* Decorative line art background */
+.hero-decoration {
+  position: absolute;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Button hover effects - Metabase style */
+.btn-primary {
+  transition: all 0.2s ease;
+  background: var(--primary);
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(80, 158, 227, 0.35);
+}
+
+.btn-secondary {
+  transition: all 0.2s ease;
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background-color: var(--surface);
+  border-color: var(--primary);
+}
+
+/* Feature card hover - Metabase style */
+.feature-card {
+  transition: all 0.2s ease;
+  border: 1px solid var(--border);
+}
+
+.feature-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(80, 158, 227, 0.1);
+}
+
+/* Screenshot shadow */
+.screenshot-shadow {
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.12);
+}
+
+/* Announcement banner */
+.announcement-banner {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Navigation dropdown style */
+.nav-dropdown {
+  background: white;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+}
+
+/* Pricing card styles */
+.pricing-card {
+  transition: all 0.2s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.pricing-card-highlighted {
+  border: 2px solid var(--primary);
+  box-shadow: 0 0 0 4px rgba(80, 158, 227, 0.1);
+}
+
+/* Open source badge */
+.oss-badge {
+  background: linear-gradient(135deg, #88bf4d 0%, #6ba832 100%);
+}
+
+/* Line chart decoration */
+.chart-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawLine 2s ease forwards;
+}
+
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
