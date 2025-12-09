@@ -37,7 +37,7 @@ function Navigation() {
             <Link href="#how-it-works" className="text-[#74838f] hover:text-[#509ee3] transition-colors">
               How it Works
             </Link>
-            <Link href="https://github.com/lucidgeo/lucidgeo" className="text-[#74838f] hover:text-[#509ee3] transition-colors">
+            <Link href="/docs" className="text-[#74838f] hover:text-[#509ee3] transition-colors">
               Docs
             </Link>
             <Link href="#pricing" className="text-[#74838f] hover:text-[#509ee3] transition-colors">
@@ -537,29 +537,68 @@ function HowItWorksSection() {
 
 // Supported Models Section
 function ModelsSection() {
-  const models = [
-    { name: "ChatGPT", icon: "openai" },
-    { name: "Claude", icon: "claude" },
-    { name: "Perplexity", icon: "perplexity" },
-    { name: "Gemini", icon: "gemini" },
-    { name: "Grok", icon: "grok" },
-  ];
-
   return (
     <section className="py-16 bg-white border-y border-[#e0e4e9]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <p className="text-center text-[#74838f] mb-8">Track visibility across all major AI models</p>
         <div className="flex flex-wrap items-center justify-center gap-12">
-          {models.map((model) => (
-            <div key={model.name} className="flex items-center gap-3 text-[#74838f]">
-              <div className="w-10 h-10 bg-[#f9fbfc] rounded-lg flex items-center justify-center border border-[#e0e4e9]">
-                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                  <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2" />
-                </svg>
-              </div>
-              <span className="font-medium">{model.name}</span>
+          {/* ChatGPT */}
+          <div className="flex items-center gap-3 text-[#74838f]">
+            <div className="w-10 h-10 bg-[#10a37f] rounded-lg flex items-center justify-center">
+              <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364l2.0201-1.1638a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/>
+              </svg>
             </div>
-          ))}
+            <span className="font-medium">ChatGPT</span>
+          </div>
+
+          {/* Claude */}
+          <div className="flex items-center gap-3 text-[#74838f]">
+            <div className="w-10 h-10 bg-[#d97706] rounded-lg flex items-center justify-center">
+              <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M4.709 15.955l4.72-2.647.08-.23-.08-.128H4.79l-.08.128v2.749l.08.128h-.08zm8.837-4.49l-3.238-2.066-.461.128-3.157 5.274.06.192 3.098 1.758.362-.096 3.336-5.19zm-3.478 7.6l4.72 2.647.16-.064V18.9l-.08-.128-4.64-2.583-.16.064v2.684l.08.128h-.08zm8.463-3.11l-4.64 2.583-.08.128v2.749l.16.064 4.72-2.647-.08-.128v-2.684l-.08-.064zm.374-4.394l-3.157-5.274-.461-.128-3.238 2.066 3.336 5.19.362.096 3.098-1.758.06-.192zm-4.196-6.793l-4.64-2.583-.16.064v2.749l.08.128 4.72 2.647V4.896l-.08-.128h.08z"/>
+              </svg>
+            </div>
+            <span className="font-medium">Claude</span>
+          </div>
+
+          {/* Perplexity */}
+          <div className="flex items-center gap-3 text-[#74838f]">
+            <div className="w-10 h-10 bg-[#1a1a2e] rounded-lg flex items-center justify-center">
+              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2L4 7v10l8 5 8-5V7l-8-5z" stroke="#20B2AA" strokeWidth="1.5" fill="none"/>
+                <path d="M12 2v20M4 7l8 5 8-5M4 17l8-5 8 5" stroke="#20B2AA" strokeWidth="1.5"/>
+              </svg>
+            </div>
+            <span className="font-medium">Perplexity</span>
+          </div>
+
+          {/* Gemini */}
+          <div className="flex items-center gap-3 text-[#74838f]">
+            <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center border border-[#e0e4e9]">
+              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
+                <path d="M12 24C12 24 12 12 24 12C12 12 12 0 12 0C12 0 12 12 0 12C12 12 12 24 12 24Z" fill="url(#gemini-home)"/>
+                <defs>
+                  <linearGradient id="gemini-home" x1="0" y1="12" x2="24" y2="12" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#1A73E8"/>
+                    <stop offset="0.5" stopColor="#6C47FF"/>
+                    <stop offset="1" stopColor="#E94235"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <span className="font-medium">Gemini</span>
+          </div>
+
+          {/* Grok */}
+          <div className="flex items-center gap-3 text-[#74838f]">
+            <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center">
+              <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </div>
+            <span className="font-medium">Grok</span>
+          </div>
         </div>
       </div>
     </section>
