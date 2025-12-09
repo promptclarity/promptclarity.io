@@ -153,105 +153,198 @@ function HeroSection() {
               </div>
             </div>
             {/* Dashboard Preview */}
-            <div className="p-6 bg-[#f9fbfc]">
-              <div className="flex gap-6">
+            <div className="p-4 bg-[#f9fbfc]">
+              <div className="flex gap-4">
                 {/* Sidebar */}
-                <div className="w-48 bg-white rounded-lg border border-[#e0e4e9] p-4 hidden lg:block">
-                  <div className="flex items-center gap-2 mb-6">
-                    <Logo className="w-6 h-6" />
-                    <span className="font-semibold text-[#2e353b]">Netbird</span>
+                <div className="w-44 bg-white rounded-lg border border-[#e0e4e9] p-3 hidden lg:block shrink-0">
+                  <div className="flex items-center gap-2 mb-5">
+                    <div className="w-7 h-7 bg-[#f97316] rounded flex items-center justify-center">
+                      <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                      </svg>
+                    </div>
+                    <span className="font-semibold text-[#2e353b] text-sm">Netbird</span>
                   </div>
-                  <div className="space-y-1">
-                    {["Overview", "Sources", "Prompts", "On-Page", "Off-Page"].map((item, i) => (
-                      <div key={i} className={`px-3 py-2 rounded text-sm ${i === 0 ? "bg-[#e6f0fa] text-[#509ee3] font-medium" : "text-[#74838f]"}`}>
+                  <p className="text-xs text-[#949aab] mb-2 px-2">Main</p>
+                  <div className="space-y-0.5">
+                    {[
+                      { name: "Overview", icon: "grid", active: true },
+                      { name: "Sources", icon: "link", active: false },
+                      { name: "Prompts", icon: "file", active: false },
+                    ].map((item, i) => (
+                      <div key={i} className={`px-2 py-1.5 rounded text-xs flex items-center gap-2 ${item.active ? "bg-[#f9fbfc] text-[#2e353b] font-medium" : "text-[#74838f]"}`}>
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          {item.icon === "grid" && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />}
+                          {item.icon === "link" && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />}
+                          {item.icon === "file" && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />}
+                        </svg>
+                        {item.name}
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-xs text-[#949aab] mb-2 px-2 mt-4">Actions</p>
+                  <div className="space-y-0.5">
+                    {["On-Page", "Off-Page"].map((item, i) => (
+                      <div key={i} className="px-2 py-1.5 rounded text-xs flex items-center gap-2 text-[#74838f]">
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
                         {item}
                       </div>
                     ))}
                   </div>
                 </div>
                 {/* Main Content */}
-                <div className="flex-1 space-y-4">
-                  {/* Visibility Chart */}
-                  <div className="bg-white rounded-lg p-5 border border-[#e0e4e9]">
-                    <div className="flex items-center justify-between mb-4">
-                      <div>
-                        <h3 className="font-semibold text-[#2e353b]">Visibility</h3>
-                        <p className="text-sm text-[#949aab]">Percentage of chats mentioning each brand</p>
+                <div className="flex-1 min-w-0">
+                  <div className="flex gap-4">
+                    {/* Visibility Chart */}
+                    <div className="flex-1 bg-white rounded-lg p-4 border border-[#e0e4e9]">
+                      <div className="flex items-center justify-between mb-3">
+                        <div>
+                          <h3 className="font-semibold text-[#2e353b] text-sm">Visibility</h3>
+                          <p className="text-xs text-[#949aab]">Percentage of chats mentioning each brand</p>
+                        </div>
                       </div>
-                      <span className="text-sm text-[#74838f] bg-[#f9fbfc] px-3 py-1 rounded border border-[#e0e4e9]">Last 7 days</span>
-                    </div>
-                    <div className="h-40 flex items-end gap-1 relative">
-                      {/* Grid lines */}
-                      <div className="absolute inset-0 flex flex-col justify-between pointer-events-none">
-                        {[100, 75, 50, 25, 0].map((val) => (
-                          <div key={val} className="flex items-center gap-2">
-                            <span className="text-xs text-[#949aab] w-8">{val}%</span>
-                            <div className="flex-1 border-b border-[#e0e4e9] border-dashed"></div>
+                      <div className="h-32 relative">
+                        {/* Y-axis labels */}
+                        <div className="absolute left-0 top-0 bottom-4 w-8 flex flex-col justify-between text-[10px] text-[#949aab]">
+                          <span>100%</span>
+                          <span>75%</span>
+                          <span>50%</span>
+                          <span>25%</span>
+                          <span>0%</span>
+                        </div>
+                        {/* Chart area */}
+                        <div className="ml-9 h-full relative">
+                          {/* Grid lines */}
+                          <div className="absolute inset-0 flex flex-col justify-between">
+                            {[0, 1, 2, 3, 4].map((i) => (
+                              <div key={i} className="border-b border-[#e0e4e9] border-dashed" />
+                            ))}
                           </div>
-                        ))}
+                          {/* Chart lines */}
+                          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 300 100" preserveAspectRatio="none">
+                            {/* Cloudflare - purple, stays high around 70% */}
+                            <path d="M0 30 Q30 28 60 25 T120 30 T180 28 T240 22 T300 25" stroke="#a855f7" strokeWidth="2" fill="none" />
+                            {/* Tailscale - green, drops from 50% to 40% */}
+                            <path d="M0 50 Q30 45 60 55 T120 60 T180 58 T240 62 T300 60" stroke="#22c55e" strokeWidth="2" fill="none" />
+                            {/* Zscaler - green, rises from 40% to 50% */}
+                            <path d="M0 60 Q30 58 60 55 T120 52 T180 50 T240 55 T300 50" stroke="#16a34a" strokeWidth="2" fill="none" />
+                            {/* Twingate - red, fluctuates around 30% */}
+                            <path d="M0 70 Q30 65 60 72 T120 68 T180 75 T240 70 T300 72" stroke="#ef4444" strokeWidth="2" fill="none" />
+                            {/* Microsoft - blue, steady around 30% */}
+                            <path d="M0 72 Q30 70 60 68 T120 72 T180 70 T240 68 T300 70" stroke="#3b82f6" strokeWidth="2" fill="none" />
+                            {/* Palo Alto - gray */}
+                            <path d="M0 78 Q30 76 60 80 T120 78 T180 82 T240 78 T300 80" stroke="#9ca3af" strokeWidth="2" fill="none" />
+                          </svg>
+                        </div>
+                        {/* X-axis labels */}
+                        <div className="ml-9 flex justify-between text-[10px] text-[#949aab] mt-1">
+                          <span>Dec 3</span>
+                          <span>Dec 4</span>
+                          <span>Dec 5</span>
+                          <span>Dec 6</span>
+                          <span>Dec 7</span>
+                          <span>Dec 8</span>
+                        </div>
                       </div>
-                      {/* Chart lines */}
-                      <svg className="absolute inset-0 ml-10" viewBox="0 0 400 160" preserveAspectRatio="none">
-                        <path d="M0 120 Q50 100 100 80 T200 60 T300 40 T400 50" stroke="#509ee3" strokeWidth="2" fill="none" />
-                        <path d="M0 140 Q50 130 100 120 T200 100 T300 110 T400 90" stroke="#88bf4d" strokeWidth="2" fill="none" />
-                        <path d="M0 150 Q50 145 100 140 T200 130 T300 135 T400 120" stroke="#f9a825" strokeWidth="2" fill="none" />
-                      </svg>
                     </div>
-                    <div className="flex items-center gap-4 mt-4 justify-center">
-                      <div className="flex items-center gap-2 text-sm">
-                        <div className="w-3 h-3 rounded-full bg-[#509ee3]"></div>
-                        <span className="text-[#74838f]">Cloudflare</span>
+                    {/* Brands Table */}
+                    <div className="w-64 bg-white rounded-lg p-4 border border-[#e0e4e9] hidden md:block shrink-0">
+                      <div className="flex items-center justify-between mb-3">
+                        <h3 className="font-semibold text-[#2e353b] text-sm">Brands</h3>
+                        <span className="text-xs text-[#509ee3]">+ Add</span>
                       </div>
-                      <div className="flex items-center gap-2 text-sm">
-                        <div className="w-3 h-3 rounded-full bg-[#88bf4d]"></div>
-                        <span className="text-[#74838f]">Your Brand</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm">
-                        <div className="w-3 h-3 rounded-full bg-[#f9a825]"></div>
-                        <span className="text-[#74838f]">Competitor</span>
-                      </div>
-                    </div>
-                  </div>
-                  {/* Brand Rankings */}
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-white rounded-lg p-5 border border-[#e0e4e9]">
-                      <h3 className="font-semibold text-[#2e353b] mb-4">Brands</h3>
-                      <div className="space-y-3">
+                      <div className="space-y-2">
+                        <div className="grid grid-cols-[16px_1fr_50px_45px_30px] gap-1 text-[10px] text-[#949aab] pb-1 border-b border-[#e0e4e9]">
+                          <span>#</span>
+                          <span>Brand</span>
+                          <span>Visibility</span>
+                          <span>Sentiment</span>
+                          <span>Place</span>
+                        </div>
                         {[
-                          { name: "Cloudflare", visibility: "70.8%", change: "+1.1%", rank: 1 },
-                          { name: "Tailscale", visibility: "40.3%", change: "-17.9%", rank: 2 },
-                          { name: "Zscaler", visibility: "40.3%", change: "+10.8%", rank: 3 },
+                          { rank: 1, name: "Cloudflare", color: "#a855f7", visibility: "70.8%", change: "+1.1%", sentiment: 85, sentimentChange: "+5", place: "1st", placeChange: "+1" },
+                          { rank: 2, name: "Tailscale", color: "#22c55e", visibility: "40.3%", change: "-17.9%", sentiment: 79, sentimentChange: "-3", place: "5th", placeChange: "-1" },
+                          { rank: 3, name: "Zscaler", color: "#16a34a", visibility: "40.3%", change: "+10.8%", sentiment: 75, sentimentChange: "-6", place: "1st", placeChange: "+1" },
+                          { rank: 4, name: "Twingate", color: "#ef4444", visibility: "30.6%", change: "-21.0%", sentiment: 81, sentimentChange: "-1", place: "3rd", placeChange: "+1" },
+                          { rank: 5, name: "Microsoft", color: "#3b82f6", visibility: "30.6%", change: "+2.7%", sentiment: 50, sentimentChange: "-", place: "-", placeChange: "" },
                         ].map((brand) => (
-                          <div key={brand.name} className="flex items-center gap-3">
-                            <span className="text-sm font-medium text-[#74838f] w-4">{brand.rank}</span>
-                            <div className="flex-1">
-                              <div className="flex items-center justify-between">
-                                <span className="text-sm font-medium text-[#2e353b]">{brand.name}</span>
-                                <div className="flex items-center gap-2">
-                                  <span className="text-sm text-[#2e353b]">{brand.visibility}</span>
-                                  <span className={`text-xs ${brand.change.startsWith("+") ? "text-[#88bf4d]" : "text-[#ef5350]"}`}>
-                                    {brand.change}
-                                  </span>
-                                </div>
-                              </div>
+                          <div key={brand.rank} className="grid grid-cols-[16px_1fr_50px_45px_30px] gap-1 items-center text-[10px]">
+                            <span className="text-[#74838f]">{brand.rank}</span>
+                            <div className="flex items-center gap-1 min-w-0">
+                              <div className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: brand.color }}></div>
+                              <span className="text-[#2e353b] truncate">{brand.name}</span>
+                            </div>
+                            <div className="flex flex-col">
+                              <span className="text-[#2e353b]">{brand.visibility}</span>
+                              <span className={brand.change.startsWith("+") ? "text-[#22c55e]" : "text-[#ef4444]"}>{brand.change}</span>
+                            </div>
+                            <div className="flex flex-col">
+                              <span className="text-[#2e353b]">{brand.sentiment}</span>
+                              <span className={brand.sentimentChange.startsWith("+") ? "text-[#22c55e]" : brand.sentimentChange.startsWith("-") ? "text-[#ef4444]" : "text-[#949aab]"}>{brand.sentimentChange}</span>
+                            </div>
+                            <div className="flex flex-col">
+                              <span className="text-[#2e353b]">{brand.place}</span>
+                              <span className={brand.placeChange.startsWith("+") ? "text-[#22c55e]" : brand.placeChange.startsWith("-") ? "text-[#ef4444]" : "text-[#949aab]"}>{brand.placeChange}</span>
                             </div>
                           </div>
                         ))}
                       </div>
                     </div>
-                    <div className="bg-white rounded-lg p-5 border border-[#e0e4e9]">
-                      <h3 className="font-semibold text-[#2e353b] mb-4">Top Sources</h3>
-                      <div className="space-y-3">
+                  </div>
+                  {/* Bottom Row */}
+                  <div className="flex gap-4 mt-4">
+                    {/* Top Sources */}
+                    <div className="flex-1 bg-white rounded-lg p-4 border border-[#e0e4e9]">
+                      <h3 className="font-semibold text-[#2e353b] text-sm mb-3">Top Sources</h3>
+                      <div className="space-y-2">
+                        <div className="grid grid-cols-[1fr_50px_60px_70px] gap-2 text-[10px] text-[#949aab] pb-1 border-b border-[#e0e4e9]">
+                          <span>Domain</span>
+                          <span>Usage</span>
+                          <span>Avg Citations</span>
+                          <span>Type</span>
+                        </div>
                         {[
-                          { domain: "zeronetworks.com", usage: "12.5%" },
-                          { domain: "peerspot.com", usage: "11.1%" },
-                          { domain: "nordlayer.com", usage: "11.1%" },
+                          { domain: "zeronetworks.com", usage: "12.5%", citations: "2.3", type: "Corporate", typeColor: "#3b82f6" },
+                          { domain: "peerspot.com", usage: "11.1%", citations: "2.7", type: "Editorial", typeColor: "#22c55e" },
+                          { domain: "nordlayer.com", usage: "11.1%", citations: "2", type: "Corporate", typeColor: "#3b82f6" },
+                          { domain: "venn.com", usage: "9.7%", citations: "3.5", type: "Editorial", typeColor: "#22c55e" },
                         ].map((source) => (
-                          <div key={source.domain} className="flex items-center justify-between">
-                            <span className="text-sm text-[#2e353b]">{source.domain}</span>
-                            <span className="text-sm text-[#74838f]">{source.usage}</span>
+                          <div key={source.domain} className="grid grid-cols-[1fr_50px_60px_70px] gap-2 items-center text-[10px]">
+                            <span className="text-[#2e353b] truncate">{source.domain}</span>
+                            <span className="text-[#74838f]">{source.usage}</span>
+                            <span className="text-[#74838f]">{source.citations}</span>
+                            <span className="px-1.5 py-0.5 rounded text-white text-[9px]" style={{ backgroundColor: source.typeColor }}>{source.type}</span>
                           </div>
                         ))}
+                      </div>
+                    </div>
+                    {/* Domain Type Donut */}
+                    <div className="w-48 bg-white rounded-lg p-4 border border-[#e0e4e9] hidden md:block shrink-0">
+                      <h3 className="font-semibold text-[#2e353b] text-sm mb-2">Domain type</h3>
+                      <div className="relative w-24 h-24 mx-auto">
+                        <svg viewBox="0 0 36 36" className="w-full h-full">
+                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#22c55e" strokeWidth="3" strokeDasharray="43 57" strokeDashoffset="25" />
+                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#3b82f6" strokeWidth="3" strokeDasharray="42 58" strokeDashoffset="82" />
+                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#9ca3af" strokeWidth="3" strokeDasharray="6 94" strokeDashoffset="40" />
+                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#f59e0b" strokeWidth="3" strokeDasharray="5 95" strokeDashoffset="34" />
+                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#ef4444" strokeWidth="3" strokeDasharray="4 96" strokeDashoffset="29" />
+                        </svg>
+                        <div className="absolute inset-0 flex flex-col items-center justify-center">
+                          <span className="text-lg font-bold text-[#2e353b]">144</span>
+                          <span className="text-[9px] text-[#949aab]">Citations</span>
+                        </div>
+                      </div>
+                      <div className="mt-2 space-y-1 text-[9px]">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-[#22c55e]"></div><span className="text-[#74838f]">Editorial</span></div>
+                          <span className="text-[#2e353b]">43.1%</span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-[#3b82f6]"></div><span className="text-[#74838f]">Corporate</span></div>
+                          <span className="text-[#2e353b]">42.4%</span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -425,11 +518,14 @@ function HowItWorksSection() {
               <span className="text-[#949aab] text-sm ml-2">Terminal</span>
             </div>
             <div className="p-6 font-mono text-sm">
-              <div className="text-[#88bf4d]"># Clone the repository</div>
+              <div className="text-[#949aab]"># Prerequisites: Node.js 18.17+, npm or yarn</div>
+              <div className="mt-4 text-[#88bf4d]"># Clone the repository</div>
               <div className="text-[#e0e4e9]">git clone https://github.com/lucidgeo/lucidgeo.git</div>
               <div className="text-[#e0e4e9] mt-2">cd lucidgeo</div>
-              <div className="mt-4 text-[#88bf4d]"># Start with Docker</div>
-              <div className="text-[#e0e4e9]">docker-compose up -d</div>
+              <div className="mt-4 text-[#88bf4d]"># Install dependencies</div>
+              <div className="text-[#e0e4e9]">npm install</div>
+              <div className="mt-4 text-[#88bf4d]"># Run the development server</div>
+              <div className="text-[#e0e4e9]">npm run dev</div>
               <div className="mt-4 text-[#949aab]"># Open http://localhost:3000</div>
             </div>
           </div>
