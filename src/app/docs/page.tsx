@@ -219,21 +219,21 @@ npm run dev`}
                     <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold flex-shrink-0">3</div>
                     <div>
                       <h4 className="font-semibold text-gray-900">Topic Generation</h4>
-                      <p className="text-gray-600 text-sm">AI suggests 5-7 industry-relevant topics (customizable)</p>
+                      <p className="text-gray-600 text-sm">Prompt Clarity suggests 5-7 industry-relevant topics (customizable)</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold flex-shrink-0">4</div>
                     <div>
                       <h4 className="font-semibold text-gray-900">Prompt Generation</h4>
-                      <p className="text-gray-600 text-sm">AI creates 3-5 search prompts per topic</p>
+                      <p className="text-gray-600 text-sm">Generates 3-5 search prompts per topic</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold flex-shrink-0">5</div>
                     <div>
                       <h4 className="font-semibold text-gray-900">Competitor Identification</h4>
-                      <p className="text-gray-600 text-sm">AI identifies 3-10 competitors to track alongside your brand</p>
+                      <p className="text-gray-600 text-sm">Identifies 3-10 competitors to track alongside your brand</p>
                     </div>
                   </div>
                 </div>

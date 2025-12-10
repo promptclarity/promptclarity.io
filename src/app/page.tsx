@@ -1,18 +1,24 @@
 import Link from "next/link";
 
-// Logo Component - Metabase-style dot grid
+// Logo Component - Radar icon
 function Logo({ className = "" }: { className?: string }) {
   return (
     <svg className={className} width="32" height="32" viewBox="0 0 32 32" fill="none">
-      <circle cx="8" cy="8" r="3" fill="#509ee3" />
-      <circle cx="16" cy="8" r="3" fill="#509ee3" />
-      <circle cx="24" cy="8" r="3" fill="#509ee3" opacity="0.5" />
-      <circle cx="8" cy="16" r="3" fill="#509ee3" />
-      <circle cx="16" cy="16" r="3" fill="#509ee3" opacity="0.7" />
-      <circle cx="24" cy="16" r="3" fill="#509ee3" />
-      <circle cx="8" cy="24" r="3" fill="#509ee3" opacity="0.5" />
-      <circle cx="16" cy="24" r="3" fill="#509ee3" />
-      <circle cx="24" cy="24" r="3" fill="#509ee3" />
+      {/* Concentric circles */}
+      <circle cx="16" cy="16" r="14" stroke="#93c5fd" strokeWidth="1.5" fill="none" />
+      <circle cx="16" cy="16" r="10" stroke="#93c5fd" strokeWidth="1.5" fill="none" />
+      <circle cx="16" cy="16" r="6" stroke="#93c5fd" strokeWidth="1.5" fill="none" />
+      {/* Radar sweep */}
+      <path d="M16 16 L16 2 A14 14 0 0 1 28 10 Z" fill="#3b82f6" opacity="0.4" />
+      {/* Cross lines */}
+      <line x1="16" y1="2" x2="16" y2="30" stroke="#60a5fa" strokeWidth="1" />
+      <line x1="2" y1="16" x2="30" y2="16" stroke="#60a5fa" strokeWidth="1" />
+      {/* Center dot */}
+      <circle cx="16" cy="16" r="2" fill="#1d4ed8" />
+      {/* Detected blips */}
+      <circle cx="22" cy="10" r="2" fill="#3b82f6" />
+      <circle cx="10" cy="20" r="1.5" fill="#60a5fa" />
+      <circle cx="20" cy="22" r="1.5" fill="#60a5fa" />
     </svg>
   );
 }
