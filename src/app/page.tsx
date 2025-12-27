@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 
 // Logo Component - Radar icon
 function Logo({ className = "" }: { className?: string }) {
@@ -98,20 +101,17 @@ function HeroSection() {
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
-            100% Open Source
+            Open Source
           </div>
 
           {/* Main Headline */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#2e353b] leading-tight">
-            Open source{" "}
-            <span className="text-[#509ee3]">LLM visibility</span>
-            {" "}tracking
+            Get full <span className="text-[#509ee3]">AI visibility</span> with unlimited prompt tracking
           </h1>
 
           {/* Subheadline */}
           <p className="mt-6 text-lg sm:text-xl text-[#74838f] max-w-3xl mx-auto leading-relaxed">
-            Monitor how your brand appears in ChatGPT, Claude, Perplexity, and other AI assistants.
-            Self-host it, customize it, own your data. No vendor lock-in.
+            Prompt Clarity is an open source tool that tracks and optimizes how LLMs mention your brand using your own API keys.
           </p>
 
           {/* CTA Buttons */}
@@ -159,26 +159,29 @@ function HeroSection() {
               </div>
             </div>
             {/* Dashboard Preview */}
-            <div className="p-4 bg-[#f9fbfc]">
-              <div className="flex gap-4">
+            <div className="p-2 sm:p-4 bg-[#f9fbfc]">
+              <div className="flex gap-3">
                 {/* Sidebar */}
-                <div className="w-44 bg-white rounded-lg border border-[#e0e4e9] p-3 hidden lg:block shrink-0">
-                  <div className="flex items-center gap-2 mb-5">
+                <div className="w-40 bg-white rounded-lg border border-[#e0e4e9] p-3 hidden lg:block shrink-0">
+                  <div className="flex items-center gap-2 mb-4">
                     <div className="w-7 h-7 bg-[#f97316] rounded flex items-center justify-center">
                       <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
                       </svg>
                     </div>
-                    <span className="font-semibold text-[#2e353b] text-sm">Netbird</span>
+                    <div className="flex flex-col">
+                      <span className="font-semibold text-[#2e353b] text-sm">Netbird</span>
+                      <span className="text-[9px] text-[#949aab]">Netbird.io</span>
+                    </div>
                   </div>
-                  <p className="text-xs text-[#949aab] mb-2 px-2">Main</p>
+                  <p className="text-[10px] text-[#949aab] mb-1.5 px-2">Main</p>
                   <div className="space-y-0.5">
                     {[
                       { name: "Overview", icon: "grid", active: true },
                       { name: "Sources", icon: "link", active: false },
                       { name: "Prompts", icon: "file", active: false },
                     ].map((item, i) => (
-                      <div key={i} className={`px-2 py-1.5 rounded text-xs flex items-center gap-2 ${item.active ? "bg-[#f9fbfc] text-[#2e353b] font-medium" : "text-[#74838f]"}`}>
+                      <div key={i} className={`px-2 py-1.5 rounded text-[11px] flex items-center gap-2 ${item.active ? "bg-[#f9fbfc] text-[#2e353b] font-medium" : "text-[#74838f]"}`}>
                         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           {item.icon === "grid" && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />}
                           {item.icon === "link" && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />}
@@ -188,12 +191,26 @@ function HeroSection() {
                       </div>
                     ))}
                   </div>
-                  <p className="text-xs text-[#949aab] mb-2 px-2 mt-4">Actions</p>
+                  <p className="text-[10px] text-[#949aab] mb-1.5 px-2 mt-3">Actions</p>
                   <div className="space-y-0.5">
                     {["On-Page", "Off-Page"].map((item, i) => (
-                      <div key={i} className="px-2 py-1.5 rounded text-xs flex items-center gap-2 text-[#74838f]">
+                      <div key={i} className="px-2 py-1.5 rounded text-[11px] flex items-center gap-2 text-[#74838f]">
                         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-[10px] text-[#949aab] mb-1.5 px-2 mt-3">Settings</p>
+                  <div className="space-y-0.5">
+                    {["Models", "Competitors", "Team", "Settings"].map((item, i) => (
+                      <div key={i} className="px-2 py-1.5 rounded text-[11px] flex items-center gap-2 text-[#74838f]">
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          {item === "Models" && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />}
+                          {item === "Competitors" && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />}
+                          {item === "Team" && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />}
+                          {item === "Settings" && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />}
                         </svg>
                         {item}
                       </div>
@@ -202,97 +219,125 @@ function HeroSection() {
                 </div>
                 {/* Main Content */}
                 <div className="flex-1 min-w-0">
-                  <div className="flex gap-4">
+                  {/* Header */}
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-2">
+                      <svg className="w-4 h-4 text-[#74838f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                      </svg>
+                      <span className="font-semibold text-[#2e353b] text-sm">Overview</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="px-2 py-1 bg-white border border-[#e0e4e9] rounded text-[10px] text-[#74838f] flex items-center gap-1">
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                        </svg>
+                        All models
+                      </div>
+                      <div className="px-2 py-1 bg-white border border-[#e0e4e9] rounded text-[10px] text-[#74838f] flex items-center gap-1">
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        Last 7 days
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex gap-3">
                     {/* Visibility Chart */}
-                    <div className="flex-1 bg-white rounded-lg p-4 border border-[#e0e4e9]">
-                      <div className="flex items-center justify-between mb-3">
+                    <div className="flex-1 bg-white rounded-lg p-3 border border-[#e0e4e9]">
+                      <div className="flex items-center justify-between mb-2">
                         <div>
-                          <h3 className="font-semibold text-[#2e353b] text-sm">Visibility</h3>
-                          <p className="text-xs text-[#949aab]">Percentage of chats mentioning each brand</p>
+                          <h3 className="font-semibold text-[#2e353b] text-xs">Visibility</h3>
+                          <p className="text-[9px] text-[#949aab]">Percentage of chats mentioning each brand</p>
                         </div>
                       </div>
-                      <div className="h-32 relative">
+                      <div className="h-28 relative">
                         {/* Y-axis labels */}
-                        <div className="absolute left-0 top-0 bottom-4 w-8 flex flex-col justify-between text-[10px] text-[#949aab]">
-                          <span>100%</span>
-                          <span>75%</span>
+                        <div className="absolute left-0 top-0 bottom-4 w-7 flex flex-col justify-between text-[9px] text-[#949aab]">
+                          <span>80%</span>
                           <span>50%</span>
                           <span>25%</span>
-                          <span>0%</span>
                         </div>
                         {/* Chart area */}
-                        <div className="ml-9 h-full relative">
+                        <div className="ml-8 h-full relative">
                           {/* Grid lines */}
                           <div className="absolute inset-0 flex flex-col justify-between">
-                            {[0, 1, 2, 3, 4].map((i) => (
+                            {[0, 1, 2].map((i) => (
                               <div key={i} className="border-b border-[#e0e4e9] border-dashed" />
                             ))}
                           </div>
                           {/* Chart lines */}
                           <svg className="absolute inset-0 w-full h-full" viewBox="0 0 300 100" preserveAspectRatio="none">
-                            {/* Cloudflare - purple, stays high around 70% */}
-                            <path d="M0 30 Q30 28 60 25 T120 30 T180 28 T240 22 T300 25" stroke="#a855f7" strokeWidth="2" fill="none" />
-                            {/* Tailscale - green, drops from 50% to 40% */}
-                            <path d="M0 50 Q30 45 60 55 T120 60 T180 58 T240 62 T300 60" stroke="#22c55e" strokeWidth="2" fill="none" />
-                            {/* Zscaler - green, rises from 40% to 50% */}
-                            <path d="M0 60 Q30 58 60 55 T120 52 T180 50 T240 55 T300 50" stroke="#16a34a" strokeWidth="2" fill="none" />
-                            {/* Twingate - red, fluctuates around 30% */}
-                            <path d="M0 70 Q30 65 60 72 T120 68 T180 75 T240 70 T300 72" stroke="#ef4444" strokeWidth="2" fill="none" />
-                            {/* Microsoft - blue, steady around 30% */}
-                            <path d="M0 72 Q30 70 60 68 T120 72 T180 70 T240 68 T300 70" stroke="#3b82f6" strokeWidth="2" fill="none" />
-                            {/* Palo Alto - gray */}
-                            <path d="M0 78 Q30 76 60 80 T120 78 T180 82 T240 78 T300 80" stroke="#9ca3af" strokeWidth="2" fill="none" />
+                            {/* Netbird - orange (highlighted, YOUR brand) - top performer around 75% */}
+                            <path d="M0 18 Q50 15 100 20 T150 18 T200 22 T250 15 T300 12" stroke="#f97316" strokeWidth="3" fill="none" />
+                            {/* Cloudflare - purple, around 55-60% */}
+                            <path d="M0 38 Q50 42 100 35 T150 40 T200 38 T250 45 T300 40" stroke="#a855f7" strokeWidth="2" fill="none" />
+                            {/* Tailscale - green, around 45-50% */}
+                            <path d="M0 48 Q50 52 100 45 T150 50 T200 55 T250 48 T300 52" stroke="#22c55e" strokeWidth="2" fill="none" />
+                            {/* OpenVPN - red, around 45% */}
+                            <path d="M0 52 Q50 48 100 55 T150 52 T200 48 T250 55 T300 52" stroke="#ef4444" strokeWidth="2" fill="none" />
+                            {/* Zscaler - teal, around 42-48% */}
+                            <path d="M0 55 Q50 58 100 52 T150 58 T200 55 T250 52 T300 55" stroke="#14b8a6" strokeWidth="2" fill="none" />
+                            {/* Perimeter 81 - pink, around 40-45% */}
+                            <path d="M0 60 Q50 55 100 62 T150 58 T200 62 T250 58 T300 60" stroke="#ec4899" strokeWidth="2" fill="none" />
+                            {/* Fortinet - amber, around 35% */}
+                            <path d="M0 68 Q50 72 100 65 T150 70 T200 68 T250 72 T300 65" stroke="#f59e0b" strokeWidth="2" fill="none" />
                           </svg>
                         </div>
                         {/* X-axis labels */}
-                        <div className="ml-9 flex justify-between text-[10px] text-[#949aab] mt-1">
-                          <span>Dec 3</span>
-                          <span>Dec 4</span>
-                          <span>Dec 5</span>
-                          <span>Dec 6</span>
-                          <span>Dec 7</span>
-                          <span>Dec 8</span>
+                        <div className="ml-8 flex justify-between text-[9px] text-[#949aab] mt-1">
+                          <span>Dec 20</span>
+                          <span>Dec 21</span>
+                          <span>Dec 22</span>
+                          <span>Dec 23</span>
+                          <span>Dec 24</span>
+                          <span>Dec 25</span>
+                          <span>Dec 26</span>
                         </div>
                       </div>
                     </div>
                     {/* Brands Table */}
-                    <div className="w-64 bg-white rounded-lg p-4 border border-[#e0e4e9] hidden md:block shrink-0">
-                      <div className="flex items-center justify-between mb-3">
-                        <h3 className="font-semibold text-[#2e353b] text-sm">Brands</h3>
-                        <span className="text-xs text-[#509ee3]">+ Add</span>
+                    <div className="w-56 bg-white rounded-lg p-3 border border-[#e0e4e9] hidden md:block shrink-0">
+                      <div className="flex items-center justify-between mb-2">
+                        <div>
+                          <h3 className="font-semibold text-[#2e353b] text-xs">Brands</h3>
+                          <p className="text-[9px] text-[#949aab]">Brands with highest visibility</p>
+                        </div>
+                        <span className="text-[10px] text-[#509ee3]">+ Add</span>
                       </div>
-                      <div className="space-y-2">
-                        <div className="grid grid-cols-[16px_1fr_50px_45px_30px] gap-1 text-[10px] text-[#949aab] pb-1 border-b border-[#e0e4e9]">
+                      <div className="space-y-1">
+                        <div className="grid grid-cols-[14px_1fr_40px_32px_28px] gap-1 text-[9px] text-[#949aab] pb-1 border-b border-[#e0e4e9]">
                           <span>#</span>
                           <span>Brand</span>
                           <span>Visibility</span>
-                          <span>Sentiment</span>
+                          <span>Sent.</span>
                           <span>Place</span>
                         </div>
                         {[
-                          { rank: 1, name: "Cloudflare", color: "#a855f7", visibility: "70.8%", change: "+1.1%", sentiment: 85, sentimentChange: "+5", place: "1st", placeChange: "+1" },
-                          { rank: 2, name: "Tailscale", color: "#22c55e", visibility: "40.3%", change: "-17.9%", sentiment: 79, sentimentChange: "-3", place: "5th", placeChange: "-1" },
-                          { rank: 3, name: "Zscaler", color: "#16a34a", visibility: "40.3%", change: "+10.8%", sentiment: 75, sentimentChange: "-6", place: "1st", placeChange: "+1" },
-                          { rank: 4, name: "Twingate", color: "#ef4444", visibility: "30.6%", change: "-21.0%", sentiment: 81, sentimentChange: "-1", place: "3rd", placeChange: "+1" },
-                          { rank: 5, name: "Microsoft", color: "#3b82f6", visibility: "30.6%", change: "+2.7%", sentiment: 50, sentimentChange: "-", place: "-", placeChange: "" },
+                          { rank: 1, name: "Netbird", color: "#f97316", visibility: "72.1%", change: "+8.3%", sentiment: 82, sentimentChange: "+4", place: "1st", placeChange: "+2", isYourBrand: true },
+                          { rank: 2, name: "Cloudflare", color: "#a855f7", visibility: "56.3%", change: "-11.8%", sentiment: 70, sentimentChange: "-10", place: "4th", placeChange: "-1", isYourBrand: false },
+                          { rank: 3, name: "Tailscale", color: "#22c55e", visibility: "46.3%", change: "-9.3%", sentiment: 69, sentimentChange: "-10", place: "4th", placeChange: "", isYourBrand: false },
+                          { rank: 4, name: "OpenVPN", color: "#ef4444", visibility: "46.3%", change: "-9.3%", sentiment: 59, sentimentChange: "-3", place: "7th", placeChange: "+1", isYourBrand: false },
+                          { rank: 5, name: "Zscaler", color: "#14b8a6", visibility: "45%", change: "-9.2%", sentiment: 68, sentimentChange: "-6", place: "6th", placeChange: "+2", isYourBrand: false },
+                          { rank: 6, name: "Perimeter 81", color: "#ec4899", visibility: "43.8%", change: "+2.1%", sentiment: 65, sentimentChange: "-1", place: "7th", placeChange: "", isYourBrand: false },
                         ].map((brand) => (
-                          <div key={brand.rank} className="grid grid-cols-[16px_1fr_50px_45px_30px] gap-1 items-center text-[10px]">
+                          <div key={brand.rank} className={`grid grid-cols-[14px_1fr_40px_32px_28px] gap-1 items-center text-[9px] ${brand.isYourBrand ? "bg-[#fff7ed] -mx-1 px-1 py-0.5 rounded" : ""}`}>
                             <span className="text-[#74838f]">{brand.rank}</span>
                             <div className="flex items-center gap-1 min-w-0">
                               <div className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: brand.color }}></div>
-                              <span className="text-[#2e353b] truncate">{brand.name}</span>
+                              <span className={`truncate ${brand.isYourBrand ? "text-[#f97316] font-medium" : "text-[#2e353b]"}`}>{brand.name}</span>
                             </div>
                             <div className="flex flex-col">
                               <span className="text-[#2e353b]">{brand.visibility}</span>
-                              <span className={brand.change.startsWith("+") ? "text-[#22c55e]" : "text-[#ef4444]"}>{brand.change}</span>
+                              <span className={brand.change.startsWith("+") ? "text-[#22c55e] text-[8px]" : "text-[#ef4444] text-[8px]"}>{brand.change}</span>
                             </div>
                             <div className="flex flex-col">
                               <span className="text-[#2e353b]">{brand.sentiment}</span>
-                              <span className={brand.sentimentChange.startsWith("+") ? "text-[#22c55e]" : brand.sentimentChange.startsWith("-") ? "text-[#ef4444]" : "text-[#949aab]"}>{brand.sentimentChange}</span>
+                              <span className={`text-[8px] ${brand.sentimentChange.startsWith("+") ? "text-[#22c55e]" : brand.sentimentChange.startsWith("-") ? "text-[#ef4444]" : "text-[#949aab]"}`}>{brand.sentimentChange}</span>
                             </div>
                             <div className="flex flex-col">
                               <span className="text-[#2e353b]">{brand.place}</span>
-                              <span className={brand.placeChange.startsWith("+") ? "text-[#22c55e]" : brand.placeChange.startsWith("-") ? "text-[#ef4444]" : "text-[#949aab]"}>{brand.placeChange}</span>
+                              <span className={`text-[8px] ${brand.placeChange.startsWith("+") ? "text-[#22c55e]" : brand.placeChange.startsWith("-") ? "text-[#ef4444]" : "text-[#949aab]"}`}>{brand.placeChange}</span>
                             </div>
                           </div>
                         ))}
@@ -300,56 +345,67 @@ function HeroSection() {
                     </div>
                   </div>
                   {/* Bottom Row */}
-                  <div className="flex gap-4 mt-4">
+                  <div className="flex gap-3 mt-3">
                     {/* Top Sources */}
-                    <div className="flex-1 bg-white rounded-lg p-4 border border-[#e0e4e9]">
-                      <h3 className="font-semibold text-[#2e353b] text-sm mb-3">Top Sources</h3>
-                      <div className="space-y-2">
-                        <div className="grid grid-cols-[1fr_50px_60px_70px] gap-2 text-[10px] text-[#949aab] pb-1 border-b border-[#e0e4e9]">
+                    <div className="flex-1 bg-white rounded-lg p-3 border border-[#e0e4e9]">
+                      <div className="flex items-center justify-between mb-2">
+                        <div>
+                          <h3 className="font-semibold text-[#2e353b] text-xs">Top Sources</h3>
+                          <p className="text-[9px] text-[#949aab]">Sources across active models</p>
+                        </div>
+                      </div>
+                      <div className="space-y-1">
+                        <div className="grid grid-cols-[1fr_45px_50px_55px] gap-2 text-[9px] text-[#949aab] pb-1 border-b border-[#e0e4e9]">
                           <span>Domain</span>
                           <span>Usage</span>
-                          <span>Avg Citations</span>
+                          <span>Avg Cites</span>
                           <span>Type</span>
                         </div>
                         {[
-                          { domain: "zeronetworks.com", usage: "12.5%", citations: "2.3", type: "Corporate", typeColor: "#3b82f6" },
-                          { domain: "peerspot.com", usage: "11.1%", citations: "2.7", type: "Editorial", typeColor: "#22c55e" },
-                          { domain: "nordlayer.com", usage: "11.1%", citations: "2", type: "Corporate", typeColor: "#3b82f6" },
-                          { domain: "venn.com", usage: "9.7%", citations: "3.5", type: "Editorial", typeColor: "#22c55e" },
+                          { domain: "en.wikipedia.org", usage: "25%", count: "(20)", citations: "3.3", type: "Reference", typeColor: "#f59e0b" },
+                          { domain: "peerspot.com", usage: "17.5%", count: "(14)", citations: "1.6", type: "Editorial", typeColor: "#22c55e" },
+                          { domain: "cyberinsider.com", usage: "12.5%", count: "(10)", citations: "1.4", type: "Editorial", typeColor: "#22c55e" },
+                          { domain: "comparitech.com", usage: "10%", count: "(8)", citations: "1.3", type: "Editorial", typeColor: "#22c55e" },
+                          { domain: "techradar.com", usage: "10%", count: "(8)", citations: "1", type: "Editorial", typeColor: "#22c55e" },
                         ].map((source) => (
-                          <div key={source.domain} className="grid grid-cols-[1fr_50px_60px_70px] gap-2 items-center text-[10px]">
+                          <div key={source.domain} className="grid grid-cols-[1fr_45px_50px_55px] gap-2 items-center text-[9px]">
                             <span className="text-[#2e353b] truncate">{source.domain}</span>
-                            <span className="text-[#74838f]">{source.usage}</span>
+                            <div className="flex items-center gap-0.5">
+                              <span className="text-[#74838f]">{source.usage}</span>
+                              <span className="text-[#949aab] text-[8px]">{source.count}</span>
+                            </div>
                             <span className="text-[#74838f]">{source.citations}</span>
-                            <span className="px-1.5 py-0.5 rounded text-white text-[9px]" style={{ backgroundColor: source.typeColor }}>{source.type}</span>
+                            <span className="px-1.5 py-0.5 rounded text-white text-[8px]" style={{ backgroundColor: source.typeColor }}>{source.type}</span>
                           </div>
                         ))}
                       </div>
                     </div>
                     {/* Domain Type Donut */}
-                    <div className="w-48 bg-white rounded-lg p-4 border border-[#e0e4e9] hidden md:block shrink-0">
-                      <h3 className="font-semibold text-[#2e353b] text-sm mb-2">Domain type</h3>
-                      <div className="relative w-24 h-24 mx-auto">
+                    <div className="w-44 bg-white rounded-lg p-3 border border-[#e0e4e9] hidden md:block shrink-0">
+                      <div>
+                        <h3 className="font-semibold text-[#2e353b] text-xs">Domain type</h3>
+                        <p className="text-[9px] text-[#949aab]">Breakdown by source category</p>
+                      </div>
+                      <div className="relative w-20 h-20 mx-auto mt-2">
                         <svg viewBox="0 0 36 36" className="w-full h-full">
-                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#22c55e" strokeWidth="3" strokeDasharray="43 57" strokeDashoffset="25" />
-                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#3b82f6" strokeWidth="3" strokeDasharray="42 58" strokeDashoffset="82" />
-                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#9ca3af" strokeWidth="3" strokeDasharray="6 94" strokeDashoffset="40" />
-                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#f59e0b" strokeWidth="3" strokeDasharray="5 95" strokeDashoffset="34" />
-                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#ef4444" strokeWidth="3" strokeDasharray="4 96" strokeDashoffset="29" />
+                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#22c55e" strokeWidth="3.5" strokeDasharray="63 37" strokeDashoffset="25" />
+                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#f59e0b" strokeWidth="3.5" strokeDasharray="13 87" strokeDashoffset="62" />
+                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#3b82f6" strokeWidth="3.5" strokeDasharray="12 88" strokeDashoffset="49" />
+                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#9ca3af" strokeWidth="3.5" strokeDasharray="12 88" strokeDashoffset="37" />
                         </svg>
                         <div className="absolute inset-0 flex flex-col items-center justify-center">
-                          <span className="text-lg font-bold text-[#2e353b]">144</span>
-                          <span className="text-[9px] text-[#949aab]">Citations</span>
+                          <span className="text-base font-bold text-[#2e353b]">167</span>
+                          <span className="text-[8px] text-[#949aab]">Citations</span>
                         </div>
                       </div>
-                      <div className="mt-2 space-y-1 text-[9px]">
+                      <div className="mt-2 space-y-0.5 text-[9px]">
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-[#22c55e]"></div><span className="text-[#74838f]">Editorial</span></div>
-                          <span className="text-[#2e353b]">43.1%</span>
+                          <span className="text-[#2e353b]">105 <span className="text-[#949aab]">62.9%</span></span>
                         </div>
                         <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-[#3b82f6]"></div><span className="text-[#74838f]">Corporate</span></div>
-                          <span className="text-[#2e353b]">42.4%</span>
+                          <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-[#f59e0b]"></div><span className="text-[#74838f]">Reference</span></div>
+                          <span className="text-[#2e353b]">21 <span className="text-[#949aab]">12.6%</span></span>
                         </div>
                       </div>
                     </div>
@@ -364,75 +420,97 @@ function HeroSection() {
   );
 }
 
-// Features Section
+// Features Section with Tabs
 function FeaturesSection() {
+  const [activeTab, setActiveTab] = useState(0);
+
   const features = [
     {
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-        </svg>
-      ),
+      id: "visibility",
+      tabLabel: "Visibility Tracking",
       title: "Multi-Model Visibility Tracking",
-      description: "Monitor your brand mentions across ChatGPT, Claude, Perplexity, Gemini, and Grok. See exactly when and how often you're recommended.",
+      description: "Monitor your brand mentions across ChatGPT, Claude, Perplexity, Gemini, and Grok. See exactly when and how often you're recommended compared to competitors.",
+      bullets: [
+        "Track mentions across 5 major AI platforms",
+        "Customizable automated prompt execution",
+        "Historical visibility trends and analytics",
+        "Real-time visibility changes"
+      ],
       href: "/features/multi-model-visibility",
     },
     {
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-        </svg>
-      ),
+      id: "competitors",
+      tabLabel: "Competitor Analysis",
       title: "Competitor Analysis",
-      description: "Track how competitors rank against you in AI responses. Compare visibility, sentiment, and share of voice across all models.",
+      description: "Track how competitors rank against you in AI responses. Compare visibility, sentiment, and share of voice across all models to understand your competitive position.",
+      bullets: [
+        "Benchmark against competitors",
+        "Share of voice comparison",
+        "Sentiment analysis by brand",
+        "Competitive positioning insights"
+      ],
       href: "/features/competitor-analysis",
     },
     {
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-        </svg>
-      ),
+      id: "sources",
+      tabLabel: "Source Attribution",
       title: "Source Attribution",
-      description: "Discover which websites and URLs LLMs cite when discussing your industry. Identify content gaps and citation opportunities.",
+      description: "Discover which websites and URLs LLMs cite when discussing your industry. Identify content gaps and citation opportunities to improve your AI visibility.",
+      bullets: [
+        "Track which sources AI models cite",
+        "Identify high-authority domains",
+        "Find content gap opportunities",
+        "Monitor competitor citations"
+      ],
       href: "/features/source-attribution",
     },
     {
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-      ),
+      id: "prompts",
+      tabLabel: "Custom Prompts",
       title: "Custom Prompts",
-      description: "Create and manage prompts that matter to your business. Track specific queries your customers might ask AI assistants.",
+      description: "Create and manage prompts that matter to your business. Track specific queries your customers might ask AI assistants about your industry.",
+      bullets: [
+        "Auto-generated industry prompts",
+        "Organize prompts by topic",
+        "Track prompt performance over time",
+        "A/B test different query styles"
+      ],
       href: "/features/custom-prompts",
     },
     {
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      ),
+      id: "onpage",
+      tabLabel: "On-Page Optimization",
       title: "On-Page Optimization",
       description: "Get actionable recommendations to optimize your website content. Improve structure, headings, and schema markup for better AI visibility.",
+      bullets: [
+        "Content structure recommendations",
+        "Schema markup suggestions",
+        "Heading optimization tips",
+        "Agent, Crawler, and LLM-friendly content guidelines"
+      ],
       href: "/features/on-page-optimization",
     },
     {
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-        </svg>
-      ),
+      id: "offpage",
+      tabLabel: "Off-Page Strategies",
       title: "Off-Page Strategies",
-      description: "Build authority in the places that matter. Get editorial coverage, community presence, and partnership recommendations.",
+      description: "Build authority in the places that matter. Get editorial coverage, community presence, and partnership recommendations to boost your AI visibility.",
+      bullets: [
+        "Editorial coverage opportunities",
+        "Community presence recommendations",
+        "Partnership suggestions",
+        "Authority building tactics"
+      ],
       href: "/features/off-page-strategies",
     },
   ];
 
+  const activeFeature = features[activeTab];
+
   return (
     <section id="features" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-[#2e353b]">
             Everything you need to track AI visibility
           </h2>
@@ -441,24 +519,211 @@ function FeaturesSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Tabs */}
+        <div className="flex flex-wrap justify-center gap-2 mb-12">
           {features.map((feature, index) => (
-            <Link
-              key={index}
-              href={feature.href}
-              className="feature-card bg-white rounded-xl p-6 block hover:shadow-lg transition-shadow"
+            <button
+              key={feature.id}
+              onClick={() => setActiveTab(index)}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                activeTab === index
+                  ? "bg-[#509ee3] text-white shadow-md"
+                  : "bg-[#f9fbfc] text-[#74838f] hover:bg-[#e6f0fa] hover:text-[#509ee3]"
+              }`}
             >
-              <div className="w-12 h-12 bg-[#e6f0fa] rounded-lg flex items-center justify-center text-[#509ee3] mb-4">
-                {feature.icon}
-              </div>
-              <h3 className="text-lg font-semibold text-[#2e353b] mb-2">
-                {feature.title}
-              </h3>
-              <p className="text-[#74838f]">
-                {feature.description}
-              </p>
-            </Link>
+              {feature.tabLabel}
+            </button>
           ))}
+        </div>
+
+        {/* Tab Content */}
+        <div className="bg-[#f9fbfc] rounded-2xl p-8 lg:p-12">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Text Content */}
+            <div>
+              <h3 className="text-2xl sm:text-3xl font-bold text-[#2e353b] mb-4">
+                {activeFeature.title}
+              </h3>
+              <p className="text-lg text-[#74838f] mb-6">
+                {activeFeature.description}
+              </p>
+              <ul className="space-y-3 mb-8">
+                {activeFeature.bullets.map((bullet, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-[#509ee3] mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-[#2e353b]">{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href={activeFeature.href}
+                className="inline-flex items-center gap-2 text-[#509ee3] font-medium hover:underline"
+              >
+                Learn more
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
+
+            {/* Visual/Mockup */}
+            <div className="bg-white rounded-xl shadow-lg border border-[#e0e4e9] overflow-hidden">
+              {activeTab === 0 && (
+                <div className="p-4">
+                  <div className="flex items-center justify-between mb-3">
+                    <h4 className="font-semibold text-[#2e353b] text-sm">Visibility Over Time</h4>
+                    <span className="text-xs text-[#949aab]">Last 7 days</span>
+                  </div>
+                  <div className="h-48 relative">
+                    <div className="absolute left-0 top-0 bottom-0 w-8 flex flex-col justify-between text-[10px] text-[#949aab]">
+                      <span>80%</span>
+                      <span>60%</span>
+                      <span>40%</span>
+                      <span>20%</span>
+                    </div>
+                    <div className="ml-10 h-full relative">
+                      <svg className="w-full h-full" viewBox="0 0 300 150" preserveAspectRatio="none">
+                        <path d="M0 60 Q50 50 100 55 T150 45 T200 40 T250 35 T300 30" stroke="#f97316" strokeWidth="3" fill="none" />
+                        <path d="M0 80 Q50 85 100 75 T150 80 T200 85 T250 80 T300 85" stroke="#a855f7" strokeWidth="2" fill="none" />
+                        <path d="M0 100 Q50 95 100 105 T150 100 T200 95 T250 100 T300 95" stroke="#22c55e" strokeWidth="2" fill="none" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="flex justify-center gap-6 mt-3 text-xs">
+                    <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-[#f97316]"></div>Your Brand</div>
+                    <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-[#a855f7]"></div>Competitor A</div>
+                    <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-[#22c55e]"></div>Competitor B</div>
+                  </div>
+                </div>
+              )}
+              {activeTab === 1 && (
+                <div className="p-4">
+                  <div className="flex items-center justify-between mb-3">
+                    <h4 className="font-semibold text-[#2e353b] text-sm">Competitor Rankings</h4>
+                    <span className="text-xs text-[#949aab]">All models</span>
+                  </div>
+                  <div className="space-y-3">
+                    {[
+                      { name: "Your Brand", visibility: 72, color: "#f97316" },
+                      { name: "Cloudflare", visibility: 56, color: "#a855f7" },
+                      { name: "Tailscale", visibility: 46, color: "#22c55e" },
+                      { name: "OpenVPN", visibility: 45, color: "#ef4444" },
+                      { name: "Zscaler", visibility: 43, color: "#14b8a6" },
+                    ].map((brand, i) => (
+                      <div key={i} className="flex items-center gap-3">
+                        <span className="text-xs text-[#74838f] w-4">{i + 1}</span>
+                        <div className="w-3 h-3 rounded-full" style={{ backgroundColor: brand.color }}></div>
+                        <span className="text-sm text-[#2e353b] w-24">{brand.name}</span>
+                        <div className="flex-1 bg-[#e0e4e9] rounded-full h-2">
+                          <div className="h-2 rounded-full" style={{ width: `${brand.visibility}%`, backgroundColor: brand.color }}></div>
+                        </div>
+                        <span className="text-xs font-medium text-[#2e353b] w-10">{brand.visibility}%</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {activeTab === 2 && (
+                <div className="p-4">
+                  <div className="flex items-center justify-between mb-3">
+                    <h4 className="font-semibold text-[#2e353b] text-sm">Top Cited Sources</h4>
+                    <span className="text-xs text-[#949aab]">167 citations</span>
+                  </div>
+                  <div className="space-y-2">
+                    {[
+                      { domain: "en.wikipedia.org", citations: 20, type: "Reference" },
+                      { domain: "peerspot.com", citations: 14, type: "Editorial" },
+                      { domain: "techradar.com", citations: 10, type: "Editorial" },
+                      { domain: "g2.com", citations: 8, type: "Review" },
+                      { domain: "gartner.com", citations: 6, type: "Analyst" },
+                    ].map((source, i) => (
+                      <div key={i} className="flex items-center justify-between py-2 border-b border-[#e0e4e9] last:border-0">
+                        <span className="text-sm text-[#2e353b]">{source.domain}</span>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs text-[#74838f]">{source.citations} cites</span>
+                          <span className="text-[10px] px-2 py-0.5 rounded bg-[#e6f0fa] text-[#509ee3]">{source.type}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {activeTab === 3 && (
+                <div className="p-4">
+                  <div className="flex items-center justify-between mb-3">
+                    <h4 className="font-semibold text-[#2e353b] text-sm">Active Prompts</h4>
+                    <span className="text-xs text-[#509ee3]">+ Add prompt</span>
+                  </div>
+                  <div className="space-y-2">
+                    {[
+                      { prompt: "Best VPN for remote teams", topic: "Product", mentions: 12 },
+                      { prompt: "Secure network solutions", topic: "General", mentions: 8 },
+                      { prompt: "Zero trust networking tools", topic: "Technical", mentions: 15 },
+                      { prompt: "Enterprise security software", topic: "Enterprise", mentions: 6 },
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-center justify-between py-2 border-b border-[#e0e4e9] last:border-0">
+                        <div>
+                          <p className="text-sm text-[#2e353b]">{item.prompt}</p>
+                          <span className="text-[10px] text-[#949aab]">{item.topic}</span>
+                        </div>
+                        <span className="text-xs text-[#74838f]">{item.mentions} mentions</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {activeTab === 4 && (
+                <div className="p-4">
+                  <div className="flex items-center justify-between mb-3">
+                    <h4 className="font-semibold text-[#2e353b] text-sm">On-Page Recommendations</h4>
+                    <span className="text-xs text-[#22c55e]">3 quick wins</span>
+                  </div>
+                  <div className="space-y-3">
+                    {[
+                      { task: "Add FAQ schema to /pricing", impact: "High", status: "todo" },
+                      { task: "Improve H1 on landing page", impact: "Medium", status: "done" },
+                      { task: "Add product comparison table", impact: "High", status: "todo" },
+                      { task: "Update meta descriptions", impact: "Low", status: "done" },
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-center gap-3">
+                        <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${item.status === "done" ? "bg-[#22c55e] border-[#22c55e]" : "border-[#e0e4e9]"}`}>
+                          {item.status === "done" && <svg className="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>}
+                        </div>
+                        <span className={`flex-1 text-sm ${item.status === "done" ? "text-[#949aab] line-through" : "text-[#2e353b]"}`}>{item.task}</span>
+                        <span className={`text-[10px] px-2 py-0.5 rounded ${item.impact === "High" ? "bg-[#fef2f2] text-[#ef4444]" : item.impact === "Medium" ? "bg-[#fffbeb] text-[#f59e0b]" : "bg-[#f0fdf4] text-[#22c55e]"}`}>{item.impact}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {activeTab === 5 && (
+                <div className="p-4">
+                  <div className="flex items-center justify-between mb-3">
+                    <h4 className="font-semibold text-[#2e353b] text-sm">Off-Page Opportunities</h4>
+                    <span className="text-xs text-[#949aab]">12 suggestions</span>
+                  </div>
+                  <div className="space-y-3">
+                    {[
+                      { task: "Guest post on TechCrunch", type: "Editorial", priority: "High" },
+                      { task: "Respond on Reddit r/networking", type: "Community", priority: "Medium" },
+                      { task: "Update G2 profile", type: "Review", priority: "High" },
+                      { task: "Sponsor DevOps podcast", type: "Partnership", priority: "Low" },
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-center justify-between py-2 border-b border-[#e0e4e9] last:border-0">
+                        <div>
+                          <p className="text-sm text-[#2e353b]">{item.task}</p>
+                          <span className="text-[10px] text-[#949aab]">{item.type}</span>
+                        </div>
+                        <span className={`text-[10px] px-2 py-0.5 rounded ${item.priority === "High" ? "bg-[#fef2f2] text-[#ef4444]" : item.priority === "Medium" ? "bg-[#fffbeb] text-[#f59e0b]" : "bg-[#f0fdf4] text-[#22c55e]"}`}>{item.priority}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -470,18 +735,18 @@ function HowItWorksSection() {
   const steps = [
     {
       step: "01",
-      title: "Clone & Deploy",
-      description: "Clone the repo and deploy with Docker. Configure your database and API keys in minutes.",
+      title: "Clone & Install",
+      description: "Clone the repo and run npm install.",
     },
     {
       step: "02",
-      title: "Add Your Brand",
-      description: "Enter your company details and competitors. Prompt Clarity auto-generates relevant tracking prompts.",
+      title: "Run Setup Wizard",
+      description: "Start the dev server and follow the setup wizard. Add your brand, topics, competitors, and platform keys.",
     },
     {
       step: "03",
       title: "Monitor & Optimize",
-      description: "Track visibility over time, analyze sources, and get actionable recommendations to improve.",
+      description: "Track visibility and get recommendations to improve your AI presence.",
     },
   ];
 
@@ -532,14 +797,14 @@ function HowItWorksSection() {
             </div>
             <div className="p-6 font-mono text-sm">
               <div className="text-[#949aab]"># Prerequisites: Node.js 18.17+, npm or yarn</div>
-              <div className="mt-4 text-[#88bf4d]"># Clone the repository</div>
+              <div className="mt-4 text-[#88bf4d]"># Clone and install</div>
               <div className="text-[#e0e4e9]">git clone https://github.com/lucidgeo/lucidgeo.git</div>
-              <div className="text-[#e0e4e9] mt-2">cd lucidgeo</div>
-              <div className="mt-4 text-[#88bf4d]"># Install dependencies</div>
-              <div className="text-[#e0e4e9]">npm install</div>
-              <div className="mt-4 text-[#88bf4d]"># Run the development server</div>
+              <div className="text-[#e0e4e9] mt-1">cd lucidgeo && npm install</div>
+              <div className="mt-4 text-[#88bf4d]"># Set up environment</div>
+              <div className="text-[#e0e4e9]">cp .env.example .env.local</div>
+              <div className="mt-4 text-[#88bf4d]"># Start the app</div>
               <div className="text-[#e0e4e9]">npm run dev</div>
-              <div className="mt-4 text-[#949aab]"># Open http://localhost:3000</div>
+              <div className="mt-4 text-[#949aab]"># Open http://localhost:3000 and follow the setup wizard</div>
             </div>
           </div>
         </div>
