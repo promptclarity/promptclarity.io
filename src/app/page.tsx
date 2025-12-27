@@ -735,18 +735,18 @@ function HowItWorksSection() {
   const steps = [
     {
       step: "01",
-      title: "Clone & Install",
-      description: "Clone the repo and run npm install.",
+      title: "Run Docker",
+      description: "Single command to start. Data persists in a volume.",
     },
     {
       step: "02",
-      title: "Run Setup Wizard",
-      description: "Start the dev server and follow the setup wizard. Add your brand, topics, competitors, and platform keys.",
+      title: "Setup Wizard",
+      description: "Add your brand, topics, competitors, and AI platform API keys.",
     },
     {
       step: "03",
       title: "Monitor & Optimize",
-      description: "Track visibility and get recommendations to improve your AI presence.",
+      description: "Track visibility trends and get actionable insights.",
     },
   ];
 
@@ -796,14 +796,12 @@ function HowItWorksSection() {
               <span className="text-[#949aab] text-sm ml-2">Terminal</span>
             </div>
             <div className="p-6 font-mono text-sm">
-              <div className="text-[#949aab]"># Prerequisites: Node.js 18.17+, npm or yarn</div>
-              <div className="mt-4 text-[#88bf4d]"># Clone and install</div>
-              <div className="text-[#e0e4e9]">git clone https://github.com/lucidgeo/lucidgeo.git</div>
-              <div className="text-[#e0e4e9] mt-1">cd lucidgeo && npm install</div>
-              <div className="mt-4 text-[#88bf4d]"># Set up environment</div>
-              <div className="text-[#e0e4e9]">cp .env.example .env.local</div>
-              <div className="mt-4 text-[#88bf4d]"># Start the app</div>
-              <div className="text-[#e0e4e9]">npm run dev</div>
+              <div className="text-[#88bf4d]"># Run with Docker (recommended)</div>
+              <div className="text-[#e0e4e9] mt-2">docker run -d \</div>
+              <div className="text-[#e0e4e9]">  --name prompt-clarity \</div>
+              <div className="text-[#e0e4e9]">  -p 3000:3000 \</div>
+              <div className="text-[#e0e4e9]">  -v prompt-clarity-data:/app/data \</div>
+              <div className="text-[#e0e4e9]">  ghcr.io/verobytes/prompt-clarity:latest</div>
               <div className="mt-4 text-[#949aab]"># Open http://localhost:3000 and follow the setup wizard</div>
             </div>
           </div>
