@@ -49,6 +49,8 @@ const docsNav = [
       { title: "Self-Hosting", href: "#self-hosting" },
       { title: "Docker", href: "#docker" },
       { title: "Vercel", href: "#vercel" },
+      { title: "Render", href: "#render" },
+      { title: "Fly.io", href: "#flyio" },
     ],
   },
   {
@@ -171,9 +173,30 @@ export default function DocsPage() {
               <section id="quick-start" className="mb-16">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Quick Start</h2>
                 <p className="text-gray-600 mb-6">
-                  Get up and running in 5 minutes with these simple steps.
+                  Run your own instance with a single command:
                 </p>
 
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Option 1: Docker (Recommended)</h3>
+                <div className="bg-gray-900 rounded-lg p-6 mb-6 overflow-x-auto">
+                  <pre className="text-green-400 text-sm">
+{`docker run -d \\
+  --name prompt-clarity \\
+  -p 3000:3000 \\
+  -v prompt-clarity-data:/app/data \\
+  ghcr.io/verobytes/prompt-clarity:latest`}
+                  </pre>
+                </div>
+                <p className="text-gray-600 mb-6">
+                  Open <code className="bg-gray-100 px-2 py-1 rounded">http://localhost:3000</code> and follow the setup wizard.
+                </p>
+
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8">
+                  <p className="text-blue-800 text-sm">
+                    <strong>Custom domain?</strong> Add <code className="bg-blue-100 px-1 rounded">-e NEXTAUTH_URL=https://clarity.yourdomain.com</code> to the command.
+                  </p>
+                </div>
+
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Option 2: From Source</h3>
                 <div className="bg-gray-900 rounded-lg p-6 mb-6 overflow-x-auto">
                   <pre className="text-green-400 text-sm">
 {`# Clone the repository
@@ -818,20 +841,64 @@ npm start`}
               <section id="docker" className="mb-16">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Docker Deployment</h2>
 
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Quick Start</h3>
                 <div className="bg-gray-900 rounded-lg p-6 mb-6">
                   <pre className="text-green-400 text-sm">
-{`# Using docker-compose (includes NGINX, Let's Encrypt SSL)
-docker-compose up -d`}
+{`docker run -d \\
+  --name prompt-clarity \\
+  -p 3000:3000 \\
+  -v prompt-clarity-data:/app/data \\
+  ghcr.io/verobytes/prompt-clarity:latest`}
+                  </pre>
+                </div>
+
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Docker Configuration</h3>
+                <div className="overflow-x-auto mb-6">
+                  <table className="min-w-full bg-white border border-gray-200 rounded-lg">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 border-b">Variable</th>
+                        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 border-b">Description</th>
+                        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 border-b">Default</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="px-4 py-3 text-sm font-mono text-gray-700 border-b">NEXTAUTH_URL</td>
+                        <td className="px-4 py-3 text-sm text-gray-600 border-b">Your app&apos;s public URL</td>
+                        <td className="px-4 py-3 text-sm text-gray-500 border-b">http://localhost:3000</td>
+                      </tr>
+                      <tr>
+                        <td className="px-4 py-3 text-sm font-mono text-gray-700 border-b">NEXTAUTH_SECRET</td>
+                        <td className="px-4 py-3 text-sm text-gray-600 border-b">Auth encryption secret</td>
+                        <td className="px-4 py-3 text-sm text-gray-500 border-b">Auto-generated</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Updating</h3>
+                <div className="bg-gray-900 rounded-lg p-6 mb-6">
+                  <pre className="text-green-400 text-sm">
+{`docker pull ghcr.io/verobytes/prompt-clarity:latest
+docker stop prompt-clarity && docker rm prompt-clarity
+# Re-run the docker run command above`}
+                  </pre>
+                </div>
+
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Build Image Locally</h3>
+                <div className="bg-gray-900 rounded-lg p-6 mb-6">
+                  <pre className="text-green-400 text-sm">
+{`docker build -t prompt-clarity .
+docker run -d -p 3000:3000 -v prompt-clarity-data:/app/data prompt-clarity`}
                   </pre>
                 </div>
 
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">Included Services</h3>
                 <ul className="list-disc list-inside text-gray-600 space-y-2">
                   <li>Multi-stage build (Node 20 Alpine)</li>
-                  <li>NGINX reverse proxy</li>
-                  <li>Optional Let&apos;s Encrypt SSL certificate generation</li>
-                  <li>SQLite database persistence</li>
-                  <li>Supervisor for process management</li>
+                  <li>Automatic database migrations on startup</li>
+                  <li>SQLite database persistence via volume mount</li>
                 </ul>
               </section>
 
@@ -861,6 +928,66 @@ docker-compose up -d`}
                       <p className="text-gray-600 text-sm">Automatic deployments on push to main branch</p>
                     </div>
                   </div>
+                </div>
+              </section>
+
+              {/* Render */}
+              <section id="render" className="mb-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Deploy to Render</h2>
+
+                <div className="space-y-4">
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold flex-shrink-0">1</div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Create Web Service</h4>
+                      <p className="text-gray-600 text-sm">Create a new Web Service on Render</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold flex-shrink-0">2</div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Connect Repository</h4>
+                      <p className="text-gray-600 text-sm">Connect your GitHub repository</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold flex-shrink-0">3</div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Configure Build</h4>
+                      <p className="text-gray-600 text-sm">
+                        Build Command: <code className="bg-gray-100 px-2 py-1 rounded text-xs">npm install && npm run build</code><br />
+                        Start Command: <code className="bg-gray-100 px-2 py-1 rounded text-xs">npm start</code>
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold flex-shrink-0">4</div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Add Environment Variables</h4>
+                      <p className="text-gray-600 text-sm">Add variables in Render dashboard and deploy</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* Fly.io */}
+              <section id="flyio" className="mb-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Deploy to Fly.io</h2>
+
+                <div className="bg-gray-900 rounded-lg p-6 mb-6">
+                  <pre className="text-green-400 text-sm">
+{`# Install flyctl
+curl -L https://fly.io/install.sh | sh
+
+# Launch (creates fly.toml)
+fly launch
+
+# Set secrets
+fly secrets set NEXTAUTH_SECRET="your-secret" NEXTAUTH_URL="https://your-app.fly.dev"
+
+# Deploy
+fly deploy`}
+                  </pre>
                 </div>
               </section>
 
