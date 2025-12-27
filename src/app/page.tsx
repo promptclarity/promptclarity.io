@@ -126,7 +126,7 @@ function HeroSection() {
               View on GitHub
             </Link>
             <Link
-              href="#demo"
+              href="#how-it-works"
               className="w-full sm:w-auto bg-white text-[#2e353b] px-8 py-3 rounded-lg font-medium text-lg btn-secondary hover:border-[#509ee3]"
             >
               See how it works
@@ -1065,7 +1065,7 @@ function Footer() {
             <ul className="space-y-2">
               <li><Link href="#features" className="text-[#949aab] hover:text-white transition-colors text-sm">Features</Link></li>
               <li><Link href="#how-it-works" className="text-[#949aab] hover:text-white transition-colors text-sm">How it Works</Link></li>
-              <li><Link href="https://github.com/lucidgeo/lucidgeo" className="text-[#949aab] hover:text-white transition-colors text-sm">Documentation</Link></li>
+              <li><Link href="/docs" className="text-[#949aab] hover:text-white transition-colors text-sm">Documentation</Link></li>
               <li><Link href="https://github.com/lucidgeo/lucidgeo/releases" className="text-[#949aab] hover:text-white transition-colors text-sm">Changelog</Link></li>
             </ul>
           </div>
@@ -1085,8 +1085,9 @@ function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-4">Resources</h4>
             <ul className="space-y-2">
-              <li><Link href="https://github.com/lucidgeo/lucidgeo/blob/main/README.md" className="text-[#949aab] hover:text-white transition-colors text-sm">Getting Started</Link></li>
-              <li><Link href="https://github.com/lucidgeo/lucidgeo/blob/main/SETUP.md" className="text-[#949aab] hover:text-white transition-colors text-sm">Installation</Link></li>
+              <li><Link href="/docs#quick-start" className="text-[#949aab] hover:text-white transition-colors text-sm">Quick Start</Link></li>
+              <li><Link href="/docs#docker" className="text-[#949aab] hover:text-white transition-colors text-sm">Docker Setup</Link></li>
+              <li><Link href="/docs#installation" className="text-[#949aab] hover:text-white transition-colors text-sm">Installation</Link></li>
               <li><Link href="https://github.com/lucidgeo/lucidgeo/blob/main/LICENSE" className="text-[#949aab] hover:text-white transition-colors text-sm">License</Link></li>
             </ul>
           </div>
