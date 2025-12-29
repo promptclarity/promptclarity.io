@@ -12,6 +12,16 @@ const docsNav = [
     ],
   },
   {
+    title: "How It Works",
+    items: [
+      { title: "Data Collection", href: "#data-collection" },
+      { title: "Visibility Scoring", href: "#visibility-scoring" },
+      { title: "Content Recommendations", href: "#content-recommendations" },
+      { title: "PR & Partnerships", href: "#pr-partnerships" },
+      { title: "Website Audits", href: "#website-audits" },
+    ],
+  },
+  {
     title: "Features",
     items: [
       { title: "Dashboard Overview", href: "#dashboard-overview" },
@@ -393,6 +403,480 @@ npm install`}
                 <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
                   <p className="text-yellow-800 text-sm">
                     <strong>Note:</strong> AI platform API keys are configured through the UI during onboarding, not via environment variables.
+                  </p>
+                </div>
+              </section>
+
+              {/* Data Collection */}
+              <section id="data-collection" className="mb-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Data Collection</h2>
+                <p className="text-gray-600 mb-6">
+                  Prompt Clarity collects data by executing real queries against multiple AI platforms and analyzing their responses. Here&apos;s how the process works:
+                </p>
+
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">The Query Pipeline</h3>
+                <div className="bg-gray-900 rounded-lg p-6 mb-6">
+                  <pre className="text-green-400 text-sm">
+{`1. Prompt Execution
+   ├─ Send industry-relevant query to AI platform
+   ├─ "What are the best container orchestration tools?"
+   └─ Execute across ChatGPT, Claude, Gemini, Perplexity, Grok
+
+2. Response Capture
+   ├─ Store full AI response text
+   ├─ Record timestamp and platform metadata
+   └─ Track response latency and token usage
+
+3. Entity Extraction
+   ├─ Identify all brand/product mentions
+   ├─ Extract cited sources and URLs
+   └─ Detect competitor mentions
+
+4. Analysis & Scoring
+   ├─ Calculate visibility score (mentioned = 1, not = 0)
+   ├─ Determine position in rankings/lists
+   ├─ Analyze sentiment context around mentions
+   └─ Map source citations to domains`}
+                  </pre>
+                </div>
+
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">What We Extract From Each Response</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <h4 className="font-semibold text-gray-900 mb-2">Brand Mentions</h4>
+                    <p className="text-gray-600 text-sm">Every instance where your brand or competitors appear, including variations and misspellings.</p>
+                  </div>
+                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <h4 className="font-semibold text-gray-900 mb-2">Position Data</h4>
+                    <p className="text-gray-600 text-sm">When AI lists multiple options, we track where each brand appears (1st, 2nd, 3rd, etc.).</p>
+                  </div>
+                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <h4 className="font-semibold text-gray-900 mb-2">Source Citations</h4>
+                    <p className="text-gray-600 text-sm">URLs and domains the AI references as sources for its recommendations.</p>
+                  </div>
+                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <h4 className="font-semibold text-gray-900 mb-2">Context & Sentiment</h4>
+                    <p className="text-gray-600 text-sm">The surrounding text to understand if mentions are positive, neutral, or negative.</p>
+                  </div>
+                </div>
+
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                  <p className="text-blue-800 text-sm">
+                    <strong>Data Freshness:</strong> Prompts can be executed on-demand or scheduled daily. Historical data is preserved to show visibility trends over time.
+                  </p>
+                </div>
+              </section>
+
+              {/* Visibility Scoring */}
+              <section id="visibility-scoring" className="mb-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Visibility Scoring</h2>
+                <p className="text-gray-600 mb-6">
+                  Understanding how we calculate your visibility metrics and what they mean for your brand.
+                </p>
+
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Core Metrics</h3>
+
+                <div className="space-y-6 mb-8">
+                  <div className="border border-gray-200 rounded-lg p-6">
+                    <h4 className="font-semibold text-gray-900 mb-2">Visibility Score (0-100%)</h4>
+                    <p className="text-gray-600 text-sm mb-3">
+                      The percentage of prompts where your brand was mentioned across all platforms.
+                    </p>
+                    <div className="bg-gray-900 rounded p-4">
+                      <pre className="text-green-400 text-sm">
+{`Visibility Score = (Prompts with mention / Total prompts) × 100
+
+Example:
+  - 50 total prompts executed
+  - Your brand mentioned in 35 responses
+  - Visibility Score = (35/50) × 100 = 70%`}
+                      </pre>
+                    </div>
+                  </div>
+
+                  <div className="border border-gray-200 rounded-lg p-6">
+                    <h4 className="font-semibold text-gray-900 mb-2">Share of Voice</h4>
+                    <p className="text-gray-600 text-sm mb-3">
+                      Your brand&apos;s mention frequency compared to all brand mentions in responses.
+                    </p>
+                    <div className="bg-gray-900 rounded p-4">
+                      <pre className="text-green-400 text-sm">
+{`Share of Voice = (Your mentions / Total brand mentions) × 100
+
+Example:
+  - AI mentions 4 brands: Kubernetes, Docker, Your Brand, Terraform
+  - Your Brand mentioned 15 times across all responses
+  - Total mentions across all brands: 60
+  - Share of Voice = (15/60) × 100 = 25%`}
+                      </pre>
+                    </div>
+                  </div>
+
+                  <div className="border border-gray-200 rounded-lg p-6">
+                    <h4 className="font-semibold text-gray-900 mb-2">Average Position</h4>
+                    <p className="text-gray-600 text-sm mb-3">
+                      When AI lists recommendations, where does your brand typically appear?
+                    </p>
+                    <div className="bg-gray-900 rounded p-4">
+                      <pre className="text-green-400 text-sm">
+{`Average Position = Sum of positions / Number of appearances
+
+Example:
+  - Prompt 1: Listed 2nd
+  - Prompt 2: Listed 1st
+  - Prompt 3: Listed 3rd
+  - Prompt 4: Not listed (excluded)
+  - Average Position = (2+1+3) / 3 = 2.0`}
+                      </pre>
+                    </div>
+                  </div>
+
+                  <div className="border border-gray-200 rounded-lg p-6">
+                    <h4 className="font-semibold text-gray-900 mb-2">Sentiment Score (-100 to +100)</h4>
+                    <p className="text-gray-600 text-sm mb-3">
+                      How positively or negatively AI describes your brand when mentioned.
+                    </p>
+                    <div className="bg-gray-900 rounded p-4">
+                      <pre className="text-green-400 text-sm">
+{`Sentiment Analysis examines context around mentions:
+
+Positive indicators (+):
+  "highly recommended", "industry leader", "best choice"
+
+Neutral indicators (0):
+  "one option is", "alternatives include", "you could use"
+
+Negative indicators (-):
+  "drawbacks include", "users complain about", "limited by"`}
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Platform-Specific Scoring</h3>
+                <p className="text-gray-600 mb-4">
+                  Each AI platform may respond differently to the same prompt. We track metrics per-platform so you can identify where you&apos;re strong or weak:
+                </p>
+                <div className="overflow-x-auto mb-6">
+                  <table className="min-w-full bg-white border border-gray-200 rounded-lg">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 border-b">Platform</th>
+                        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 border-b">Visibility</th>
+                        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 border-b">Avg Position</th>
+                        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 border-b">Sentiment</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="px-4 py-3 text-sm text-gray-700 border-b">ChatGPT</td>
+                        <td className="px-4 py-3 text-sm text-gray-600 border-b">72%</td>
+                        <td className="px-4 py-3 text-sm text-gray-600 border-b">2.1</td>
+                        <td className="px-4 py-3 text-sm text-green-600 border-b">+45</td>
+                      </tr>
+                      <tr>
+                        <td className="px-4 py-3 text-sm text-gray-700 border-b">Claude</td>
+                        <td className="px-4 py-3 text-sm text-gray-600 border-b">68%</td>
+                        <td className="px-4 py-3 text-sm text-gray-600 border-b">1.8</td>
+                        <td className="px-4 py-3 text-sm text-green-600 border-b">+52</td>
+                      </tr>
+                      <tr>
+                        <td className="px-4 py-3 text-sm text-gray-700 border-b">Perplexity</td>
+                        <td className="px-4 py-3 text-sm text-gray-600 border-b">81%</td>
+                        <td className="px-4 py-3 text-sm text-gray-600 border-b">1.5</td>
+                        <td className="px-4 py-3 text-sm text-green-600 border-b">+61</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              {/* Content Recommendations */}
+              <section id="content-recommendations" className="mb-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Content Recommendations</h2>
+                <p className="text-gray-600 mb-6">
+                  Prompt Clarity analyzes AI responses to identify content gaps and opportunities that can improve your visibility.
+                </p>
+
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">How We Generate Recommendations</h3>
+                <div className="bg-gray-900 rounded-lg p-6 mb-6">
+                  <pre className="text-green-400 text-sm">
+{`1. Topic Gap Analysis
+   ├─ Identify prompts where competitors appear but you don't
+   ├─ Extract common themes from high-visibility responses
+   └─ Flag topics where your brand has low sentiment
+
+2. Source Pattern Analysis
+   ├─ Which content types get cited most? (docs, blogs, tutorials)
+   ├─ What domains does AI trust in your industry?
+   └─ Which of your pages are being cited vs ignored?
+
+3. Keyword Extraction
+   ├─ Terms frequently associated with top-ranked brands
+   ├─ Questions users ask that AI struggles to answer
+   └─ Feature comparisons where you're missing
+
+4. Content Scoring
+   ├─ Prioritize by potential visibility impact
+   ├─ Estimate effort vs reward
+   └─ Match to your existing content calendar`}
+                  </pre>
+                </div>
+
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Types of Content Recommendations</h3>
+                <div className="space-y-4 mb-6">
+                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <div className="flex items-start gap-3">
+                      <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center text-white font-semibold flex-shrink-0">1</div>
+                      <div>
+                        <h4 className="font-semibold text-gray-900">Documentation & Guides</h4>
+                        <p className="text-gray-600 text-sm">AI models heavily cite official documentation. Comprehensive, well-structured docs increase your chances of being recommended.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <div className="flex items-start gap-3">
+                      <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center text-white font-semibold flex-shrink-0">2</div>
+                      <div>
+                        <h4 className="font-semibold text-gray-900">Comparison Content</h4>
+                        <p className="text-gray-600 text-sm">Pages comparing your product to competitors help AI understand your positioning and differentiators.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <div className="flex items-start gap-3">
+                      <div className="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center text-white font-semibold flex-shrink-0">3</div>
+                      <div>
+                        <h4 className="font-semibold text-gray-900">Use Case Studies</h4>
+                        <p className="text-gray-600 text-sm">Specific examples of how your product solves problems help AI match you to relevant queries.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <div className="flex items-start gap-3">
+                      <div className="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center text-white font-semibold flex-shrink-0">4</div>
+                      <div>
+                        <h4 className="font-semibold text-gray-900">Technical Tutorials</h4>
+                        <p className="text-gray-600 text-sm">Step-by-step guides that get indexed and referenced when users ask &quot;how to&quot; questions.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                  <h4 className="font-semibold text-blue-900 mb-2">Example Recommendation</h4>
+                  <p className="text-blue-800 text-sm">
+                    <strong>Gap Detected:</strong> Your brand is mentioned 0% of the time for &quot;enterprise deployment&quot; queries, while competitors average 45%.<br />
+                    <strong>Recommendation:</strong> Create an &quot;Enterprise Deployment Guide&quot; covering security, scalability, and compliance topics.
+                  </p>
+                </div>
+              </section>
+
+              {/* PR & Partnerships */}
+              <section id="pr-partnerships" className="mb-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">PR & Partnership Strategy</h2>
+                <p className="text-gray-600 mb-6">
+                  AI models rely on external sources to form recommendations. We analyze which sites get cited to identify strategic partnership and PR opportunities.
+                </p>
+
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Source Authority Analysis</h3>
+                <p className="text-gray-600 mb-4">
+                  We track every domain AI models cite and calculate their &quot;AI Authority Score&quot; based on:
+                </p>
+                <div className="bg-gray-900 rounded-lg p-6 mb-6">
+                  <pre className="text-green-400 text-sm">
+{`AI Authority Score factors:
+
+1. Citation Frequency
+   └─ How often does this domain appear in AI responses?
+
+2. Context Quality
+   └─ Is it cited as primary source or just mentioned?
+
+3. Cross-Platform Presence
+   └─ Does it appear across ChatGPT, Claude, Perplexity, etc.?
+
+4. Topic Relevance
+   └─ Is it cited for your industry specifically?
+
+Score = (Frequency × 0.4) + (Quality × 0.3) +
+        (Cross-Platform × 0.2) + (Relevance × 0.1)`}
+                  </pre>
+                </div>
+
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Partnership Opportunities</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <h4 className="font-semibold text-gray-900 mb-2">High-Authority Sites</h4>
+                    <p className="text-gray-600 text-sm mb-2">Sites AI trusts and cites frequently:</p>
+                    <ul className="text-gray-600 text-sm space-y-1">
+                      <li>• Industry publications (TechCrunch, Wired)</li>
+                      <li>• Developer platforms (GitHub, Stack Overflow)</li>
+                      <li>• Review sites (G2, Capterra)</li>
+                      <li>• Community forums (Reddit, Hacker News)</li>
+                    </ul>
+                  </div>
+                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <h4 className="font-semibold text-gray-900 mb-2">Recommended Actions</h4>
+                    <p className="text-gray-600 text-sm mb-2">How to leverage these insights:</p>
+                    <ul className="text-gray-600 text-sm space-y-1">
+                      <li>• Guest posts on high-authority blogs</li>
+                      <li>• Contribute to open source projects</li>
+                      <li>• Engage in community discussions</li>
+                      <li>• Seek product reviews and mentions</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">PR Move Recommendations</h3>
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                    <div>
+                      <span className="font-medium text-gray-900">Get listed on G2</span>
+                      <p className="text-gray-500 text-sm">High citation rate for product comparisons</p>
+                    </div>
+                    <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">High Impact</span>
+                  </div>
+                  <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                    <div>
+                      <span className="font-medium text-gray-900">Wikipedia mention</span>
+                      <p className="text-gray-500 text-sm">Referenced in 34% of industry queries</p>
+                    </div>
+                    <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">High Impact</span>
+                  </div>
+                  <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                    <div>
+                      <span className="font-medium text-gray-900">GitHub presence</span>
+                      <p className="text-gray-500 text-sm">Open source projects get 2.3x more mentions</p>
+                    </div>
+                    <span className="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm">Medium Impact</span>
+                  </div>
+                </div>
+
+                <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                  <h4 className="font-semibold text-purple-900 mb-2">Competitor Source Analysis</h4>
+                  <p className="text-purple-800 text-sm">
+                    We also track which sources cite your competitors but not you. These represent immediate opportunities to close visibility gaps through targeted outreach.
+                  </p>
+                </div>
+              </section>
+
+              {/* Website Audits */}
+              <section id="website-audits" className="mb-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Website Audits</h2>
+                <p className="text-gray-600 mb-6">
+                  Optimize your website to be better understood and cited by AI models. Our audits analyze how AI-friendly your site structure and content are.
+                </p>
+
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">What We Analyze</h3>
+                <div className="space-y-4 mb-6">
+                  <div className="border border-gray-200 rounded-lg p-4">
+                    <h4 className="font-semibold text-gray-900 mb-2">Structured Data & Schema Markup</h4>
+                    <p className="text-gray-600 text-sm mb-3">
+                      AI models parse structured data to understand your content. We check for:
+                    </p>
+                    <ul className="text-gray-600 text-sm space-y-1 ml-4">
+                      <li>• Organization schema (company info, logo, social profiles)</li>
+                      <li>• Product schema (features, pricing, reviews)</li>
+                      <li>• FAQ schema (common questions and answers)</li>
+                      <li>• Article schema (author, publish date, topics)</li>
+                      <li>• HowTo schema (tutorials and guides)</li>
+                    </ul>
+                  </div>
+
+                  <div className="border border-gray-200 rounded-lg p-4">
+                    <h4 className="font-semibold text-gray-900 mb-2">Content Accessibility</h4>
+                    <p className="text-gray-600 text-sm mb-3">
+                      Can AI crawlers easily access and parse your content?
+                    </p>
+                    <ul className="text-gray-600 text-sm space-y-1 ml-4">
+                      <li>• Robots.txt configuration (not blocking AI crawlers)</li>
+                      <li>• JavaScript rendering requirements</li>
+                      <li>• Content behind authentication walls</li>
+                      <li>• Mobile-friendliness and page speed</li>
+                      <li>• Sitemap completeness and accuracy</li>
+                    </ul>
+                  </div>
+
+                  <div className="border border-gray-200 rounded-lg p-4">
+                    <h4 className="font-semibold text-gray-900 mb-2">Content Quality Signals</h4>
+                    <p className="text-gray-600 text-sm mb-3">
+                      Factors that influence whether AI considers your content authoritative:
+                    </p>
+                    <ul className="text-gray-600 text-sm space-y-1 ml-4">
+                      <li>• Clear headings and content hierarchy</li>
+                      <li>• Comprehensive topic coverage</li>
+                      <li>• Updated timestamps and freshness signals</li>
+                      <li>• Author attribution and expertise indicators</li>
+                      <li>• Internal linking structure</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">AI Crawler Compatibility</h3>
+                <div className="bg-gray-900 rounded-lg p-6 mb-6">
+                  <pre className="text-green-400 text-sm">
+{`Known AI crawlers to allow in robots.txt:
+
+User-agent: GPTBot          # OpenAI
+User-agent: ChatGPT-User    # ChatGPT browse mode
+User-agent: Google-Extended # Gemini training
+User-agent: anthropic-ai    # Claude
+User-agent: PerplexityBot   # Perplexity
+User-agent: Bytespider      # TikTok/ByteDance AI
+
+Recommended robots.txt:
+Allow: /
+Allow: /docs/
+Allow: /blog/
+Allow: /products/`}
+                  </pre>
+                </div>
+
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Audit Report Example</h3>
+                <div className="overflow-x-auto mb-6">
+                  <table className="min-w-full bg-white border border-gray-200 rounded-lg">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 border-b">Check</th>
+                        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 border-b">Status</th>
+                        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 border-b">Recommendation</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="px-4 py-3 text-sm text-gray-700 border-b">Organization Schema</td>
+                        <td className="px-4 py-3 text-sm border-b"><span className="text-green-600">✓ Present</span></td>
+                        <td className="px-4 py-3 text-sm text-gray-600 border-b">Add social profile links</td>
+                      </tr>
+                      <tr>
+                        <td className="px-4 py-3 text-sm text-gray-700 border-b">Product Schema</td>
+                        <td className="px-4 py-3 text-sm border-b"><span className="text-red-600">✗ Missing</span></td>
+                        <td className="px-4 py-3 text-sm text-gray-600 border-b">Add to all product pages</td>
+                      </tr>
+                      <tr>
+                        <td className="px-4 py-3 text-sm text-gray-700 border-b">FAQ Schema</td>
+                        <td className="px-4 py-3 text-sm border-b"><span className="text-red-600">✗ Missing</span></td>
+                        <td className="px-4 py-3 text-sm text-gray-600 border-b">Create FAQ section with schema</td>
+                      </tr>
+                      <tr>
+                        <td className="px-4 py-3 text-sm text-gray-700 border-b">GPTBot Access</td>
+                        <td className="px-4 py-3 text-sm border-b"><span className="text-yellow-600">⚠ Blocked</span></td>
+                        <td className="px-4 py-3 text-sm text-gray-600 border-b">Update robots.txt to allow</td>
+                      </tr>
+                      <tr>
+                        <td className="px-4 py-3 text-sm text-gray-700 border-b">Content Freshness</td>
+                        <td className="px-4 py-3 text-sm border-b"><span className="text-green-600">✓ Good</span></td>
+                        <td className="px-4 py-3 text-sm text-gray-600 border-b">Maintain update schedule</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                  <h4 className="font-semibold text-green-900 mb-2">Impact of Optimization</h4>
+                  <p className="text-green-800 text-sm">
+                    Sites that implement our audit recommendations see an average <strong>23% increase</strong> in AI visibility within 30 days, primarily from improved crawlability and structured data implementation.
                   </p>
                 </div>
               </section>
