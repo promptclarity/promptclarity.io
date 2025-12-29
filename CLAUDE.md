@@ -1,1 +1,1 @@
-- in the actual places to link on github have it link here: https://github.com/lucidgeo/lucidgeo
+- in the actual places to link on github have it link here: https://github.com/verobytes/PromptClarity

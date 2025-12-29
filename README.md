@@ -1,6 +1,6 @@
 # Prompt Clarity Website
 
-Marketing website for [Prompt Clarity](https://github.com/lucidgeo/lucidgeo) - Track and analyze your brand's visibility across AI-powered search platforms.
+Marketing website for [Prompt Clarity](https://github.com/verobytes/PromptClarity) - Track and analyze your brand's visibility across AI-powered search platforms.
 
 ## Development
 
@@ -13,5 +13,5 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 
 ## Links
 
-- **Main Application**: [github.com/lucidgeo/lucidgeo](https://github.com/lucidgeo/lucidgeo)
+- **Main Application**: [github.com/verobytes/PromptClarity](https://github.com/verobytes/PromptClarity)
 - **Documentation**: View the `/docs` page on the website

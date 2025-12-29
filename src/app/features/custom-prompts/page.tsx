@@ -22,7 +22,7 @@ export default function CustomPromptsPage() {
             <div className="flex items-center gap-4">
               <Link href="/#features" className="text-[#74838f] hover:text-[#2e353b] transition-colors">Features</Link>
               <Link href="/docs" className="text-[#74838f] hover:text-[#2e353b] transition-colors">Docs</Link>
-              <Link href="https://github.com/lucidgeo/lucidgeo" className="bg-[#509ee3] text-white px-4 py-2 rounded-lg hover:bg-[#4a8fd1] transition-colors">
+              <Link href="https://github.com/verobytes/PromptClarity" className="bg-[#509ee3] text-white px-4 py-2 rounded-lg hover:bg-[#4a8fd1] transition-colors">
                 Get Started
               </Link>
             </div>
@@ -291,7 +291,7 @@ export default function CustomPromptsPage() {
               <p className="text-white/80 mb-8 max-w-2xl mx-auto">Monitor the exact prompts your customers are asking AI assistants. See where you rank in every response.</p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link
-                  href="https://github.com/lucidgeo/lucidgeo"
+                  href="https://github.com/verobytes/PromptClarity"
                   className="inline-flex items-center gap-2 bg-white text-[#14b8a6] px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-colors shadow-lg"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

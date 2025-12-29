@@ -86,7 +86,7 @@ export default function DocsPage() {
                 Home
               </Link>
               <Link
-                href="https://github.com/lucidgeo/lucidgeo"
+                href="https://github.com/verobytes/PromptClarity"
                 className="bg-blue-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-600 transition-colors"
               >
                 Get Started
@@ -200,8 +200,8 @@ export default function DocsPage() {
                 <div className="bg-gray-900 rounded-lg p-6 mb-6 overflow-x-auto">
                   <pre className="text-green-400 text-sm">
 {`# Clone the repository
-git clone https://github.com/lucidgeo/lucidgeo.git
-cd lucidgeo
+git clone https://github.com/verobytes/PromptClarity.git
+cd PromptClarity
 
 # Install dependencies
 npm install
@@ -276,8 +276,8 @@ npm run dev`}
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">Clone & Install</h3>
                 <div className="bg-gray-900 rounded-lg p-6 mb-6 overflow-x-auto">
                   <pre className="text-green-400 text-sm">
-{`git clone https://github.com/lucidgeo/lucidgeo.git
-cd lucidgeo
+{`git clone https://github.com/verobytes/PromptClarity.git
+cd PromptClarity
 npm install`}
                   </pre>
                 </div>
@@ -1074,13 +1074,13 @@ fly deploy`}
                   </p>
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                     <a
-                      href="https://github.com/lucidgeo/lucidgeo/issues"
+                      href="https://github.com/verobytes/PromptClarity/issues"
                       className="bg-gray-900 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors"
                     >
                       Report an Issue
                     </a>
                     <a
-                      href="https://github.com/lucidgeo/lucidgeo/discussions"
+                      href="https://github.com/verobytes/PromptClarity/discussions"
                       className="bg-white text-gray-900 px-6 py-3 rounded-lg font-medium border border-gray-300 hover:bg-gray-50 transition-colors"
                     >
                       Join Discussions
@@ -1101,9 +1101,9 @@ fly deploy`}
               &copy; {new Date().getFullYear()} Prompt Clarity. All rights reserved.
             </p>
             <div className="flex items-center gap-6">
-              <a href="https://github.com/lucidgeo/lucidgeo" className="text-gray-500 hover:text-gray-700 text-sm">GitHub</a>
-              <a href="https://github.com/lucidgeo/lucidgeo/blob/main/LICENSE" className="text-gray-500 hover:text-gray-700 text-sm">License</a>
-              <a href="https://github.com/lucidgeo/lucidgeo/blob/main/CONTRIBUTING.md" className="text-gray-500 hover:text-gray-700 text-sm">Contributing</a>
+              <a href="https://github.com/verobytes/PromptClarity" className="text-gray-500 hover:text-gray-700 text-sm">GitHub</a>
+              <a href="https://github.com/verobytes/PromptClarity/blob/main/LICENSE" className="text-gray-500 hover:text-gray-700 text-sm">License</a>
+              <a href="https://github.com/verobytes/PromptClarity/blob/main/CONTRIBUTING.md" className="text-gray-500 hover:text-gray-700 text-sm">Contributing</a>
             </div>
           </div>
         </div>

@@ -23,7 +23,7 @@ export default function OnPageOptimizationPage() {
               <Link href="/#features" className="text-[#74838f] hover:text-[#2e353b] transition-colors">Features</Link>
               <Link href="/docs" className="text-[#74838f] hover:text-[#2e353b] transition-colors">Docs</Link>
               <Link
-                href="https://github.com/lucidgeo/lucidgeo"
+                href="https://github.com/verobytes/PromptClarity"
                 className="bg-[#509ee3] text-white px-4 py-2 rounded-lg hover:bg-[#4a8fd1] transition-colors"
               >
                 Get Started
@@ -358,7 +358,7 @@ export default function OnPageOptimizationPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="https://github.com/lucidgeo/lucidgeo"
+              href="https://github.com/verobytes/PromptClarity"
               className="inline-flex items-center justify-center gap-2 bg-white text-emerald-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-colors shadow-lg"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
