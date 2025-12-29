@@ -164,6 +164,16 @@ export default function DocsPage() {
                   <li><strong>Track Sources</strong> - See which websites AI cites when mentioning your brand</li>
                 </ul>
 
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Improve Your Visibility Score</h3>
+                <p className="text-gray-600 mb-4">
+                  Beyond tracking, Prompt Clarity analyzes your data to provide actionable recommendations for improving your AI visibility:
+                </p>
+                <ul className="list-disc list-inside text-gray-600 space-y-2 mb-6">
+                  <li><strong>Website Audits</strong> - Optimize your site for AI crawlers with structured data, schema markup, and content accessibility improvements</li>
+                  <li><strong>Content Recommendations</strong> - Discover topics and content types that AI models frequently reference in your industry</li>
+                  <li><strong>Partnership Opportunities</strong> - Identify high-authority sites and potential partners that AI models trust and cite regularly</li>
+                </ul>
+
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
                   <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
                     <div className="text-3xl font-bold text-blue-500">5</div>
