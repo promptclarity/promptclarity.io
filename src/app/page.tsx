@@ -3,25 +3,29 @@
 import Link from "next/link";
 import { useState } from "react";
 
-// Logo Component - Radar icon
+// Logo Component - Speech bubble radar
 function Logo({ className = "" }: { className?: string }) {
   return (
     <svg className={className} width="32" height="32" viewBox="0 0 32 32" fill="none">
+      {/* Speech bubble outline */}
+      <path d="M16 2C8.268 2 2 7.373 2 14c0 3.667 1.867 6.933 4.8 9.2L4 28l6.4-3.2C12.133 25.6 14 26 16 26c7.732 0 14-5.373 14-12S23.732 2 16 2z" fill="#509ee3" />
+      {/* Inner white circle area */}
+      <circle cx="16" cy="14" r="9" fill="white" />
       {/* Concentric circles */}
-      <circle cx="16" cy="16" r="14" stroke="#93c5fd" strokeWidth="1.5" fill="none" />
-      <circle cx="16" cy="16" r="10" stroke="#93c5fd" strokeWidth="1.5" fill="none" />
-      <circle cx="16" cy="16" r="6" stroke="#93c5fd" strokeWidth="1.5" fill="none" />
-      {/* Radar sweep */}
-      <path d="M16 16 L16 2 A14 14 0 0 1 28 10 Z" fill="#3b82f6" opacity="0.4" />
-      {/* Cross lines */}
-      <line x1="16" y1="2" x2="16" y2="30" stroke="#60a5fa" strokeWidth="1" />
-      <line x1="2" y1="16" x2="30" y2="16" stroke="#60a5fa" strokeWidth="1" />
-      {/* Center dot */}
-      <circle cx="16" cy="16" r="2" fill="#1d4ed8" />
-      {/* Detected blips */}
-      <circle cx="22" cy="10" r="2" fill="#3b82f6" />
-      <circle cx="10" cy="20" r="1.5" fill="#60a5fa" />
-      <circle cx="20" cy="22" r="1.5" fill="#60a5fa" />
+      <circle cx="16" cy="14" r="7" stroke="#509ee3" strokeWidth="1.5" fill="none" />
+      <circle cx="16" cy="14" r="4" stroke="#509ee3" strokeWidth="1.5" fill="none" />
+      {/* Crosshairs */}
+      <line x1="16" y1="5" x2="16" y2="23" stroke="#509ee3" strokeWidth="1" />
+      <line x1="7" y1="14" x2="25" y2="14" stroke="#509ee3" strokeWidth="1" />
+      {/* Center 4-point star */}
+      <path d="M16 10 L17 13 L20 14 L17 15 L16 18 L15 15 L12 14 L15 13 Z" fill="#509ee3" />
+      {/* Radar sweep line */}
+      <line x1="16" y1="14" x2="23" y2="5" stroke="#509ee3" strokeWidth="1.5" />
+      {/* Sparkle at end */}
+      <circle cx="23" cy="5" r="1.5" fill="#509ee3" />
+      <line x1="23" y1="2" x2="23" y2="4" stroke="#509ee3" strokeWidth="1" />
+      <line x1="25" y1="3" x2="24" y2="4" stroke="#509ee3" strokeWidth="1" />
+      <line x1="26" y1="5" x2="24.5" y2="5" stroke="#509ee3" strokeWidth="1" />
     </svg>
   );
 }
