@@ -8,17 +8,7 @@ export default function CompetitorAnalysisPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Link href="/" className="flex items-center gap-2">
-              <svg className="w-8 h-8" viewBox="0 0 32 32" fill="none">
-                <path d="M16 2C8.268 2 2 7.373 2 14c0 3.667 1.867 6.933 4.8 9.2L4 28l6.4-3.2C12.133 25.6 14 26 16 26c7.732 0 14-5.373 14-12S23.732 2 16 2z" fill="#509ee3" />
-                <circle cx="16" cy="14" r="9" fill="white" />
-                <circle cx="16" cy="14" r="7" stroke="#509ee3" strokeWidth="1.5" fill="none" />
-                <circle cx="16" cy="14" r="4" stroke="#509ee3" strokeWidth="1.5" fill="none" />
-                <line x1="16" y1="5" x2="16" y2="23" stroke="#509ee3" strokeWidth="1" />
-                <line x1="7" y1="14" x2="25" y2="14" stroke="#509ee3" strokeWidth="1" />
-                <path d="M16 10 L17 13 L20 14 L17 15 L16 18 L15 15 L12 14 L15 13 Z" fill="#509ee3" />
-                <line x1="16" y1="14" x2="23" y2="5" stroke="#509ee3" strokeWidth="1.5" />
-                <circle cx="23" cy="5" r="1.5" fill="#509ee3" />
-              </svg>
+              <img src="/logo.png" alt="Prompt Clarity" className="w-8 h-8" />
               <span className="text-xl font-bold text-[#2e353b]">Prompt Clarity</span>
             </Link>
             <div className="flex items-center gap-4">
@@ -390,12 +380,7 @@ export default function CompetitorAnalysisPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
-              <svg className="w-6 h-6" viewBox="0 0 32 32" fill="none">
-                <path d="M16 2C8.268 2 2 7.373 2 14c0 3.667 1.867 6.933 4.8 9.2L4 28l6.4-3.2C12.133 25.6 14 26 16 26c7.732 0 14-5.373 14-12S23.732 2 16 2z" fill="#509ee3" />
-                <circle cx="16" cy="14" r="9" fill="white" />
-                <circle cx="16" cy="14" r="7" stroke="#509ee3" strokeWidth="1.5" fill="none" />
-                <path d="M16 10 L17 13 L20 14 L17 15 L16 18 L15 15 L12 14 L15 13 Z" fill="#509ee3" />
-              </svg>
+              <img src="/logo.png" alt="Prompt Clarity" className="w-6 h-6" />
               <span className="text-white font-semibold">Prompt Clarity</span>
             </div>
             <p className="text-[#74838f] text-sm">&copy; 2025 Prompt Clarity. Open source under MIT license.</p>
