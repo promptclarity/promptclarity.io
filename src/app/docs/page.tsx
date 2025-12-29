@@ -70,12 +70,23 @@ export default function DocsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-8">
-              <Link href="/" className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                  </svg>
-                </div>
+              <Link href="/" className="flex items-center gap-3">
+                <svg width="40" height="40" viewBox="0 0 100 100" fill="none">
+                  <path d="M50 8C25 8 5 25 5 46c0 11 5 21 14 28l-6 18 18-9c6 2 12 3 19 3 25 0 45-17 45-40S75 8 50 8z" fill="none" stroke="#5BA3E6" strokeWidth="5" />
+                  <circle cx="50" cy="44" r="26" stroke="#5BA3E6" strokeWidth="4" fill="none" />
+                  <circle cx="50" cy="44" r="14" stroke="#5BA3E6" strokeWidth="4" fill="none" />
+                  <line x1="50" y1="14" x2="50" y2="26" stroke="#5BA3E6" strokeWidth="4" />
+                  <line x1="50" y1="62" x2="50" y2="74" stroke="#5BA3E6" strokeWidth="4" />
+                  <line x1="20" y1="44" x2="32" y2="44" stroke="#5BA3E6" strokeWidth="4" />
+                  <line x1="68" y1="44" x2="80" y2="44" stroke="#5BA3E6" strokeWidth="4" />
+                  <path d="M50 36 L52 43 L50 52 L48 43 Z" fill="#5BA3E6" />
+                  <path d="M42 44 L49 41 L58 44 L49 47 Z" fill="#5BA3E6" />
+                  <line x1="50" y1="44" x2="78" y2="16" stroke="#5BA3E6" strokeWidth="4" strokeLinecap="round" />
+                  <circle cx="78" cy="16" r="5" fill="#5BA3E6" />
+                  <line x1="78" y1="4" x2="78" y2="9" stroke="#5BA3E6" strokeWidth="3" strokeLinecap="round" />
+                  <line x1="88" y1="10" x2="84" y2="13" stroke="#5BA3E6" strokeWidth="3" strokeLinecap="round" />
+                  <line x1="91" y1="20" x2="86" y2="18" stroke="#5BA3E6" strokeWidth="3" strokeLinecap="round" />
+                </svg>
                 <span className="text-xl font-semibold text-gray-900">Prompt Clarity</span>
               </Link>
               <span className="text-gray-300">|</span>
@@ -86,7 +97,7 @@ export default function DocsPage() {
                 Home
               </Link>
               <Link
-                href="https://github.com/verobytes/PromptClarity"
+                href="https://github.com/promptclarity/promptclarity"
                 className="bg-blue-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-600 transition-colors"
               >
                 Get Started
@@ -183,7 +194,7 @@ export default function DocsPage() {
   --name prompt-clarity \\
   -p 3000:3000 \\
   -v prompt-clarity-data:/app/data \\
-  ghcr.io/verobytes/prompt-clarity:latest`}
+  ghcr.io/promptclarity/promptclarity:latest`}
                   </pre>
                 </div>
                 <p className="text-gray-600 mb-6">
@@ -200,8 +211,8 @@ export default function DocsPage() {
                 <div className="bg-gray-900 rounded-lg p-6 mb-6 overflow-x-auto">
                   <pre className="text-green-400 text-sm">
 {`# Clone the repository
-git clone https://github.com/verobytes/PromptClarity.git
-cd PromptClarity
+git clone https://github.com/promptclarity/promptclarity.git
+cd promptclarity
 
 # Install dependencies
 npm install
@@ -276,8 +287,8 @@ npm run dev`}
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">Clone & Install</h3>
                 <div className="bg-gray-900 rounded-lg p-6 mb-6 overflow-x-auto">
                   <pre className="text-green-400 text-sm">
-{`git clone https://github.com/verobytes/PromptClarity.git
-cd PromptClarity
+{`git clone https://github.com/promptclarity/promptclarity.git
+cd promptclarity
 npm install`}
                   </pre>
                 </div>
@@ -441,10 +452,10 @@ npm install`}
                 </p>
                 <div className="bg-gray-900 rounded-lg p-6 mb-6">
                   <pre className="text-green-400 text-sm">
-{`AI Response: "Top VPNs: 1) Tailscale, 2) NetBird, 3) WireGuard"
+{`AI Response: "Top container tools: 1) Kubernetes, 2) Docker, 3) Your Brand"
 
 Total brands = 3
-Your mentions = 1 (NetBird)
+Your mentions = 1 (Your Brand)
 Share of Voice = (1/3) × 100 = 33.3%`}
                   </pre>
                 </div>
@@ -848,7 +859,7 @@ npm start`}
   --name prompt-clarity \\
   -p 3000:3000 \\
   -v prompt-clarity-data:/app/data \\
-  ghcr.io/verobytes/prompt-clarity:latest`}
+  ghcr.io/promptclarity/promptclarity:latest`}
                   </pre>
                 </div>
 
@@ -880,7 +891,7 @@ npm start`}
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">Updating</h3>
                 <div className="bg-gray-900 rounded-lg p-6 mb-6">
                   <pre className="text-green-400 text-sm">
-{`docker pull ghcr.io/verobytes/prompt-clarity:latest
+{`docker pull ghcr.io/promptclarity/promptclarity:latest
 docker stop prompt-clarity && docker rm prompt-clarity
 # Re-run the docker run command above`}
                   </pre>
@@ -1074,13 +1085,13 @@ fly deploy`}
                   </p>
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                     <a
-                      href="https://github.com/verobytes/PromptClarity/issues"
+                      href="https://github.com/promptclarity/promptclarity/issues"
                       className="bg-gray-900 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors"
                     >
                       Report an Issue
                     </a>
                     <a
-                      href="https://github.com/verobytes/PromptClarity/discussions"
+                      href="https://github.com/promptclarity/promptclarity/discussions"
                       className="bg-white text-gray-900 px-6 py-3 rounded-lg font-medium border border-gray-300 hover:bg-gray-50 transition-colors"
                     >
                       Join Discussions
@@ -1101,9 +1112,9 @@ fly deploy`}
               &copy; {new Date().getFullYear()} Prompt Clarity. All rights reserved.
             </p>
             <div className="flex items-center gap-6">
-              <a href="https://github.com/verobytes/PromptClarity" className="text-gray-500 hover:text-gray-700 text-sm">GitHub</a>
-              <a href="https://github.com/verobytes/PromptClarity/blob/main/LICENSE" className="text-gray-500 hover:text-gray-700 text-sm">License</a>
-              <a href="https://github.com/verobytes/PromptClarity/blob/main/CONTRIBUTING.md" className="text-gray-500 hover:text-gray-700 text-sm">Contributing</a>
+              <a href="https://github.com/promptclarity/promptclarity" className="text-gray-500 hover:text-gray-700 text-sm">GitHub</a>
+              <a href="https://github.com/promptclarity/promptclarity/blob/main/LICENSE" className="text-gray-500 hover:text-gray-700 text-sm">License</a>
+              <a href="https://github.com/promptclarity/promptclarity/blob/main/CONTRIBUTING.md" className="text-gray-500 hover:text-gray-700 text-sm">Contributing</a>
             </div>
           </div>
         </div>

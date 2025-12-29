@@ -1,1 +1,1 @@
-- in the actual places to link on github have it link here: https://github.com/verobytes/PromptClarity
+- in the actual places to link on github have it link here: https://github.com/promptclarity/promptclarity

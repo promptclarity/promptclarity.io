@@ -1,5 +1,27 @@
 import Link from "next/link";
 
+// Logo Component
+function Logo() {
+  return (
+    <svg width="40" height="40" viewBox="0 0 100 100" fill="none">
+      <path d="M50 8C25 8 5 25 5 46c0 11 5 21 14 28l-6 18 18-9c6 2 12 3 19 3 25 0 45-17 45-40S75 8 50 8z" fill="none" stroke="#5BA3E6" strokeWidth="5" />
+      <circle cx="50" cy="44" r="26" stroke="#5BA3E6" strokeWidth="4" fill="none" />
+      <circle cx="50" cy="44" r="14" stroke="#5BA3E6" strokeWidth="4" fill="none" />
+      <line x1="50" y1="14" x2="50" y2="26" stroke="#5BA3E6" strokeWidth="4" />
+      <line x1="50" y1="62" x2="50" y2="74" stroke="#5BA3E6" strokeWidth="4" />
+      <line x1="20" y1="44" x2="32" y2="44" stroke="#5BA3E6" strokeWidth="4" />
+      <line x1="68" y1="44" x2="80" y2="44" stroke="#5BA3E6" strokeWidth="4" />
+      <path d="M50 36 L52 43 L50 52 L48 43 Z" fill="#5BA3E6" />
+      <path d="M42 44 L49 41 L58 44 L49 47 Z" fill="#5BA3E6" />
+      <line x1="50" y1="44" x2="78" y2="16" stroke="#5BA3E6" strokeWidth="4" strokeLinecap="round" />
+      <circle cx="78" cy="16" r="5" fill="#5BA3E6" />
+      <line x1="78" y1="4" x2="78" y2="9" stroke="#5BA3E6" strokeWidth="3" strokeLinecap="round" />
+      <line x1="88" y1="10" x2="84" y2="13" stroke="#5BA3E6" strokeWidth="3" strokeLinecap="round" />
+      <line x1="91" y1="20" x2="86" y2="18" stroke="#5BA3E6" strokeWidth="3" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 export default function MultiModelVisibilityPage() {
   return (
     <div className="min-h-screen bg-[#f9fbfc]">
@@ -7,26 +29,15 @@ export default function MultiModelVisibilityPage() {
       <nav className="bg-white border-b border-[#e0e4e9] sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <Link href="/" className="flex items-center gap-2">
-              <svg className="w-8 h-8" viewBox="0 0 32 32" fill="none">
-                <path d="M16 3C8.268 3 2 8.373 2 15c0 3.5 1.8 6.6 4.5 8.7L4 28l5.5-2.8c2 .8 4.2 1.3 6.5 1.3 7.732 0 14-5.373 14-12S23.732 3 16 3z" fill="none" stroke="#5BA3E6" strokeWidth="2" />
-                <circle cx="16" cy="14" r="9" stroke="#5BA3E6" strokeWidth="1" fill="none" />
-                <circle cx="16" cy="14" r="6" stroke="#5BA3E6" strokeWidth="1" fill="none" />
-                <circle cx="16" cy="14" r="3" stroke="#5BA3E6" strokeWidth="1" fill="none" />
-                <circle cx="16" cy="14" r="1.5" fill="#5BA3E6" />
-                <line x1="16" y1="14" x2="24" y2="5" stroke="#5BA3E6" strokeWidth="1.5" />
-                <circle cx="24" cy="5" r="1" fill="#5BA3E6" />
-                <line x1="24" y1="1" x2="24" y2="3" stroke="#5BA3E6" strokeWidth="1.5" strokeLinecap="round" />
-                <line x1="27" y1="2.5" x2="25.5" y2="4" stroke="#5BA3E6" strokeWidth="1.5" strokeLinecap="round" />
-                <line x1="28" y1="5" x2="26" y2="5" stroke="#5BA3E6" strokeWidth="1.5" strokeLinecap="round" />
-              </svg>
+            <Link href="/" className="flex items-center gap-3">
+              <Logo />
               <span className="text-xl font-bold text-[#2e353b]">Prompt Clarity</span>
             </Link>
             <div className="flex items-center gap-4">
               <Link href="/#features" className="text-[#74838f] hover:text-[#2e353b] transition-colors">Features</Link>
               <Link href="/docs" className="text-[#74838f] hover:text-[#2e353b] transition-colors">Docs</Link>
               <Link
-                href="https://github.com/verobytes/PromptClarity"
+                href="https://github.com/promptclarity/promptclarity"
                 className="bg-[#509ee3] text-white px-4 py-2 rounded-lg hover:bg-[#4a8fd1] transition-colors"
               >
                 Get Started
@@ -440,7 +451,7 @@ export default function MultiModelVisibilityPage() {
               <p className="text-white/80 mb-8 max-w-2xl mx-auto">Deploy Prompt Clarity and see how AI assistants talk about your brand. Track where you rank across ChatGPT, Claude, Perplexity, Gemini, and Grok.</p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link
-                  href="https://github.com/verobytes/PromptClarity"
+                  href="https://github.com/promptclarity/promptclarity"
                   className="inline-flex items-center gap-2 bg-white text-[#509ee3] px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-colors shadow-lg"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -469,11 +480,10 @@ export default function MultiModelVisibilityPage() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
               <svg className="w-6 h-6" viewBox="0 0 32 32" fill="none">
-                <path d="M16 3C8.268 3 2 8.373 2 15c0 3.5 1.8 6.6 4.5 8.7L4 28l5.5-2.8c2 .8 4.2 1.3 6.5 1.3 7.732 0 14-5.373 14-12S23.732 3 16 3z" fill="none" stroke="#5BA3E6" strokeWidth="2" />
-                <circle cx="16" cy="14" r="9" stroke="#5BA3E6" strokeWidth="1" fill="none" />
-                <circle cx="16" cy="14" r="6" stroke="#5BA3E6" strokeWidth="1" fill="none" />
-                <circle cx="16" cy="14" r="3" stroke="#5BA3E6" strokeWidth="1" fill="none" />
-                <circle cx="16" cy="14" r="1.5" fill="#5BA3E6" />
+                <circle cx="16" cy="16" r="14" stroke="#5BA3E6" strokeWidth="2.5" fill="none" />
+                <circle cx="16" cy="16" r="9" stroke="#5BA3E6" strokeWidth="1.5" fill="none" />
+                <path d="M16 12 L17.2 15 L16 18 L14.8 15 Z" fill="#5BA3E6" />
+                <path d="M12 16 L15 14.8 L18 16 L15 17.2 Z" fill="#5BA3E6" />
               </svg>
               <span className="text-white font-semibold">Prompt Clarity</span>
             </div>

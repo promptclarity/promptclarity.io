@@ -3,30 +3,37 @@
 import Link from "next/link";
 import { useState } from "react";
 
-// Logo Component - Chat bubble with sonar
+// Logo Component - Chat bubble with radar (outline style)
 function Logo({ className = "" }: { className?: string }) {
   return (
-    <svg className={className} width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <svg className={className} width="40" height="40" viewBox="0 0 100 100" fill="none">
       {/* Chat bubble outline */}
       <path
-        d="M16 3C8.268 3 2 8.373 2 15c0 3.5 1.8 6.6 4.5 8.7L4 28l5.5-2.8c2 .8 4.2 1.3 6.5 1.3 7.732 0 14-5.373 14-12S23.732 3 16 3z"
+        d="M50 8C25 8 5 25 5 46c0 11 5 21 14 28l-6 18 18-9c6 2 12 3 19 3 25 0 45-17 45-40S75 8 50 8z"
         fill="none"
         stroke="#5BA3E6"
-        strokeWidth="2"
+        strokeWidth="5"
       />
-      {/* Sonar circles - thin lines */}
-      <circle cx="16" cy="14" r="9" stroke="#5BA3E6" strokeWidth="1" fill="none" />
-      <circle cx="16" cy="14" r="6" stroke="#5BA3E6" strokeWidth="1" fill="none" />
-      <circle cx="16" cy="14" r="3" stroke="#5BA3E6" strokeWidth="1" fill="none" />
-      {/* Center dot */}
-      <circle cx="16" cy="14" r="1.5" fill="#5BA3E6" />
+      {/* Outer radar circle */}
+      <circle cx="50" cy="44" r="26" stroke="#5BA3E6" strokeWidth="4" fill="none" />
+      {/* Inner radar circle */}
+      <circle cx="50" cy="44" r="14" stroke="#5BA3E6" strokeWidth="4" fill="none" />
+      {/* Crosshairs */}
+      <line x1="50" y1="14" x2="50" y2="26" stroke="#5BA3E6" strokeWidth="4" />
+      <line x1="50" y1="62" x2="50" y2="74" stroke="#5BA3E6" strokeWidth="4" />
+      <line x1="20" y1="44" x2="32" y2="44" stroke="#5BA3E6" strokeWidth="4" />
+      <line x1="68" y1="44" x2="80" y2="44" stroke="#5BA3E6" strokeWidth="4" />
+      {/* 4-pointed star in center */}
+      <path d="M50 36 L52 43 L50 52 L48 43 Z" fill="#5BA3E6" />
+      <path d="M42 44 L49 41 L58 44 L49 47 Z" fill="#5BA3E6" />
       {/* Radar sweep line */}
-      <line x1="16" y1="14" x2="24" y2="5" stroke="#5BA3E6" strokeWidth="1.5" />
-      {/* Sparkle/exclamation at top right */}
-      <circle cx="24" cy="5" r="1" fill="#5BA3E6" />
-      <line x1="24" y1="1" x2="24" y2="3" stroke="#5BA3E6" strokeWidth="1.5" strokeLinecap="round" />
-      <line x1="27" y1="2.5" x2="25.5" y2="4" stroke="#5BA3E6" strokeWidth="1.5" strokeLinecap="round" />
-      <line x1="28" y1="5" x2="26" y2="5" stroke="#5BA3E6" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="50" y1="44" x2="78" y2="16" stroke="#5BA3E6" strokeWidth="4" strokeLinecap="round" />
+      {/* Ping dot */}
+      <circle cx="78" cy="16" r="5" fill="#5BA3E6" />
+      {/* Ping rays */}
+      <line x1="78" y1="4" x2="78" y2="9" stroke="#5BA3E6" strokeWidth="3" strokeLinecap="round" />
+      <line x1="88" y1="10" x2="84" y2="13" stroke="#5BA3E6" strokeWidth="3" strokeLinecap="round" />
+      <line x1="91" y1="20" x2="86" y2="18" stroke="#5BA3E6" strokeWidth="3" strokeLinecap="round" />
     </svg>
   );
 }
@@ -38,7 +45,7 @@ function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <Logo />
             <span className="text-xl font-semibold text-[#2e353b]">Prompt Clarity</span>
           </div>
@@ -62,7 +69,7 @@ function Navigation() {
           {/* CTA Buttons */}
           <div className="flex items-center gap-4">
             <Link
-              href="https://github.com/verobytes/PromptClarity"
+              href="https://github.com/promptclarity/promptclarity"
               className="hidden sm:flex items-center gap-2 text-[#74838f] hover:text-[#2e353b] transition-colors"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -71,7 +78,7 @@ function Navigation() {
               GitHub
             </Link>
             <Link
-              href="https://github.com/verobytes/PromptClarity"
+              href="https://github.com/promptclarity/promptclarity"
               className="bg-[#509ee3] text-white px-5 py-2 rounded-lg font-medium btn-primary hover:bg-[#4a90d9]"
             >
               Get started
@@ -90,12 +97,12 @@ function HeroSection() {
       {/* Decorative line chart elements */}
       <div className="hero-decoration top-32 left-[5%]">
         <svg width="200" height="150" viewBox="0 0 200 150" className="text-[#509ee3]">
-          <path d="M10 100 L40 80 L70 90 L100 50 L130 70 L160 30 L190 40" stroke="currentColor" strokeWidth="2" fill="none" className="chart-line" />
+          <path d="M10 100 L40 80 L70 90 L100 50 L130 70 L160 30 L190 40" stroke="currentColor" strokeWidth="1.5" fill="none" className="chart-line" />
         </svg>
       </div>
       <div className="hero-decoration bottom-20 right-[5%]">
         <svg width="180" height="120" viewBox="0 0 180 120" className="text-[#88bf4d]">
-          <path d="M10 80 L50 60 L90 70 L130 40 L170 50" stroke="currentColor" strokeWidth="2" fill="none" className="chart-line" />
+          <path d="M10 80 L50 60 L90 70 L130 40 L170 50" stroke="currentColor" strokeWidth="1.5" fill="none" className="chart-line" />
         </svg>
       </div>
 
@@ -122,7 +129,7 @@ function HeroSection() {
           {/* CTA Buttons */}
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="https://github.com/verobytes/PromptClarity"
+              href="https://github.com/promptclarity/promptclarity"
               className="w-full sm:w-auto bg-[#509ee3] text-white px-8 py-3 rounded-lg font-medium text-lg btn-primary hover:bg-[#4a90d9] flex items-center justify-center gap-2"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -169,14 +176,14 @@ function HeroSection() {
                 {/* Sidebar */}
                 <div className="w-40 bg-white rounded-lg border border-[#e0e4e9] p-3 hidden lg:block shrink-0">
                   <div className="flex items-center gap-2 mb-4">
-                    <div className="w-7 h-7 bg-[#f97316] rounded flex items-center justify-center">
+                    <div className="w-7 h-7 bg-gradient-to-br from-[#509ee3] to-[#7c3aed] rounded flex items-center justify-center">
                       <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
                       </svg>
                     </div>
                     <div className="flex flex-col">
-                      <span className="font-semibold text-[#2e353b] text-sm">Netbird</span>
-                      <span className="text-[9px] text-[#949aab]">Netbird.io</span>
+                      <span className="font-semibold text-[#2e353b] text-sm">Your Brand</span>
+                      <span className="text-[9px] text-[#949aab]">yourbrand.io</span>
                     </div>
                   </div>
                   <p className="text-[10px] text-[#949aab] mb-1.5 px-2">Main</p>
@@ -221,6 +228,14 @@ function HeroSection() {
                       </div>
                     ))}
                   </div>
+                  {/* User Profile */}
+                  <div className="mt-4 pt-3 border-t border-[#e0e4e9] flex items-center gap-2">
+                    <div className="w-6 h-6 bg-[#509ee3] rounded-full flex items-center justify-center text-white text-[9px] font-medium">V</div>
+                    <div className="flex flex-col">
+                      <span className="text-[10px] font-medium text-[#2e353b]">verobytes</span>
+                      <span className="text-[8px] text-[#949aab]">hello@verobytes.com</span>
+                    </div>
+                  </div>
                 </div>
                 {/* Main Content */}
                 <div className="flex-1 min-w-0">
@@ -243,7 +258,7 @@ function HeroSection() {
                         <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
-                        Last 7 days
+                        Last 30 days
                       </div>
                     </div>
                   </div>
@@ -259,7 +274,7 @@ function HeroSection() {
                       <div className="h-28 relative">
                         {/* Y-axis labels */}
                         <div className="absolute left-0 top-0 bottom-4 w-7 flex flex-col justify-between text-[9px] text-[#949aab]">
-                          <span>80%</span>
+                          <span>88%</span>
                           <span>50%</span>
                           <span>25%</span>
                         </div>
@@ -273,36 +288,36 @@ function HeroSection() {
                           </div>
                           {/* Chart lines */}
                           <svg className="absolute inset-0 w-full h-full" viewBox="0 0 300 100" preserveAspectRatio="none">
-                            {/* Netbird - orange (highlighted, YOUR brand) - top performer around 75% */}
-                            <path d="M0 18 Q50 15 100 20 T150 18 T200 22 T250 15 T300 12" stroke="#f97316" strokeWidth="3" fill="none" />
-                            {/* Cloudflare - purple, around 55-60% */}
-                            <path d="M0 38 Q50 42 100 35 T150 40 T200 38 T250 45 T300 40" stroke="#a855f7" strokeWidth="2" fill="none" />
-                            {/* Tailscale - green, around 45-50% */}
-                            <path d="M0 48 Q50 52 100 45 T150 50 T200 55 T250 48 T300 52" stroke="#22c55e" strokeWidth="2" fill="none" />
-                            {/* OpenVPN - red, around 45% */}
-                            <path d="M0 52 Q50 48 100 55 T150 52 T200 48 T250 55 T300 52" stroke="#ef4444" strokeWidth="2" fill="none" />
-                            {/* Zscaler - teal, around 42-48% */}
-                            <path d="M0 55 Q50 58 100 52 T150 58 T200 55 T250 52 T300 55" stroke="#14b8a6" strokeWidth="2" fill="none" />
-                            {/* Perimeter 81 - pink, around 40-45% */}
-                            <path d="M0 60 Q50 55 100 62 T150 58 T200 62 T250 58 T300 60" stroke="#ec4899" strokeWidth="2" fill="none" />
-                            {/* Fortinet - amber, around 35% */}
-                            <path d="M0 68 Q50 72 100 65 T150 70 T200 68 T250 72 T300 65" stroke="#f59e0b" strokeWidth="2" fill="none" />
+                            {/* Kubernetes - blue, top performer ~72% */}
+                            <path d="M0 18 Q30 12 60 15 T120 20 T180 15 T240 22 T300 10" stroke="#326ce5" strokeWidth="1.5" fill="none" />
+                            {/* Your Brand - green (YOUR brand), ~68% */}
+                            <path d="M0 22 Q30 28 60 20 T120 25 T180 30 T240 22 T300 18" stroke="#22c55e" strokeWidth="1.5" fill="none" />
+                            {/* Docker - blue, ~61% */}
+                            <path d="M0 32 Q30 28 60 35 T120 30 T180 38 T240 32 T300 28" stroke="#2496ed" strokeWidth="1.5" fill="none" />
+                            {/* Terraform - purple, ~46% */}
+                            <path d="M0 48 Q30 44 60 52 T120 46 T180 42 T240 50 T300 45" stroke="#7b42bc" strokeWidth="1.5" fill="none" />
+                            {/* Prometheus - orange-red, ~38% */}
+                            <path d="M0 58 Q30 54 60 62 T120 56 T180 60 T240 55 T300 58" stroke="#e6522c" strokeWidth="1.5" fill="none" />
+                            {/* Grafana - orange, ~32% */}
+                            <path d="M0 65 Q30 62 60 68 T120 64 T180 70 T240 66 T300 62" stroke="#f97316" strokeWidth="1.5" fill="none" />
+                            {/* Ansible - red, ~25% */}
+                            <path d="M0 75 Q30 72 60 78 T120 74 T180 76 T240 72 T300 75" stroke="#ef4444" strokeWidth="1.5" fill="none" />
                           </svg>
                         </div>
                         {/* X-axis labels */}
                         <div className="ml-8 flex justify-between text-[9px] text-[#949aab] mt-1">
-                          <span>Dec 20</span>
+                          <span>Dec 14</span>
+                          <span>Dec 17</span>
+                          <span>Dec 19</span>
                           <span>Dec 21</span>
-                          <span>Dec 22</span>
                           <span>Dec 23</span>
-                          <span>Dec 24</span>
                           <span>Dec 25</span>
-                          <span>Dec 26</span>
+                          <span>Dec 27</span>
                         </div>
                       </div>
                     </div>
                     {/* Brands Table */}
-                    <div className="w-56 bg-white rounded-lg p-3 border border-[#e0e4e9] hidden md:block shrink-0">
+                    <div className="w-64 bg-white rounded-lg p-3 border border-[#e0e4e9] hidden md:block shrink-0">
                       <div className="flex items-center justify-between mb-2">
                         <div>
                           <h3 className="font-semibold text-[#2e353b] text-xs">Brands</h3>
@@ -311,7 +326,8 @@ function HeroSection() {
                         <span className="text-[10px] text-[#509ee3]">+ Add</span>
                       </div>
                       <div className="space-y-1">
-                        <div className="grid grid-cols-[14px_1fr_40px_32px_28px] gap-1 text-[9px] text-[#949aab] pb-1 border-b border-[#e0e4e9]">
+                        <div className="grid grid-cols-[16px_14px_1fr_44px_28px_28px] gap-1 text-[9px] text-[#949aab] pb-1 border-b border-[#e0e4e9]">
+                          <span></span>
                           <span>#</span>
                           <span>Brand</span>
                           <span>Visibility</span>
@@ -319,31 +335,27 @@ function HeroSection() {
                           <span>Place</span>
                         </div>
                         {[
-                          { rank: 1, name: "Netbird", color: "#f97316", visibility: "72.1%", change: "+8.3%", sentiment: 82, sentimentChange: "+4", place: "1st", placeChange: "+2", isYourBrand: true },
-                          { rank: 2, name: "Cloudflare", color: "#a855f7", visibility: "56.3%", change: "-11.8%", sentiment: 70, sentimentChange: "-10", place: "4th", placeChange: "-1", isYourBrand: false },
-                          { rank: 3, name: "Tailscale", color: "#22c55e", visibility: "46.3%", change: "-9.3%", sentiment: 69, sentimentChange: "-10", place: "4th", placeChange: "", isYourBrand: false },
-                          { rank: 4, name: "OpenVPN", color: "#ef4444", visibility: "46.3%", change: "-9.3%", sentiment: 59, sentimentChange: "-3", place: "7th", placeChange: "+1", isYourBrand: false },
-                          { rank: 5, name: "Zscaler", color: "#14b8a6", visibility: "45%", change: "-9.2%", sentiment: 68, sentimentChange: "-6", place: "6th", placeChange: "+2", isYourBrand: false },
-                          { rank: 6, name: "Perimeter 81", color: "#ec4899", visibility: "43.8%", change: "+2.1%", sentiment: 65, sentimentChange: "-1", place: "7th", placeChange: "", isYourBrand: false },
+                          { rank: 1, name: "Kubernetes", color: "#326ce5", visibility: "72.1%", sentiment: 82, place: "1st", isYourBrand: false },
+                          { rank: 2, name: "Your Brand", color: "#22c55e", visibility: "68.4%", sentiment: 78, place: "2nd", isYourBrand: true },
+                          { rank: 3, name: "Docker", color: "#2496ed", visibility: "61.2%", sentiment: 75, place: "3rd", isYourBrand: false },
+                          { rank: 4, name: "Terraform", color: "#7b42bc", visibility: "45.8%", sentiment: 71, place: "4th", isYourBrand: false },
+                          { rank: 5, name: "Prometheus", color: "#e6522c", visibility: "38.3%", sentiment: 68, place: "5th", isYourBrand: false },
+                          { rank: 6, name: "Grafana", color: "#f97316", visibility: "31.5%", sentiment: 72, place: "4th", isYourBrand: false },
+                          { rank: 7, name: "Ansible", color: "#ef4444", visibility: "24.7%", sentiment: 65, place: "6th", isYourBrand: false },
                         ].map((brand) => (
-                          <div key={brand.rank} className={`grid grid-cols-[14px_1fr_40px_32px_28px] gap-1 items-center text-[9px] ${brand.isYourBrand ? "bg-[#fff7ed] -mx-1 px-1 py-0.5 rounded" : ""}`}>
-                            <span className="text-[#74838f]">{brand.rank}</span>
-                            <div className="flex items-center gap-1 min-w-0">
+                          <div key={brand.rank} className={`grid grid-cols-[16px_14px_1fr_44px_28px_28px] gap-1 items-center text-[9px] ${brand.isYourBrand ? "bg-[#eff6ff] -mx-1 px-1 py-0.5 rounded" : ""}`}>
+                            <input type="checkbox" checked readOnly className="w-3 h-3 rounded border-[#e0e4e9] text-[#509ee3]" />
+                            <div className="flex items-center gap-1">
                               <div className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: brand.color }}></div>
-                              <span className={`truncate ${brand.isYourBrand ? "text-[#f97316] font-medium" : "text-[#2e353b]"}`}>{brand.name}</span>
+                              <span className="text-[#74838f]">{brand.rank}</span>
                             </div>
-                            <div className="flex flex-col">
-                              <span className="text-[#2e353b]">{brand.visibility}</span>
-                              <span className={brand.change.startsWith("+") ? "text-[#22c55e] text-[8px]" : "text-[#ef4444] text-[8px]"}>{brand.change}</span>
+                            <div className="flex items-center gap-1 min-w-0">
+                              <span className={`truncate ${brand.isYourBrand ? "text-[#2e353b] font-medium" : "text-[#2e353b]"}`}>{brand.name}</span>
+                              {brand.isYourBrand && <span className="text-[7px] bg-[#e0e4e9] text-[#74838f] px-1 rounded">You</span>}
                             </div>
-                            <div className="flex flex-col">
-                              <span className="text-[#2e353b]">{brand.sentiment}</span>
-                              <span className={`text-[8px] ${brand.sentimentChange.startsWith("+") ? "text-[#22c55e]" : brand.sentimentChange.startsWith("-") ? "text-[#ef4444]" : "text-[#949aab]"}`}>{brand.sentimentChange}</span>
-                            </div>
-                            <div className="flex flex-col">
-                              <span className="text-[#2e353b]">{brand.place}</span>
-                              <span className={`text-[8px] ${brand.placeChange.startsWith("+") ? "text-[#22c55e]" : brand.placeChange.startsWith("-") ? "text-[#ef4444]" : "text-[#949aab]"}`}>{brand.placeChange}</span>
-                            </div>
+                            <span className="text-[#2e353b] bg-[#f9fbfc] px-1.5 py-0.5 rounded text-center">{brand.visibility}</span>
+                            <span className="text-[#2e353b] text-center">{brand.sentiment}</span>
+                            <span className="text-[#2e353b] text-center">{brand.place}</span>
                           </div>
                         ))}
                       </div>
@@ -360,26 +372,26 @@ function HeroSection() {
                         </div>
                       </div>
                       <div className="space-y-1">
-                        <div className="grid grid-cols-[1fr_45px_50px_55px] gap-2 text-[9px] text-[#949aab] pb-1 border-b border-[#e0e4e9]">
+                        <div className="grid grid-cols-[1fr_50px_55px_55px] gap-2 text-[9px] text-[#949aab] pb-1 border-b border-[#e0e4e9]">
                           <span>Domain</span>
                           <span>Usage</span>
-                          <span>Avg Cites</span>
+                          <span>Avg Citations</span>
                           <span>Type</span>
                         </div>
                         {[
-                          { domain: "en.wikipedia.org", usage: "25%", count: "(20)", citations: "3.3", type: "Reference", typeColor: "#f59e0b" },
-                          { domain: "peerspot.com", usage: "17.5%", count: "(14)", citations: "1.6", type: "Editorial", typeColor: "#22c55e" },
-                          { domain: "cyberinsider.com", usage: "12.5%", count: "(10)", citations: "1.4", type: "Editorial", typeColor: "#22c55e" },
-                          { domain: "comparitech.com", usage: "10%", count: "(8)", citations: "1.3", type: "Editorial", typeColor: "#22c55e" },
-                          { domain: "techradar.com", usage: "10%", count: "(8)", citations: "1", type: "Editorial", typeColor: "#22c55e" },
+                          { domain: "github.com", usage: "32.4%", count: "(45)", citations: "2.1", type: "Reference", typeColor: "#3b82f6" },
+                          { domain: "stackoverflow.com", usage: "24.1%", count: "(33)", citations: "1.8", type: "UGC", typeColor: "#6b7280" },
+                          { domain: "hackernews", usage: "15.2%", count: "(21)", citations: "1.4", type: "UGC", typeColor: "#6b7280" },
+                          { domain: "reddit.com", usage: "12.8%", count: "(18)", citations: "1.2", type: "UGC", typeColor: "#6b7280" },
+                          { domain: "medium.com", usage: "9.4%", count: "(13)", citations: "1.6", type: "Blog", typeColor: "#22c55e" },
                         ].map((source) => (
-                          <div key={source.domain} className="grid grid-cols-[1fr_45px_50px_55px] gap-2 items-center text-[9px]">
+                          <div key={source.domain} className="grid grid-cols-[1fr_50px_55px_55px] gap-2 items-center text-[9px]">
                             <span className="text-[#2e353b] truncate">{source.domain}</span>
                             <div className="flex items-center gap-0.5">
-                              <span className="text-[#74838f]">{source.usage}</span>
+                              <span className="bg-[#f9fbfc] px-1.5 py-0.5 rounded text-[#74838f]">{source.usage}</span>
                               <span className="text-[#949aab] text-[8px]">{source.count}</span>
                             </div>
-                            <span className="text-[#74838f]">{source.citations}</span>
+                            <span className="text-[#74838f] font-medium">{source.citations}</span>
                             <span className="px-1.5 py-0.5 rounded text-white text-[8px]" style={{ backgroundColor: source.typeColor }}>{source.type}</span>
                           </div>
                         ))}
@@ -391,26 +403,22 @@ function HeroSection() {
                         <h3 className="font-semibold text-[#2e353b] text-xs">Domain type</h3>
                         <p className="text-[9px] text-[#949aab]">Breakdown by source category</p>
                       </div>
-                      <div className="relative w-20 h-20 mx-auto mt-2">
+                      <div className="relative w-24 h-24 mx-auto mt-2">
                         <svg viewBox="0 0 36 36" className="w-full h-full">
-                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#22c55e" strokeWidth="3.5" strokeDasharray="63 37" strokeDashoffset="25" />
-                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#f59e0b" strokeWidth="3.5" strokeDasharray="13 87" strokeDashoffset="62" />
-                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#3b82f6" strokeWidth="3.5" strokeDasharray="12 88" strokeDashoffset="49" />
-                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#9ca3af" strokeWidth="3.5" strokeDasharray="12 88" strokeDashoffset="37" />
+                          {/* Editorial - green ~55% */}
+                          <circle cx="18" cy="18" r="13" fill="none" stroke="#22c55e" strokeWidth="5" strokeDasharray="55 45" strokeDashoffset="25" />
+                          {/* UGC - gray ~15% */}
+                          <circle cx="18" cy="18" r="13" fill="none" stroke="#6b7280" strokeWidth="5" strokeDasharray="15 85" strokeDashoffset="70" />
+                          {/* Reference - blue ~12% */}
+                          <circle cx="18" cy="18" r="13" fill="none" stroke="#3b82f6" strokeWidth="5" strokeDasharray="12 88" strokeDashoffset="55" />
+                          {/* Social - pink ~10% */}
+                          <circle cx="18" cy="18" r="13" fill="none" stroke="#ec4899" strokeWidth="5" strokeDasharray="10 90" strokeDashoffset="43" />
+                          {/* Other - purple ~8% */}
+                          <circle cx="18" cy="18" r="13" fill="none" stroke="#a855f7" strokeWidth="5" strokeDasharray="8 92" strokeDashoffset="33" />
                         </svg>
                         <div className="absolute inset-0 flex flex-col items-center justify-center">
-                          <span className="text-base font-bold text-[#2e353b]">167</span>
+                          <span className="text-lg font-bold text-[#2e353b]">283</span>
                           <span className="text-[8px] text-[#949aab]">Citations</span>
-                        </div>
-                      </div>
-                      <div className="mt-2 space-y-0.5 text-[9px]">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-[#22c55e]"></div><span className="text-[#74838f]">Editorial</span></div>
-                          <span className="text-[#2e353b]">105 <span className="text-[#949aab]">62.9%</span></span>
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-[#f59e0b]"></div><span className="text-[#74838f]">Reference</span></div>
-                          <span className="text-[#2e353b]">21 <span className="text-[#949aab]">12.6%</span></span>
                         </div>
                       </div>
                     </div>
@@ -590,9 +598,9 @@ function FeaturesSection() {
                     </div>
                     <div className="ml-10 h-full relative">
                       <svg className="w-full h-full" viewBox="0 0 300 150" preserveAspectRatio="none">
-                        <path d="M0 60 Q50 50 100 55 T150 45 T200 40 T250 35 T300 30" stroke="#f97316" strokeWidth="3" fill="none" />
-                        <path d="M0 80 Q50 85 100 75 T150 80 T200 85 T250 80 T300 85" stroke="#a855f7" strokeWidth="2" fill="none" />
-                        <path d="M0 100 Q50 95 100 105 T150 100 T200 95 T250 100 T300 95" stroke="#22c55e" strokeWidth="2" fill="none" />
+                        <path d="M0 60 Q50 50 100 55 T150 45 T200 40 T250 35 T300 30" stroke="#f97316" strokeWidth="1.5" fill="none" />
+                        <path d="M0 80 Q50 85 100 75 T150 80 T200 85 T250 80 T300 85" stroke="#a855f7" strokeWidth="1.5" fill="none" />
+                        <path d="M0 100 Q50 95 100 105 T150 100 T200 95 T250 100 T300 95" stroke="#22c55e" strokeWidth="1.5" fill="none" />
                       </svg>
                     </div>
                   </div>
@@ -612,10 +620,10 @@ function FeaturesSection() {
                   <div className="space-y-3">
                     {[
                       { name: "Your Brand", visibility: 72, color: "#f97316" },
-                      { name: "Cloudflare", visibility: 56, color: "#a855f7" },
-                      { name: "Tailscale", visibility: 46, color: "#22c55e" },
-                      { name: "OpenVPN", visibility: 45, color: "#ef4444" },
-                      { name: "Zscaler", visibility: 43, color: "#14b8a6" },
+                      { name: "Docker", visibility: 56, color: "#a855f7" },
+                      { name: "Terraform", visibility: 46, color: "#22c55e" },
+                      { name: "Prometheus", visibility: 45, color: "#ef4444" },
+                      { name: "Grafana", visibility: 43, color: "#14b8a6" },
                     ].map((brand, i) => (
                       <div key={i} className="flex items-center gap-3">
                         <span className="text-xs text-[#74838f] w-4">{i + 1}</span>
@@ -638,11 +646,11 @@ function FeaturesSection() {
                   </div>
                   <div className="space-y-2">
                     {[
-                      { domain: "en.wikipedia.org", citations: 20, type: "Reference" },
-                      { domain: "peerspot.com", citations: 14, type: "Editorial" },
-                      { domain: "techradar.com", citations: 10, type: "Editorial" },
-                      { domain: "g2.com", citations: 8, type: "Review" },
-                      { domain: "gartner.com", citations: 6, type: "Analyst" },
+                      { domain: "github.com", citations: 20, type: "Reference" },
+                      { domain: "stackoverflow.com", citations: 14, type: "UGC" },
+                      { domain: "hackernews", citations: 10, type: "UGC" },
+                      { domain: "reddit.com", citations: 8, type: "UGC" },
+                      { domain: "medium.com", citations: 6, type: "Blog" },
                     ].map((source, i) => (
                       <div key={i} className="flex items-center justify-between py-2 border-b border-[#e0e4e9] last:border-0">
                         <span className="text-sm text-[#2e353b]">{source.domain}</span>
@@ -663,10 +671,10 @@ function FeaturesSection() {
                   </div>
                   <div className="space-y-2">
                     {[
-                      { prompt: "Best VPN for remote teams", topic: "Product", mentions: 12 },
-                      { prompt: "Secure network solutions", topic: "General", mentions: 8 },
-                      { prompt: "Zero trust networking tools", topic: "Technical", mentions: 15 },
-                      { prompt: "Enterprise security software", topic: "Enterprise", mentions: 6 },
+                      { prompt: "Best container orchestration tools", topic: "Infrastructure", mentions: 12 },
+                      { prompt: "Open source monitoring solutions", topic: "DevOps", mentions: 8 },
+                      { prompt: "Cloud native CI/CD platforms", topic: "Technical", mentions: 15 },
+                      { prompt: "Infrastructure as code tools", topic: "Enterprise", mentions: 6 },
                     ].map((item, i) => (
                       <div key={i} className="flex items-center justify-between py-2 border-b border-[#e0e4e9] last:border-0">
                         <div>
@@ -806,7 +814,7 @@ function HowItWorksSection() {
               <div className="text-[#e0e4e9]">  --name prompt-clarity \</div>
               <div className="text-[#e0e4e9]">  -p 3000:3000 \</div>
               <div className="text-[#e0e4e9]">  -v prompt-clarity-data:/app/data \</div>
-              <div className="text-[#e0e4e9]">  ghcr.io/verobytes/prompt-clarity:latest</div>
+              <div className="text-[#e0e4e9]">  ghcr.io/promptclarity/promptclarity:latest</div>
               <div className="mt-4 text-[#949aab]"># Open http://localhost:3000 and follow the setup wizard</div>
             </div>
           </div>
@@ -928,7 +936,7 @@ function PricingSection() {
                 ))}
               </ul>
               <Link
-                href="https://github.com/verobytes/PromptClarity"
+                href="https://github.com/promptclarity/promptclarity"
                 className="mt-8 block w-full py-3 px-4 rounded-lg font-medium text-center bg-[#509ee3] text-white hover:bg-[#4a90d9] transition-colors"
               >
                 Get started
@@ -963,7 +971,7 @@ function PricingSection() {
                 ))}
               </ul>
               <Link
-                href="https://github.com/verobytes/PromptClarity"
+                href="https://github.com/promptclarity/promptclarity"
                 className="mt-8 block w-full py-3 px-4 rounded-lg font-medium text-center bg-[#509ee3] text-white hover:bg-[#4a90d9] transition-colors"
               >
                 Get started
@@ -995,7 +1003,7 @@ function PricingSection() {
                 ))}
               </ul>
               <Link
-                href="https://github.com/verobytes/PromptClarity"
+                href="https://github.com/promptclarity/promptclarity"
                 className="mt-8 block w-full py-3 px-4 rounded-lg font-medium text-center border border-[#509ee3] text-[#509ee3] hover:bg-[#e6f0fa] transition-colors"
               >
                 Star on GitHub
@@ -1027,7 +1035,7 @@ function CTASection() {
         </p>
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
-            href="https://github.com/verobytes/PromptClarity"
+            href="https://github.com/promptclarity/promptclarity"
             className="w-full sm:w-auto bg-[#509ee3] text-white px-8 py-3 rounded-lg font-medium text-lg btn-primary hover:bg-[#4a90d9] flex items-center justify-center gap-2"
           >
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -1036,7 +1044,7 @@ function CTASection() {
             Star on GitHub
           </Link>
           <Link
-            href="https://github.com/verobytes/PromptClarity/discussions"
+            href="https://github.com/promptclarity/promptclarity/discussions"
             className="w-full sm:w-auto bg-transparent text-white px-8 py-3 rounded-lg font-medium text-lg border border-[#4a5568] hover:border-[#509ee3] transition-colors"
           >
             Join the discussion
@@ -1071,7 +1079,7 @@ function Footer() {
               <li><Link href="#features" className="text-[#949aab] hover:text-white transition-colors text-sm">Features</Link></li>
               <li><Link href="#how-it-works" className="text-[#949aab] hover:text-white transition-colors text-sm">How it Works</Link></li>
               <li><Link href="/docs" className="text-[#949aab] hover:text-white transition-colors text-sm">Documentation</Link></li>
-              <li><Link href="https://github.com/verobytes/PromptClarity/releases" className="text-[#949aab] hover:text-white transition-colors text-sm">Changelog</Link></li>
+              <li><Link href="https://github.com/promptclarity/promptclarity/releases" className="text-[#949aab] hover:text-white transition-colors text-sm">Changelog</Link></li>
             </ul>
           </div>
 
@@ -1079,10 +1087,10 @@ function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-4">Community</h4>
             <ul className="space-y-2">
-              <li><Link href="https://github.com/verobytes/PromptClarity" className="text-[#949aab] hover:text-white transition-colors text-sm">GitHub</Link></li>
-              <li><Link href="https://github.com/verobytes/PromptClarity/discussions" className="text-[#949aab] hover:text-white transition-colors text-sm">Discussions</Link></li>
-              <li><Link href="https://github.com/verobytes/PromptClarity/issues" className="text-[#949aab] hover:text-white transition-colors text-sm">Report a Bug</Link></li>
-              <li><Link href="https://github.com/verobytes/PromptClarity/blob/main/CONTRIBUTING.md" className="text-[#949aab] hover:text-white transition-colors text-sm">Contributing</Link></li>
+              <li><Link href="https://github.com/promptclarity/promptclarity" className="text-[#949aab] hover:text-white transition-colors text-sm">GitHub</Link></li>
+              <li><Link href="https://github.com/promptclarity/promptclarity/discussions" className="text-[#949aab] hover:text-white transition-colors text-sm">Discussions</Link></li>
+              <li><Link href="https://github.com/promptclarity/promptclarity/issues" className="text-[#949aab] hover:text-white transition-colors text-sm">Report a Bug</Link></li>
+              <li><Link href="https://github.com/promptclarity/promptclarity/blob/main/CONTRIBUTING.md" className="text-[#949aab] hover:text-white transition-colors text-sm">Contributing</Link></li>
             </ul>
           </div>
 
@@ -1093,7 +1101,7 @@ function Footer() {
               <li><Link href="/docs#quick-start" className="text-[#949aab] hover:text-white transition-colors text-sm">Quick Start</Link></li>
               <li><Link href="/docs#docker" className="text-[#949aab] hover:text-white transition-colors text-sm">Docker Setup</Link></li>
               <li><Link href="/docs#installation" className="text-[#949aab] hover:text-white transition-colors text-sm">Installation</Link></li>
-              <li><Link href="https://github.com/verobytes/PromptClarity/blob/main/LICENSE" className="text-[#949aab] hover:text-white transition-colors text-sm">License</Link></li>
+              <li><Link href="https://github.com/promptclarity/promptclarity/blob/main/LICENSE" className="text-[#949aab] hover:text-white transition-colors text-sm">License</Link></li>
             </ul>
           </div>
         </div>
@@ -1103,7 +1111,7 @@ function Footer() {
             &copy; {new Date().getFullYear()} Prompt Clarity. Open source under MIT license.
           </p>
           <div className="flex items-center gap-4">
-            <a href="https://github.com/verobytes/PromptClarity" className="text-[#949aab] hover:text-white transition-colors">
+            <a href="https://github.com/promptclarity/promptclarity" className="text-[#949aab] hover:text-white transition-colors">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
               </svg>
