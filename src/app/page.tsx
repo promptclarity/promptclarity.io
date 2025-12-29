@@ -3,10 +3,31 @@
 import Link from "next/link";
 import { useState } from "react";
 
-// Logo Component - Uses PNG image
+// Logo Component - Chat bubble with sonar
 function Logo({ className = "" }: { className?: string }) {
   return (
-    <img src="/logo.png" alt="Prompt Clarity" className={`w-8 h-8 ${className}`} />
+    <svg className={className} width="32" height="32" viewBox="0 0 32 32" fill="none">
+      {/* Chat bubble outline */}
+      <path
+        d="M16 3C8.268 3 2 8.373 2 15c0 3.5 1.8 6.6 4.5 8.7L4 28l5.5-2.8c2 .8 4.2 1.3 6.5 1.3 7.732 0 14-5.373 14-12S23.732 3 16 3z"
+        fill="none"
+        stroke="#5BA3E6"
+        strokeWidth="2"
+      />
+      {/* Sonar circles - thin lines */}
+      <circle cx="16" cy="14" r="9" stroke="#5BA3E6" strokeWidth="1" fill="none" />
+      <circle cx="16" cy="14" r="6" stroke="#5BA3E6" strokeWidth="1" fill="none" />
+      <circle cx="16" cy="14" r="3" stroke="#5BA3E6" strokeWidth="1" fill="none" />
+      {/* Center dot */}
+      <circle cx="16" cy="14" r="1.5" fill="#5BA3E6" />
+      {/* Radar sweep line */}
+      <line x1="16" y1="14" x2="24" y2="5" stroke="#5BA3E6" strokeWidth="1.5" />
+      {/* Sparkle/exclamation at top right */}
+      <circle cx="24" cy="5" r="1" fill="#5BA3E6" />
+      <line x1="24" y1="1" x2="24" y2="3" stroke="#5BA3E6" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="27" y1="2.5" x2="25.5" y2="4" stroke="#5BA3E6" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="28" y1="5" x2="26" y2="5" stroke="#5BA3E6" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
   );
 }
 
