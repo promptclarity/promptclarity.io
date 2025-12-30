@@ -440,9 +440,9 @@ function FeaturesSection() {
       id: "competitors",
       tabLabel: "Competitor Analysis",
       title: "Competitor Analysis",
-      description: "Track how competitors rank against you in AI responses. Compare visibility, sentiment, and share of voice across all models with industry benchmarking.",
+      description: "Track how competitors rank against you in AI responses. Compare visibility and sentiment across all models with industry benchmarking.",
       bullets: [
-        "Share of voice - your mentions vs competitors",
+        "Compare visibility across competitors",
         "Sentiment analysis (positive/negative/neutral)",
         "Industry benchmarking comparisons",
         "AI-identified competitor tracking"

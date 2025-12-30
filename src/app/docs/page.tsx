@@ -42,7 +42,6 @@ const docsNav = [
     title: "Core Tracking",
     items: [
       { title: "Visibility Score", href: "#visibility-tracking" },
-      { title: "Share of Voice", href: "#share-of-voice" },
       { title: "Position Tracking", href: "#position-tracking" },
       { title: "Historical Trends", href: "#historical-trends" },
     ],
@@ -157,7 +156,7 @@ export default function DocsPage() {
                   <p className="text-blue-800">
                     Prompt Clarity is a comprehensive brand visibility monitoring platform that tracks how often
                     your business appears in AI-powered search results across ChatGPT, Claude, Gemini, Perplexity,
-                    and Grok. Understand your &quot;Share of Voice&quot; in the AI ecosystem and optimize your presence.
+                    and Grok. Understand your visibility in the AI ecosystem and optimize your presence.
                   </p>
                 </div>
 
@@ -169,7 +168,6 @@ export default function DocsPage() {
                 <ul className="list-disc list-inside text-gray-600 space-y-2 mb-6">
                   <li><strong>Track Brand Mentions</strong> - Monitor how often your brand appears in AI responses</li>
                   <li><strong>Benchmark Competitors</strong> - Compare your visibility against competitors</li>
-                  <li><strong>Measure Share of Voice</strong> - Calculate what percentage of mentions are yours</li>
                   <li><strong>Analyze Sentiment</strong> - Understand how AI describes your brand</li>
                   <li><strong>Track Sources</strong> - See which websites AI cites when mentioning your brand</li>
                 </ul>
@@ -490,24 +488,6 @@ Example:
   - 50 total prompts executed
   - Your brand mentioned in 35 responses
   - Visibility Score = (35/50) × 100 = 70%`}
-                      </pre>
-                    </div>
-                  </div>
-
-                  <div className="border border-gray-200 rounded-lg p-6">
-                    <h4 className="font-semibold text-gray-900 mb-2">Share of Voice</h4>
-                    <p className="text-gray-600 text-sm mb-3">
-                      Your brand&apos;s mention frequency compared to all brand mentions in responses.
-                    </p>
-                    <div className="bg-gray-900 rounded p-4">
-                      <pre className="text-green-400 text-sm">
-{`Share of Voice = (Your mentions / Total brand mentions) × 100
-
-Example:
-  - AI mentions 4 brands: Kubernetes, Docker, Your Brand, Terraform
-  - Your Brand mentioned 15 times across all responses
-  - Total mentions across all brands: 60
-  - Share of Voice = (15/60) × 100 = 25%`}
                       </pre>
                     </div>
                   </div>
@@ -940,20 +920,6 @@ Allow: /products/`}
                   1 = Brand mentioned | 0 = Brand not mentioned
                 </div>
 
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Share of Voice</h3>
-                <p className="text-gray-600 mb-4">
-                  Calculates what percentage of brand mentions are yours vs competitors:
-                </p>
-                <div className="bg-gray-900 rounded-lg p-6 mb-6">
-                  <pre className="text-green-400 text-sm">
-{`AI Response: "Top container tools: 1) Kubernetes, 2) Docker, 3) Your Brand"
-
-Total brands = 3
-Your mentions = 1 (Your Brand)
-Share of Voice = (1/3) × 100 = 33.3%`}
-                  </pre>
-                </div>
-
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">Confidence Score</h3>
                 <p className="text-gray-600 mb-4">
                   AI-assigned confidence (0-1 scale) indicating certainty of analysis:
@@ -974,7 +940,7 @@ Share of Voice = (1/3) × 100 = 33.3%`}
 
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">Tracked Metrics</h3>
                 <ul className="list-disc list-inside text-gray-600 space-y-2">
-                  <li><strong>Share of Voice</strong> - How often each brand is mentioned</li>
+                  <li><strong>Visibility</strong> - How often each brand is mentioned</li>
                   <li><strong>Position</strong> - Ranking when brands appear in lists</li>
                   <li><strong>Sentiment</strong> - How positively each brand is portrayed</li>
                   <li><strong>Trend</strong> - Visibility changes over time</li>
@@ -1187,24 +1153,6 @@ Share of Voice = (1/3) × 100 = 33.3%`}
                   <li><strong>Budget tracking</strong> - Monitor API usage and costs</li>
                   <li><strong>Usage statistics</strong> - View execution counts and token usage per platform</li>
                 </ul>
-              </section>
-
-              {/* Share of Voice */}
-              <section id="share-of-voice" className="mb-16">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Share of Voice</h2>
-                <p className="text-gray-600 mb-6">
-                  Your brand mentions compared to competitor mentions across all AI responses.
-                </p>
-                <div className="bg-gray-900 rounded-lg p-6 mb-6">
-                  <pre className="text-green-400 text-sm">
-{`Share of Voice = (Your mentions / Total brand mentions) × 100
-
-Example:
-  AI mentions: Kubernetes (15), Docker (12), Your Brand (8), Terraform (5)
-  Total mentions = 40
-  Your Share of Voice = (8/40) × 100 = 20%`}
-                  </pre>
-                </div>
               </section>
 
               {/* Position Tracking */}

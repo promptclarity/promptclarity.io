@@ -61,7 +61,7 @@ export default function CompetitorAnalysisPage() {
             <div>
               <h1 className="text-4xl sm:text-5xl font-bold text-[#2e353b] mb-4">Competitor Analysis</h1>
               <p className="text-xl text-[#74838f] leading-relaxed max-w-3xl">
-                Track how competitors rank against you in AI responses. Compare visibility, sentiment, and share of voice across all models. Know exactly where you stand.
+                Track how competitors rank against you in AI responses. Compare visibility and sentiment across all models. Know exactly where you stand.
               </p>
             </div>
           </div>
@@ -70,7 +70,7 @@ export default function CompetitorAnalysisPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
             {[
               { value: "10+", label: "Competitors" },
-              { value: "SOV", label: "Share of Voice" },
+              { value: "5", label: "AI Platforms" },
               { value: "Real-time", label: "Comparison" },
               { value: "Trends", label: "Over Time" },
             ].map((stat, i) => (
@@ -172,8 +172,8 @@ export default function CompetitorAnalysisPage() {
                 },
                 {
                   step: "04",
-                  title: "Calculate Share of Voice",
-                  description: "Share of Voice is calculated as your brand mentions divided by total mentions (you + competitors). Only known competitors from your database are counted to prevent data skewing.",
+                  title: "Compare Visibility",
+                  description: "Visibility is calculated as the percentage of AI responses that mention each brand. Compare your visibility against competitors across all platforms and prompts.",
                 },
               ].map((item) => (
                 <div key={item.step} className="bg-white rounded-2xl border border-[#e0e4e9] p-6 hover:shadow-lg transition-shadow">
@@ -191,25 +191,25 @@ export default function CompetitorAnalysisPage() {
             </div>
           </div>
 
-          {/* Share of Voice Formula */}
+          {/* Visibility Formula */}
           <div className="mb-20">
             <div className="bg-gradient-to-br from-[#1a1f24] to-[#2e353b] rounded-3xl p-8 md:p-12">
-              <h2 className="text-3xl font-bold text-white mb-6 text-center">Share of Voice Calculation</h2>
+              <h2 className="text-3xl font-bold text-white mb-6 text-center">Visibility Calculation</h2>
               <div className="bg-[#0d1117] rounded-xl p-8 mb-6 text-center border border-[#30363d]">
                 <code className="text-xl text-[#88bf4d] font-mono">
-                  Share of Voice = (Your Mentions / Total Mentions) × 100
+                  Visibility = (Responses with mention / Total responses) × 100
                 </code>
               </div>
               <p className="text-[#949aab] mb-6 text-center">
-                Where <span className="text-white font-semibold">Total Mentions</span> = Your Brand Mentions + Sum of All Competitor Mentions
+                Measured <span className="text-white font-semibold">per brand</span> across all AI platforms and prompts
               </p>
               <div className="bg-[#0d1117] rounded-xl p-6 border border-[#30363d]">
                 <h4 className="font-semibold text-white mb-3">Example:</h4>
                 <p className="text-[#949aab] text-sm mb-3">
-                  If your brand is mentioned 5 times and competitors A, B, C are mentioned 3, 4, and 3 times respectively:
+                  If 50 prompts are executed and your brand appears in 35 responses:
                 </p>
                 <p className="text-white font-mono text-lg">
-                  SOV = 5 / (5 + 3 + 4 + 3) × 100 = <span className="text-[#88bf4d] font-bold">33.3%</span>
+                  Visibility = 35 / 50 × 100 = <span className="text-[#88bf4d] font-bold">70%</span>
                 </p>
               </div>
             </div>
@@ -363,7 +363,7 @@ export default function CompetitorAnalysisPage() {
             </div>
             <div className="relative">
               <h2 className="text-3xl font-bold text-white mb-4">Know Your Competition</h2>
-              <p className="text-white/80 mb-8 max-w-2xl mx-auto">See how you stack up against competitors in AI recommendations. Track rankings, sentiment, and share of voice.</p>
+              <p className="text-white/80 mb-8 max-w-2xl mx-auto">See how you stack up against competitors in AI recommendations. Track visibility, rankings, and sentiment.</p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link
                   href="https://github.com/promptclarity/promptclarity"
