@@ -3,18 +3,12 @@ import Link from "next/link";
 // Logo Component - Geometric Lighthouse
 function Logo() {
   return (
-    <svg width="40" height="40" viewBox="0 0 100 100" fill="none">
-      <path d="M38 95 L42 45 L58 45 L62 95 Z" fill="none" stroke="#5BA3E6" strokeWidth="4" strokeLinejoin="round" />
-      <line x1="41" y1="60" x2="59" y2="60" stroke="#5BA3E6" strokeWidth="3" />
-      <line x1="40" y1="75" x2="60" y2="75" stroke="#5BA3E6" strokeWidth="3" />
-      <path d="M42 45 L42 35 L50 30 L58 35 L58 45 Z" fill="none" stroke="#5BA3E6" strokeWidth="4" strokeLinejoin="round" />
-      <circle cx="50" cy="38" r="5" fill="#5BA3E6" />
-      <line x1="50" y1="20" x2="50" y2="10" stroke="#5BA3E6" strokeWidth="3" strokeLinecap="round" />
-      <line x1="35" y1="25" x2="28" y2="18" stroke="#5BA3E6" strokeWidth="3" strokeLinecap="round" />
-      <line x1="65" y1="25" x2="72" y2="18" stroke="#5BA3E6" strokeWidth="3" strokeLinecap="round" />
-      <line x1="25" y1="38" x2="15" y2="38" stroke="#5BA3E6" strokeWidth="3" strokeLinecap="round" />
-      <line x1="75" y1="38" x2="85" y2="38" stroke="#5BA3E6" strokeWidth="3" strokeLinecap="round" />
-      <line x1="30" y1="95" x2="70" y2="95" stroke="#5BA3E6" strokeWidth="4" strokeLinecap="round" />
+    <svg width="32" height="32" viewBox="0 0 100 100" fill="none">
+      <path d="M30 95 L45 25 L55 25 L70 95 Z" fill="#1a1a1a" />
+      <line x1="35" y1="80" x2="58" y2="30" stroke="white" strokeWidth="6" />
+      <rect x="42" y="15" width="16" height="12" fill="#1a1a1a" />
+      <polygon points="58,18 85,8 85,22" fill="#1a1a1a" />
+      <polygon points="58,24 80,28 80,38" fill="#1a1a1a" />
     </svg>
   );
 }
