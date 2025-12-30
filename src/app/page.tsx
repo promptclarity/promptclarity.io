@@ -3,37 +3,39 @@
 import Link from "next/link";
 import { useState } from "react";
 
-// Logo Component - Chat bubble with radar (outline style)
+// Logo Component - Geometric Lighthouse
 function Logo({ className = "" }: { className?: string }) {
   return (
     <svg className={className} width="40" height="40" viewBox="0 0 100 100" fill="none">
-      {/* Chat bubble outline */}
+      {/* Lighthouse tower - tapered geometric shape */}
       <path
-        d="M50 8C25 8 5 25 5 46c0 11 5 21 14 28l-6 18 18-9c6 2 12 3 19 3 25 0 45-17 45-40S75 8 50 8z"
+        d="M38 95 L42 45 L58 45 L62 95 Z"
         fill="none"
         stroke="#5BA3E6"
-        strokeWidth="5"
+        strokeWidth="4"
+        strokeLinejoin="round"
       />
-      {/* Outer radar circle */}
-      <circle cx="50" cy="44" r="26" stroke="#5BA3E6" strokeWidth="4" fill="none" />
-      {/* Inner radar circle */}
-      <circle cx="50" cy="44" r="14" stroke="#5BA3E6" strokeWidth="4" fill="none" />
-      {/* Crosshairs */}
-      <line x1="50" y1="14" x2="50" y2="26" stroke="#5BA3E6" strokeWidth="4" />
-      <line x1="50" y1="62" x2="50" y2="74" stroke="#5BA3E6" strokeWidth="4" />
-      <line x1="20" y1="44" x2="32" y2="44" stroke="#5BA3E6" strokeWidth="4" />
-      <line x1="68" y1="44" x2="80" y2="44" stroke="#5BA3E6" strokeWidth="4" />
-      {/* 4-pointed star in center */}
-      <path d="M50 36 L52 43 L50 52 L48 43 Z" fill="#5BA3E6" />
-      <path d="M42 44 L49 41 L58 44 L49 47 Z" fill="#5BA3E6" />
-      {/* Radar sweep line */}
-      <line x1="50" y1="44" x2="78" y2="16" stroke="#5BA3E6" strokeWidth="4" strokeLinecap="round" />
-      {/* Ping dot */}
-      <circle cx="78" cy="16" r="5" fill="#5BA3E6" />
-      {/* Ping rays */}
-      <line x1="78" y1="4" x2="78" y2="9" stroke="#5BA3E6" strokeWidth="3" strokeLinecap="round" />
-      <line x1="88" y1="10" x2="84" y2="13" stroke="#5BA3E6" strokeWidth="3" strokeLinecap="round" />
-      <line x1="91" y1="20" x2="86" y2="18" stroke="#5BA3E6" strokeWidth="3" strokeLinecap="round" />
+      {/* Tower stripes */}
+      <line x1="41" y1="60" x2="59" y2="60" stroke="#5BA3E6" strokeWidth="3" />
+      <line x1="40" y1="75" x2="60" y2="75" stroke="#5BA3E6" strokeWidth="3" />
+      {/* Light housing - hexagonal top */}
+      <path
+        d="M42 45 L42 35 L50 30 L58 35 L58 45 Z"
+        fill="none"
+        stroke="#5BA3E6"
+        strokeWidth="4"
+        strokeLinejoin="round"
+      />
+      {/* Light beacon */}
+      <circle cx="50" cy="38" r="5" fill="#5BA3E6" />
+      {/* Light rays */}
+      <line x1="50" y1="20" x2="50" y2="10" stroke="#5BA3E6" strokeWidth="3" strokeLinecap="round" />
+      <line x1="35" y1="25" x2="28" y2="18" stroke="#5BA3E6" strokeWidth="3" strokeLinecap="round" />
+      <line x1="65" y1="25" x2="72" y2="18" stroke="#5BA3E6" strokeWidth="3" strokeLinecap="round" />
+      <line x1="25" y1="38" x2="15" y2="38" stroke="#5BA3E6" strokeWidth="3" strokeLinecap="round" />
+      <line x1="75" y1="38" x2="85" y2="38" stroke="#5BA3E6" strokeWidth="3" strokeLinecap="round" />
+      {/* Base platform */}
+      <line x1="30" y1="95" x2="70" y2="95" stroke="#5BA3E6" strokeWidth="4" strokeLinecap="round" />
     </svg>
   );
 }
