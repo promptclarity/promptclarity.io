@@ -427,12 +427,12 @@ function FeaturesSection() {
       id: "visibility",
       tabLabel: "Visibility Tracking",
       title: "Multi-Model Visibility Tracking",
-      description: "Monitor your brand mentions across ChatGPT, Claude, Perplexity, Gemini, and Grok. See exactly when and how often you're recommended compared to competitors.",
+      description: "Monitor your brand mentions across ChatGPT, Claude, Perplexity, Gemini, and Grok. Track visibility scores, position rankings, and historical trends over time.",
       bullets: [
         "Track mentions across 5 major AI platforms",
-        "Customizable automated prompt execution",
-        "Historical visibility trends and analytics",
-        "Real-time visibility changes"
+        "Visibility Score - % of times your brand is mentioned",
+        "Position tracking - where you rank in AI recommendations",
+        "Historical trends with scheduled automation"
       ],
       href: "/features/multi-model-visibility",
     },
@@ -440,12 +440,12 @@ function FeaturesSection() {
       id: "competitors",
       tabLabel: "Competitor Analysis",
       title: "Competitor Analysis",
-      description: "Track how competitors rank against you in AI responses. Compare visibility, sentiment, and share of voice across all models to understand your competitive position.",
+      description: "Track how competitors rank against you in AI responses. Compare visibility, sentiment, and share of voice across all models with industry benchmarking.",
       bullets: [
-        "Benchmark against competitors",
-        "Share of voice comparison",
-        "Sentiment analysis by brand",
-        "Competitive positioning insights"
+        "Share of voice - your mentions vs competitors",
+        "Sentiment analysis (positive/negative/neutral)",
+        "Industry benchmarking comparisons",
+        "AI-identified competitor tracking"
       ],
       href: "/features/competitor-analysis",
     },
@@ -453,10 +453,10 @@ function FeaturesSection() {
       id: "sources",
       tabLabel: "Source Attribution",
       title: "Source Attribution",
-      description: "Discover which websites and URLs LLMs cite when discussing your industry. Identify content gaps and citation opportunities to improve your AI visibility.",
+      description: "Discover which websites and URLs LLMs cite when discussing your industry. Track citation patterns across editorial, UGC, and reference sources.",
       bullets: [
         "Track which sources AI models cite",
-        "Identify high-authority domains",
+        "Categorize by type (Editorial, UGC, Reference)",
         "Find content gap opportunities",
         "Monitor competitor citations"
       ],
@@ -465,39 +465,39 @@ function FeaturesSection() {
     {
       id: "prompts",
       tabLabel: "Custom Prompts",
-      title: "Custom Prompts",
-      description: "Create and manage prompts that matter to your business. Track specific queries your customers might ask AI assistants about your industry.",
+      title: "Prompt Management",
+      description: "Create, organize, and execute prompts that matter to your business. Bulk execute, schedule automation, and get AI-suggested prompts for your industry.",
       bullets: [
-        "Auto-generated industry prompts",
-        "Organize prompts by topic",
-        "Track prompt performance over time",
-        "A/B test different query styles"
+        "AI-suggested prompts based on your business",
+        "Organize prompts by topic with priority levels",
+        "Bulk execute or select specific prompts",
+        "Scheduled automation (daily, 3-day, weekly)"
       ],
       href: "/features/custom-prompts",
     },
     {
       id: "onpage",
-      tabLabel: "On-Page Optimization",
-      title: "On-Page Optimization",
-      description: "Get actionable recommendations to optimize your website content. Improve structure, headings, and schema markup for better AI visibility.",
+      tabLabel: "Site Audit",
+      title: "Site Audit & Content Roadmap",
+      description: "Get technical SEO analysis and AI-powered content recommendations. Analyze structure, schema markup, and get topic suggestions to improve visibility.",
       bullets: [
-        "Content structure recommendations",
-        "Schema markup suggestions",
-        "Heading optimization tips",
-        "Agent, Crawler, and LLM-friendly content guidelines"
+        "Structure scoring and content analysis",
+        "Schema markup detection (FAQ, HowTo, Product)",
+        "Technical factors (load time, mobile, canonical)",
+        "Content gap analysis with topic recommendations"
       ],
       href: "/features/on-page-optimization",
     },
     {
       id: "offpage",
-      tabLabel: "Off-Page Strategies",
-      title: "Off-Page Strategies",
-      description: "Build authority in the places that matter. Get editorial coverage, community presence, and partnership recommendations to boost your AI visibility.",
+      tabLabel: "Off-Page Roadmap",
+      title: "Off-Page Roadmap",
+      description: "Get PR and distribution opportunities to boost your AI visibility. Find editorial placements, UGC opportunities, and reference sites where you should be mentioned.",
       bullets: [
-        "Editorial coverage opportunities",
-        "Community presence recommendations",
-        "Partnership suggestions",
-        "Authority building tactics"
+        "Editorial opportunities (news sites, publications)",
+        "UGC opportunities (Reddit, Quora, LinkedIn)",
+        "Reference sites (Wikipedia, .edu domains)",
+        "Outreach strategies with pitch ideas"
       ],
       href: "/features/off-page-strategies",
     },
@@ -675,21 +675,21 @@ function FeaturesSection() {
               {activeTab === 4 && (
                 <div className="p-4">
                   <div className="flex items-center justify-between mb-3">
-                    <h4 className="font-semibold text-[#2e353b] text-sm">On-Page Recommendations</h4>
-                    <span className="text-xs text-[#22c55e]">3 quick wins</span>
+                    <h4 className="font-semibold text-[#2e353b] text-sm">Site Audit Results</h4>
+                    <span className="text-xs text-[#22c55e]">Score: 78/100</span>
                   </div>
                   <div className="space-y-3">
                     {[
-                      { task: "Add FAQ schema to /pricing", impact: "High", status: "todo" },
-                      { task: "Improve H1 on landing page", impact: "Medium", status: "done" },
-                      { task: "Add product comparison table", impact: "High", status: "todo" },
-                      { task: "Update meta descriptions", impact: "Low", status: "done" },
+                      { task: "FAQ Schema detected on /pricing", impact: "Pass", status: "done" },
+                      { task: "Missing HowTo schema on guides", impact: "High", status: "todo" },
+                      { task: "Product schema incomplete", impact: "Medium", status: "todo" },
+                      { task: "Mobile-friendly: Yes", impact: "Pass", status: "done" },
                     ].map((item, i) => (
                       <div key={i} className="flex items-center gap-3">
                         <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${item.status === "done" ? "bg-[#22c55e] border-[#22c55e]" : "border-[#e0e4e9]"}`}>
                           {item.status === "done" && <svg className="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>}
                         </div>
-                        <span className={`flex-1 text-sm ${item.status === "done" ? "text-[#949aab] line-through" : "text-[#2e353b]"}`}>{item.task}</span>
+                        <span className={`flex-1 text-sm ${item.status === "done" ? "text-[#2e353b]" : "text-[#2e353b]"}`}>{item.task}</span>
                         <span className={`text-[10px] px-2 py-0.5 rounded ${item.impact === "High" ? "bg-[#fef2f2] text-[#ef4444]" : item.impact === "Medium" ? "bg-[#fffbeb] text-[#f59e0b]" : "bg-[#f0fdf4] text-[#22c55e]"}`}>{item.impact}</span>
                       </div>
                     ))}
@@ -699,15 +699,15 @@ function FeaturesSection() {
               {activeTab === 5 && (
                 <div className="p-4">
                   <div className="flex items-center justify-between mb-3">
-                    <h4 className="font-semibold text-[#2e353b] text-sm">Off-Page Opportunities</h4>
-                    <span className="text-xs text-[#949aab]">12 suggestions</span>
+                    <h4 className="font-semibold text-[#2e353b] text-sm">Off-Page Roadmap</h4>
+                    <span className="text-xs text-[#949aab]">15 opportunities</span>
                   </div>
                   <div className="space-y-3">
                     {[
-                      { task: "Guest post on TechCrunch", type: "Editorial", priority: "High" },
-                      { task: "Respond on Reddit r/networking", type: "Community", priority: "Medium" },
-                      { task: "Update G2 profile", type: "Review", priority: "High" },
-                      { task: "Sponsor DevOps podcast", type: "Partnership", priority: "Low" },
+                      { task: "Pitch to TechCrunch editorial", type: "Editorial", priority: "High" },
+                      { task: "Answer on Reddit r/devops", type: "UGC", priority: "Medium" },
+                      { task: "Add to Wikipedia comparison", type: "Reference", priority: "High" },
+                      { task: "Guest post on dev.to", type: "Editorial", priority: "Medium" },
                     ].map((item, i) => (
                       <div key={i} className="flex items-center justify-between py-2 border-b border-[#e0e4e9] last:border-0">
                         <div>
@@ -734,17 +734,17 @@ function HowItWorksSection() {
     {
       step: "01",
       title: "Run Docker",
-      description: "Single command to start. Data persists in a volume.",
+      description: "Single command to start. SQLite database with data persisting in a volume.",
     },
     {
       step: "02",
-      title: "Setup Wizard",
-      description: "Add your brand, topics, competitors, and AI platform API keys.",
+      title: "Onboarding Wizard",
+      description: "Set up your business, configure AI platforms, define strategy, and get AI-generated topics, prompts, and competitors.",
     },
     {
       step: "03",
       title: "Monitor & Optimize",
-      description: "Track visibility trends and get actionable insights.",
+      description: "Track visibility with scheduled automation, get content recommendations, and follow PR roadmaps.",
     },
   ];
 

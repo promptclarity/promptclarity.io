@@ -22,14 +22,37 @@ const docsNav = [
     ],
   },
   {
-    title: "Features",
+    title: "Dashboards",
     items: [
-      { title: "Dashboard Overview", href: "#dashboard-overview" },
-      { title: "Visibility Tracking", href: "#visibility-tracking" },
-      { title: "Competitor Analysis", href: "#competitor-analysis" },
-      { title: "Prompt Management", href: "#prompt-management" },
-      { title: "Source Attribution", href: "#source-attribution" },
-      { title: "Sentiment Analysis", href: "#sentiment-analysis" },
+      { title: "Overview", href: "#dashboard-overview" },
+      { title: "Prompts", href: "#prompt-management" },
+      { title: "Competitors", href: "#competitor-analysis" },
+      { title: "Sources", href: "#source-attribution" },
+      { title: "Sentiment", href: "#sentiment-analysis" },
+      { title: "Growth", href: "#growth-trends" },
+      { title: "Content Roadmap", href: "#content-roadmap" },
+      { title: "Off-Page Roadmap", href: "#offpage-roadmap" },
+      { title: "Site Audit", href: "#site-audit" },
+      { title: "Benchmarking", href: "#benchmarking" },
+      { title: "Team", href: "#team-management" },
+      { title: "Models", href: "#model-configuration" },
+    ],
+  },
+  {
+    title: "Core Tracking",
+    items: [
+      { title: "Visibility Score", href: "#visibility-tracking" },
+      { title: "Share of Voice", href: "#share-of-voice" },
+      { title: "Position Tracking", href: "#position-tracking" },
+      { title: "Historical Trends", href: "#historical-trends" },
+    ],
+  },
+  {
+    title: "Automation",
+    items: [
+      { title: "Scheduled Execution", href: "#scheduled-execution" },
+      { title: "Real-Time Updates", href: "#real-time-updates" },
+      { title: "Cron Configuration", href: "#cron-configuration" },
     ],
   },
   {
@@ -37,30 +60,15 @@ const docsNav = [
     items: [
       { title: "Supported Models", href: "#supported-models" },
       { title: "API Key Setup", href: "#api-key-setup" },
-    ],
-  },
-  {
-    title: "Automation",
-    items: [
-      { title: "Daily Tracking", href: "#daily-tracking" },
-      { title: "Cron Configuration", href: "#cron-configuration" },
-    ],
-  },
-  {
-    title: "API Reference",
-    items: [
-      { title: "Endpoints", href: "#api-endpoints" },
-      { title: "Real-Time Updates", href: "#real-time-updates" },
+      { title: "Budget Tracking", href: "#budget-tracking" },
     ],
   },
   {
     title: "Deployment",
     items: [
-      { title: "Self-Hosting", href: "#self-hosting" },
       { title: "Docker", href: "#docker" },
-      { title: "Vercel", href: "#vercel" },
-      { title: "Render", href: "#render" },
-      { title: "Fly.io", href: "#flyio" },
+      { title: "Self-Hosting", href: "#self-hosting" },
+      { title: "Cloud Platforms", href: "#cloud-platforms" },
     ],
   },
   {
@@ -1035,6 +1043,255 @@ Share of Voice = (1/3) × 100 = 33.3%`}
                   <div className="bg-red-50 rounded-lg p-4 border border-red-200">
                     <div className="font-semibold text-red-700 mb-1">Negative</div>
                     <p className="text-red-600 text-sm">AI mentions criticism or issues</p>
+                  </div>
+                </div>
+              </section>
+
+              {/* Growth Trends */}
+              <section id="growth-trends" className="mb-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Growth Dashboard</h2>
+                <p className="text-gray-600 mb-6">
+                  Track visibility trends over time with comprehensive growth analytics.
+                </p>
+                <ul className="list-disc list-inside text-gray-600 space-y-2">
+                  <li><strong>Visibility over time</strong> - Line charts showing your visibility score trends</li>
+                  <li><strong>Competitor comparison</strong> - See how your growth compares to competitors</li>
+                  <li><strong>Platform breakdown</strong> - Growth trends per AI platform</li>
+                  <li><strong>Period comparison</strong> - Compare this week/month to previous periods</li>
+                </ul>
+              </section>
+
+              {/* Content Roadmap */}
+              <section id="content-roadmap" className="mb-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Content Roadmap</h2>
+                <p className="text-gray-600 mb-6">
+                  AI-powered content recommendations based on your visibility gaps.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <h4 className="font-semibold text-gray-900 mb-2">Content Gap Analysis</h4>
+                    <p className="text-gray-600 text-sm">Identify topics where competitors appear but you don&apos;t.</p>
+                  </div>
+                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <h4 className="font-semibold text-gray-900 mb-2">Topic Recommendations</h4>
+                    <p className="text-gray-600 text-sm">AI-suggested topics based on industry trends.</p>
+                  </div>
+                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <h4 className="font-semibold text-gray-900 mb-2">Keyword Suggestions</h4>
+                    <p className="text-gray-600 text-sm">Terms that frequently appear in high-visibility responses.</p>
+                  </div>
+                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <h4 className="font-semibold text-gray-900 mb-2">Content Type Suggestions</h4>
+                    <p className="text-gray-600 text-sm">Documentation, tutorials, comparisons based on what AI cites.</p>
+                  </div>
+                </div>
+              </section>
+
+              {/* Off-Page Roadmap */}
+              <section id="offpage-roadmap" className="mb-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Off-Page Roadmap</h2>
+                <p className="text-gray-600 mb-6">
+                  PR and distribution opportunities to boost your AI visibility through external sources.
+                </p>
+                <div className="space-y-4">
+                  <div className="border border-gray-200 rounded-lg p-4">
+                    <h4 className="font-semibold text-gray-900 mb-2">Editorial Opportunities</h4>
+                    <p className="text-gray-600 text-sm">News sites, publications, and tech blogs that AI models frequently cite.</p>
+                  </div>
+                  <div className="border border-gray-200 rounded-lg p-4">
+                    <h4 className="font-semibold text-gray-900 mb-2">UGC Opportunities</h4>
+                    <p className="text-gray-600 text-sm">Reddit, Quora, LinkedIn, and community platforms where you should have presence.</p>
+                  </div>
+                  <div className="border border-gray-200 rounded-lg p-4">
+                    <h4 className="font-semibold text-gray-900 mb-2">Reference Sites</h4>
+                    <p className="text-gray-600 text-sm">Wikipedia, .edu domains, and authoritative sources that boost credibility.</p>
+                  </div>
+                  <div className="border border-gray-200 rounded-lg p-4">
+                    <h4 className="font-semibold text-gray-900 mb-2">Outreach Strategies</h4>
+                    <p className="text-gray-600 text-sm">AI-generated pitch ideas and outreach templates for each opportunity.</p>
+                  </div>
+                </div>
+              </section>
+
+              {/* Site Audit */}
+              <section id="site-audit" className="mb-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Site Audit Dashboard</h2>
+                <p className="text-gray-600 mb-6">
+                  Technical SEO analysis to ensure your site is AI-crawler friendly.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <h4 className="font-semibold text-gray-900 mb-2">Structure Scoring</h4>
+                    <p className="text-gray-600 text-sm">Overall site health score based on AI-crawlability factors.</p>
+                  </div>
+                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <h4 className="font-semibold text-gray-900 mb-2">Schema Detection</h4>
+                    <p className="text-gray-600 text-sm">Checks for FAQ, HowTo, Product, Organization schema markup.</p>
+                  </div>
+                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <h4 className="font-semibold text-gray-900 mb-2">Content Analysis</h4>
+                    <p className="text-gray-600 text-sm">Word count, lists, Q&amp;A sections, and content structure.</p>
+                  </div>
+                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <h4 className="font-semibold text-gray-900 mb-2">Technical Factors</h4>
+                    <p className="text-gray-600 text-sm">Load time, mobile friendliness, canonical URLs, robots.txt.</p>
+                  </div>
+                </div>
+              </section>
+
+              {/* Benchmarking */}
+              <section id="benchmarking" className="mb-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Benchmarking</h2>
+                <p className="text-gray-600 mb-6">
+                  Compare your visibility metrics against industry standards and competitors.
+                </p>
+                <ul className="list-disc list-inside text-gray-600 space-y-2">
+                  <li><strong>Industry comparisons</strong> - See how you rank in your vertical</li>
+                  <li><strong>Competitor benchmarks</strong> - Track relative position changes</li>
+                  <li><strong>Platform performance</strong> - Compare visibility across AI models</li>
+                  <li><strong>Historical benchmarks</strong> - Track improvement over time</li>
+                </ul>
+              </section>
+
+              {/* Team Management */}
+              <section id="team-management" className="mb-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Team Management</h2>
+                <p className="text-gray-600 mb-6">
+                  Invite team members and manage access to your Prompt Clarity instance.
+                </p>
+                <div className="space-y-4">
+                  <div className="border border-gray-200 rounded-lg p-4">
+                    <h4 className="font-semibold text-gray-900 mb-2">Email Invitations</h4>
+                    <p className="text-gray-600 text-sm">Send invite links to team members via email. Requires RESEND_API_KEY configuration.</p>
+                  </div>
+                  <div className="border border-gray-200 rounded-lg p-4">
+                    <h4 className="font-semibold text-gray-900 mb-2">Role-Based Access</h4>
+                    <p className="text-gray-600 text-sm">Assign roles to control what team members can view and edit.</p>
+                  </div>
+                  <div className="border border-gray-200 rounded-lg p-4">
+                    <h4 className="font-semibold text-gray-900 mb-2">Member Management</h4>
+                    <p className="text-gray-600 text-sm">View active members, pending invites, and remove access as needed.</p>
+                  </div>
+                </div>
+              </section>
+
+              {/* Model Configuration */}
+              <section id="model-configuration" className="mb-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Model Configuration</h2>
+                <p className="text-gray-600 mb-6">
+                  Configure AI platforms and manage API keys from the Models dashboard.
+                </p>
+                <ul className="list-disc list-inside text-gray-600 space-y-2">
+                  <li><strong>Per-platform API keys</strong> - Add or update keys for each AI service</li>
+                  <li><strong>Enable/disable platforms</strong> - Toggle which platforms to include in executions</li>
+                  <li><strong>Budget tracking</strong> - Monitor API usage and costs</li>
+                  <li><strong>Usage statistics</strong> - View execution counts and token usage per platform</li>
+                </ul>
+              </section>
+
+              {/* Share of Voice */}
+              <section id="share-of-voice" className="mb-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Share of Voice</h2>
+                <p className="text-gray-600 mb-6">
+                  Your brand mentions compared to competitor mentions across all AI responses.
+                </p>
+                <div className="bg-gray-900 rounded-lg p-6 mb-6">
+                  <pre className="text-green-400 text-sm">
+{`Share of Voice = (Your mentions / Total brand mentions) × 100
+
+Example:
+  AI mentions: Kubernetes (15), Docker (12), Your Brand (8), Terraform (5)
+  Total mentions = 40
+  Your Share of Voice = (8/40) × 100 = 20%`}
+                  </pre>
+                </div>
+              </section>
+
+              {/* Position Tracking */}
+              <section id="position-tracking" className="mb-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Position Tracking</h2>
+                <p className="text-gray-600 mb-6">
+                  Track where your brand appears when AI lists multiple recommendations.
+                </p>
+                <ul className="list-disc list-inside text-gray-600 space-y-2">
+                  <li><strong>1st position</strong> - AI recommends you first (highest impact)</li>
+                  <li><strong>2nd-3rd position</strong> - Still prominent placement</li>
+                  <li><strong>4th+ position</strong> - Mentioned but lower visibility</li>
+                  <li><strong>Not mentioned</strong> - Opportunity for improvement</li>
+                </ul>
+              </section>
+
+              {/* Historical Trends */}
+              <section id="historical-trends" className="mb-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Historical Trends</h2>
+                <p className="text-gray-600 mb-6">
+                  All prompt executions are stored with timestamps to build historical visibility data.
+                </p>
+                <ul className="list-disc list-inside text-gray-600 space-y-2">
+                  <li>Compare visibility week-over-week or month-over-month</li>
+                  <li>Identify trending topics where your visibility is changing</li>
+                  <li>Track the impact of content and PR efforts over time</li>
+                  <li>Export historical data for external analysis</li>
+                </ul>
+              </section>
+
+              {/* Scheduled Execution */}
+              <section id="scheduled-execution" className="mb-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Scheduled Execution</h2>
+                <p className="text-gray-600 mb-6">
+                  Automate prompt execution on a schedule to build continuous visibility data.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-200 text-center">
+                    <div className="font-semibold text-gray-900 mb-1">Daily</div>
+                    <p className="text-gray-600 text-sm">Run all prompts every day</p>
+                  </div>
+                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-200 text-center">
+                    <div className="font-semibold text-gray-900 mb-1">Every 3 Days</div>
+                    <p className="text-gray-600 text-sm">Balanced frequency option</p>
+                  </div>
+                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-200 text-center">
+                    <div className="font-semibold text-gray-900 mb-1">Weekly</div>
+                    <p className="text-gray-600 text-sm">Lower API usage</p>
+                  </div>
+                </div>
+                <p className="text-gray-600 text-sm">
+                  Executions run with up to 5 parallel requests to balance speed and API rate limits. Real-time SSE updates show progress in the UI.
+                </p>
+              </section>
+
+              {/* Budget Tracking */}
+              <section id="budget-tracking" className="mb-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Budget Tracking</h2>
+                <p className="text-gray-600 mb-6">
+                  Monitor API costs and usage across all configured platforms.
+                </p>
+                <ul className="list-disc list-inside text-gray-600 space-y-2">
+                  <li><strong>Cost estimation</strong> - Projected costs based on prompt count and frequency</li>
+                  <li><strong>Usage statistics</strong> - Token counts per platform per execution</li>
+                  <li><strong>Platform breakdown</strong> - See which AI services cost the most</li>
+                  <li><strong>Disable platforms</strong> - Turn off expensive platforms to reduce costs</li>
+                </ul>
+              </section>
+
+              {/* Cloud Platforms */}
+              <section id="cloud-platforms" className="mb-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Cloud Platforms</h2>
+                <p className="text-gray-600 mb-6">
+                  Deploy Prompt Clarity to your preferred cloud provider.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <h4 className="font-semibold text-gray-900 mb-2">Render</h4>
+                    <p className="text-gray-600 text-sm">Simple deployment with automatic builds from GitHub.</p>
+                  </div>
+                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <h4 className="font-semibold text-gray-900 mb-2">Fly.io</h4>
+                    <p className="text-gray-600 text-sm">Edge deployment with global distribution.</p>
+                  </div>
+                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <h4 className="font-semibold text-gray-900 mb-2">Vercel</h4>
+                    <p className="text-gray-600 text-sm">Optimized for Next.js with built-in cron jobs.</p>
                   </div>
                 </div>
               </section>
