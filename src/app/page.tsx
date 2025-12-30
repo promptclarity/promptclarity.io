@@ -7,19 +7,18 @@ import { useState } from "react";
 function Logo({ className = "" }: { className?: string }) {
   return (
     <svg className={className} width="32" height="32" viewBox="0 0 100 100" fill="none">
-      {/* Main tower with diagonal stripe cutout */}
-      <path
-        d="M30 95 L45 25 L55 25 L70 95 Z M38 75 L62 35"
-        fill="#1a1a1a"
-        fillRule="evenodd"
-      />
-      {/* Diagonal stripe (white/transparent) */}
-      <line x1="35" y1="80" x2="58" y2="30" stroke="white" strokeWidth="6" />
-      {/* Light housing */}
-      <rect x="42" y="15" width="16" height="12" fill="#1a1a1a" />
-      {/* Light beams */}
-      <polygon points="58,18 85,8 85,22" fill="#1a1a1a" />
-      <polygon points="58,24 80,28 80,38" fill="#1a1a1a" />
+      {/* Tower - upper section (above diagonal) */}
+      <polygon points="42,28 58,28 62,52 32,90 28,90 42,28" fill="#1a1a1a" />
+      {/* Tower - lower section (below diagonal) */}
+      <polygon points="68,58 72,90 38,90 68,58" fill="#1a1a1a" />
+      {/* Light housing base */}
+      <rect x="40" y="18" width="20" height="12" fill="#1a1a1a" />
+      {/* Light housing roof */}
+      <polygon points="38,18 50,8 62,18" fill="#1a1a1a" />
+      {/* Light beam - upper */}
+      <polygon points="60,12 90,2 90,16" fill="#1a1a1a" />
+      {/* Light beam - lower */}
+      <polygon points="60,22 85,26 85,38" fill="#1a1a1a" />
     </svg>
   );
 }
