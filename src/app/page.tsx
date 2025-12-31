@@ -799,7 +799,7 @@ function HowItWorksSection() {
               <div className="text-[#e0e4e9]">  --name prompt-clarity \</div>
               <div className="text-[#e0e4e9]">  -p 3000:3000 \</div>
               <div className="text-[#e0e4e9]">  -v prompt-clarity-data:/app/data \</div>
-              <div className="text-[#e0e4e9]">  ghcr.io/promptclarity/promptclarity:latest</div>
+              <div className="text-[#e0e4e9]">  promptclarity/promptclarity:latest</div>
               <div className="mt-4 text-[#949aab]"># Open http://localhost:3000 and follow the setup wizard</div>
             </div>
           </div>

@@ -212,7 +212,7 @@ export default function DocsPage() {
   --name prompt-clarity \\
   -p 3000:3000 \\
   -v prompt-clarity-data:/app/data \\
-  ghcr.io/promptclarity/promptclarity:latest`}
+  promptclarity/promptclarity:latest`}
                   </pre>
                 </div>
                 <p className="text-gray-600 mb-6">
@@ -1550,7 +1550,7 @@ npm start`}
   --name prompt-clarity \\
   -p 3000:3000 \\
   -v prompt-clarity-data:/app/data \\
-  ghcr.io/promptclarity/promptclarity:latest`}
+  promptclarity/promptclarity:latest`}
                   </pre>
                 </div>
 
@@ -1582,7 +1582,7 @@ npm start`}
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">Updating</h3>
                 <div className="bg-gray-900 rounded-lg p-6 mb-6">
                   <pre className="text-green-400 text-sm">
-{`docker pull ghcr.io/promptclarity/promptclarity:latest
+{`docker pull promptclarity/promptclarity:latest
 docker stop prompt-clarity && docker rm prompt-clarity
 # Re-run the docker run command above`}
                   </pre>
