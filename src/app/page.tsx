@@ -30,10 +30,10 @@ function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2">
             <Logo />
             <span className="text-xl font-semibold text-[#2e353b]">Prompt Clarity</span>
-          </div>
+          </Link>
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center gap-8">
@@ -63,7 +63,7 @@ function Navigation() {
               GitHub
             </Link>
             <Link
-              href="https://github.com/promptclarity/promptclarity"
+              href="#how-it-works"
               className="bg-[#509ee3] text-white px-5 py-2 rounded-lg font-medium btn-primary hover:bg-[#4a90d9]"
             >
               Get started
@@ -94,12 +94,12 @@ function HeroSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-4xl mx-auto">
           {/* Open Source Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#e6f4ea] text-[#1e7e34] text-sm font-medium mb-6">
+          <Link href="https://github.com/promptclarity/promptclarity" target="_blank" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#e6f4ea] text-[#1e7e34] text-sm font-medium mb-6 hover:bg-[#d4edda] transition-colors">
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
             Open Source
-          </div>
+          </Link>
 
           {/* Main Headline */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#2e353b] leading-tight">
@@ -126,7 +126,7 @@ function HeroSection() {
               href="#how-it-works"
               className="w-full sm:w-auto bg-white text-[#2e353b] px-8 py-3 rounded-lg font-medium text-lg btn-secondary hover:border-[#509ee3]"
             >
-              See how it works
+              Try it now
             </Link>
           </div>
 
@@ -155,262 +155,12 @@ function HeroSection() {
                 </div>
               </div>
             </div>
-            {/* Dashboard Preview */}
-            <div className="p-2 sm:p-4 bg-[#f9fbfc]">
-              <div className="flex gap-3">
-                {/* Sidebar */}
-                <div className="w-40 bg-white rounded-lg border border-[#e0e4e9] p-3 hidden lg:block shrink-0">
-                  <div className="flex items-center gap-2 mb-4">
-                    <div className="w-7 h-7 bg-gradient-to-br from-[#509ee3] to-[#7c3aed] rounded flex items-center justify-center">
-                      <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                      </svg>
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="font-semibold text-[#2e353b] text-sm">Your Brand</span>
-                      <span className="text-[9px] text-[#949aab]">yourbrand.io</span>
-                    </div>
-                  </div>
-                  <p className="text-[10px] text-[#949aab] mb-1.5 px-2">Main</p>
-                  <div className="space-y-0.5">
-                    {[
-                      { name: "Overview", icon: "grid", active: true },
-                      { name: "Sources", icon: "link", active: false },
-                      { name: "Prompts", icon: "file", active: false },
-                    ].map((item, i) => (
-                      <div key={i} className={`px-2 py-1.5 rounded text-[11px] flex items-center gap-2 ${item.active ? "bg-[#f9fbfc] text-[#2e353b] font-medium" : "text-[#74838f]"}`}>
-                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          {item.icon === "grid" && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />}
-                          {item.icon === "link" && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />}
-                          {item.icon === "file" && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />}
-                        </svg>
-                        {item.name}
-                      </div>
-                    ))}
-                  </div>
-                  <p className="text-[10px] text-[#949aab] mb-1.5 px-2 mt-3">Actions</p>
-                  <div className="space-y-0.5">
-                    {["On-Page", "Off-Page"].map((item, i) => (
-                      <div key={i} className="px-2 py-1.5 rounded text-[11px] flex items-center gap-2 text-[#74838f]">
-                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        {item}
-                      </div>
-                    ))}
-                  </div>
-                  <p className="text-[10px] text-[#949aab] mb-1.5 px-2 mt-3">Settings</p>
-                  <div className="space-y-0.5">
-                    {["Models", "Competitors", "Team", "Settings"].map((item, i) => (
-                      <div key={i} className="px-2 py-1.5 rounded text-[11px] flex items-center gap-2 text-[#74838f]">
-                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          {item === "Models" && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />}
-                          {item === "Competitors" && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />}
-                          {item === "Team" && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />}
-                          {item === "Settings" && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />}
-                        </svg>
-                        {item}
-                      </div>
-                    ))}
-                  </div>
-                  {/* User Profile */}
-                  <div className="mt-4 pt-3 border-t border-[#e0e4e9] flex items-center gap-2">
-                    <div className="w-6 h-6 bg-[#509ee3] rounded-full flex items-center justify-center text-white text-[9px] font-medium">V</div>
-                    <div className="flex flex-col">
-                      <span className="text-[10px] font-medium text-[#2e353b]">verobytes</span>
-                      <span className="text-[8px] text-[#949aab]">hello@verobytes.com</span>
-                    </div>
-                  </div>
-                </div>
-                {/* Main Content */}
-                <div className="flex-1 min-w-0">
-                  {/* Header */}
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="flex items-center gap-2">
-                      <svg className="w-4 h-4 text-[#74838f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-                      </svg>
-                      <span className="font-semibold text-[#2e353b] text-sm">Overview</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="px-2 py-1 bg-white border border-[#e0e4e9] rounded text-[10px] text-[#74838f] flex items-center gap-1">
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-                        </svg>
-                        All models
-                      </div>
-                      <div className="px-2 py-1 bg-white border border-[#e0e4e9] rounded text-[10px] text-[#74838f] flex items-center gap-1">
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                        Last 30 days
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex gap-3">
-                    {/* Visibility Chart */}
-                    <div className="flex-1 bg-white rounded-lg p-3 border border-[#e0e4e9]">
-                      <div className="flex items-center justify-between mb-2">
-                        <div>
-                          <h3 className="font-semibold text-[#2e353b] text-xs">Visibility</h3>
-                          <p className="text-[9px] text-[#949aab]">Percentage of chats mentioning each brand</p>
-                        </div>
-                      </div>
-                      <div className="h-28 relative">
-                        {/* Y-axis labels */}
-                        <div className="absolute left-0 top-0 bottom-4 w-7 flex flex-col justify-between text-[9px] text-[#949aab]">
-                          <span>88%</span>
-                          <span>50%</span>
-                          <span>25%</span>
-                        </div>
-                        {/* Chart area */}
-                        <div className="ml-8 h-full relative">
-                          {/* Grid lines */}
-                          <div className="absolute inset-0 flex flex-col justify-between">
-                            {[0, 1, 2].map((i) => (
-                              <div key={i} className="border-b border-[#e0e4e9] border-dashed" />
-                            ))}
-                          </div>
-                          {/* Chart lines */}
-                          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 300 100" preserveAspectRatio="none">
-                            {/* Kubernetes - blue, top performer ~72% */}
-                            <path d="M0 18 Q30 12 60 15 T120 20 T180 15 T240 22 T300 10" stroke="#326ce5" strokeWidth="1.5" fill="none" />
-                            {/* Your Brand - green (YOUR brand), ~68% */}
-                            <path d="M0 22 Q30 28 60 20 T120 25 T180 30 T240 22 T300 18" stroke="#22c55e" strokeWidth="1.5" fill="none" />
-                            {/* Docker - blue, ~61% */}
-                            <path d="M0 32 Q30 28 60 35 T120 30 T180 38 T240 32 T300 28" stroke="#2496ed" strokeWidth="1.5" fill="none" />
-                            {/* Terraform - purple, ~46% */}
-                            <path d="M0 48 Q30 44 60 52 T120 46 T180 42 T240 50 T300 45" stroke="#7b42bc" strokeWidth="1.5" fill="none" />
-                            {/* Prometheus - orange-red, ~38% */}
-                            <path d="M0 58 Q30 54 60 62 T120 56 T180 60 T240 55 T300 58" stroke="#e6522c" strokeWidth="1.5" fill="none" />
-                            {/* Grafana - orange, ~32% */}
-                            <path d="M0 65 Q30 62 60 68 T120 64 T180 70 T240 66 T300 62" stroke="#f97316" strokeWidth="1.5" fill="none" />
-                            {/* Ansible - red, ~25% */}
-                            <path d="M0 75 Q30 72 60 78 T120 74 T180 76 T240 72 T300 75" stroke="#ef4444" strokeWidth="1.5" fill="none" />
-                          </svg>
-                        </div>
-                        {/* X-axis labels */}
-                        <div className="ml-8 flex justify-between text-[9px] text-[#949aab] mt-1">
-                          <span>Dec 14</span>
-                          <span>Dec 17</span>
-                          <span>Dec 19</span>
-                          <span>Dec 21</span>
-                          <span>Dec 23</span>
-                          <span>Dec 25</span>
-                          <span>Dec 27</span>
-                        </div>
-                      </div>
-                    </div>
-                    {/* Brands Table */}
-                    <div className="w-64 bg-white rounded-lg p-3 border border-[#e0e4e9] hidden md:block shrink-0">
-                      <div className="flex items-center justify-between mb-2">
-                        <div>
-                          <h3 className="font-semibold text-[#2e353b] text-xs">Brands</h3>
-                          <p className="text-[9px] text-[#949aab]">Brands with highest visibility</p>
-                        </div>
-                        <span className="text-[10px] text-[#509ee3]">+ Add</span>
-                      </div>
-                      <div className="space-y-1">
-                        <div className="grid grid-cols-[16px_14px_1fr_44px_28px_28px] gap-1 text-[9px] text-[#949aab] pb-1 border-b border-[#e0e4e9]">
-                          <span></span>
-                          <span>#</span>
-                          <span>Brand</span>
-                          <span>Visibility</span>
-                          <span>Sent.</span>
-                          <span>Place</span>
-                        </div>
-                        {[
-                          { rank: 1, name: "Kubernetes", color: "#326ce5", visibility: "72.1%", sentiment: 82, place: "1st", isYourBrand: false },
-                          { rank: 2, name: "Your Brand", color: "#22c55e", visibility: "68.4%", sentiment: 78, place: "2nd", isYourBrand: true },
-                          { rank: 3, name: "Docker", color: "#2496ed", visibility: "61.2%", sentiment: 75, place: "3rd", isYourBrand: false },
-                          { rank: 4, name: "Terraform", color: "#7b42bc", visibility: "45.8%", sentiment: 71, place: "4th", isYourBrand: false },
-                          { rank: 5, name: "Prometheus", color: "#e6522c", visibility: "38.3%", sentiment: 68, place: "5th", isYourBrand: false },
-                          { rank: 6, name: "Grafana", color: "#f97316", visibility: "31.5%", sentiment: 72, place: "4th", isYourBrand: false },
-                          { rank: 7, name: "Ansible", color: "#ef4444", visibility: "24.7%", sentiment: 65, place: "6th", isYourBrand: false },
-                        ].map((brand) => (
-                          <div key={brand.rank} className={`grid grid-cols-[16px_14px_1fr_44px_28px_28px] gap-1 items-center text-[9px] ${brand.isYourBrand ? "bg-[#eff6ff] -mx-1 px-1 py-0.5 rounded" : ""}`}>
-                            <input type="checkbox" checked readOnly className="w-3 h-3 rounded border-[#e0e4e9] text-[#509ee3]" />
-                            <div className="flex items-center gap-1">
-                              <div className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: brand.color }}></div>
-                              <span className="text-[#74838f]">{brand.rank}</span>
-                            </div>
-                            <div className="flex items-center gap-1 min-w-0">
-                              <span className={`truncate ${brand.isYourBrand ? "text-[#2e353b] font-medium" : "text-[#2e353b]"}`}>{brand.name}</span>
-                              {brand.isYourBrand && <span className="text-[7px] bg-[#e0e4e9] text-[#74838f] px-1 rounded">You</span>}
-                            </div>
-                            <span className="text-[#2e353b] bg-[#f9fbfc] px-1.5 py-0.5 rounded text-center">{brand.visibility}</span>
-                            <span className="text-[#2e353b] text-center">{brand.sentiment}</span>
-                            <span className="text-[#2e353b] text-center">{brand.place}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  {/* Bottom Row */}
-                  <div className="flex gap-3 mt-3">
-                    {/* Top Sources */}
-                    <div className="flex-1 bg-white rounded-lg p-3 border border-[#e0e4e9]">
-                      <div className="flex items-center justify-between mb-2">
-                        <div>
-                          <h3 className="font-semibold text-[#2e353b] text-xs">Top Sources</h3>
-                          <p className="text-[9px] text-[#949aab]">Sources across active models</p>
-                        </div>
-                      </div>
-                      <div className="space-y-1">
-                        <div className="grid grid-cols-[1fr_50px_55px_55px] gap-2 text-[9px] text-[#949aab] pb-1 border-b border-[#e0e4e9]">
-                          <span>Domain</span>
-                          <span>Usage</span>
-                          <span>Avg Citations</span>
-                          <span>Type</span>
-                        </div>
-                        {[
-                          { domain: "github.com", usage: "32.4%", count: "(45)", citations: "2.1", type: "Reference", typeColor: "#3b82f6" },
-                          { domain: "stackoverflow.com", usage: "24.1%", count: "(33)", citations: "1.8", type: "UGC", typeColor: "#6b7280" },
-                          { domain: "hackernews", usage: "15.2%", count: "(21)", citations: "1.4", type: "UGC", typeColor: "#6b7280" },
-                          { domain: "reddit.com", usage: "12.8%", count: "(18)", citations: "1.2", type: "UGC", typeColor: "#6b7280" },
-                          { domain: "medium.com", usage: "9.4%", count: "(13)", citations: "1.6", type: "Blog", typeColor: "#22c55e" },
-                        ].map((source) => (
-                          <div key={source.domain} className="grid grid-cols-[1fr_50px_55px_55px] gap-2 items-center text-[9px]">
-                            <span className="text-[#2e353b] truncate">{source.domain}</span>
-                            <div className="flex items-center gap-0.5">
-                              <span className="bg-[#f9fbfc] px-1.5 py-0.5 rounded text-[#74838f]">{source.usage}</span>
-                              <span className="text-[#949aab] text-[8px]">{source.count}</span>
-                            </div>
-                            <span className="text-[#74838f] font-medium">{source.citations}</span>
-                            <span className="px-1.5 py-0.5 rounded text-white text-[8px]" style={{ backgroundColor: source.typeColor }}>{source.type}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    {/* Domain Type Donut */}
-                    <div className="w-44 bg-white rounded-lg p-3 border border-[#e0e4e9] hidden md:block shrink-0">
-                      <div>
-                        <h3 className="font-semibold text-[#2e353b] text-xs">Domain type</h3>
-                        <p className="text-[9px] text-[#949aab]">Breakdown by source category</p>
-                      </div>
-                      <div className="relative w-24 h-24 mx-auto mt-2">
-                        <svg viewBox="0 0 36 36" className="w-full h-full">
-                          {/* Editorial - green ~55% */}
-                          <circle cx="18" cy="18" r="13" fill="none" stroke="#22c55e" strokeWidth="5" strokeDasharray="55 45" strokeDashoffset="25" />
-                          {/* UGC - gray ~15% */}
-                          <circle cx="18" cy="18" r="13" fill="none" stroke="#6b7280" strokeWidth="5" strokeDasharray="15 85" strokeDashoffset="70" />
-                          {/* Reference - blue ~12% */}
-                          <circle cx="18" cy="18" r="13" fill="none" stroke="#3b82f6" strokeWidth="5" strokeDasharray="12 88" strokeDashoffset="55" />
-                          {/* Social - pink ~10% */}
-                          <circle cx="18" cy="18" r="13" fill="none" stroke="#ec4899" strokeWidth="5" strokeDasharray="10 90" strokeDashoffset="43" />
-                          {/* Other - purple ~8% */}
-                          <circle cx="18" cy="18" r="13" fill="none" stroke="#a855f7" strokeWidth="5" strokeDasharray="8 92" strokeDashoffset="33" />
-                        </svg>
-                        <div className="absolute inset-0 flex flex-col items-center justify-center">
-                          <span className="text-lg font-bold text-[#2e353b]">283</span>
-                          <span className="text-[8px] text-[#949aab]">Citations</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* Dashboard Screenshot */}
+            <img
+              src="/dashboard-screenshot.png"
+              alt="Prompt Clarity Dashboard"
+              className="w-full"
+            />
           </div>
         </div>
       </div>
@@ -569,32 +319,11 @@ function FeaturesSection() {
             {/* Visual/Mockup */}
             <div className="bg-white rounded-xl shadow-lg border border-[#e0e4e9] overflow-hidden">
               {activeTab === 0 && (
-                <div className="p-4">
-                  <div className="flex items-center justify-between mb-3">
-                    <h4 className="font-semibold text-[#2e353b] text-sm">Visibility Over Time</h4>
-                    <span className="text-xs text-[#949aab]">Last 7 days</span>
-                  </div>
-                  <div className="h-48 relative">
-                    <div className="absolute left-0 top-0 bottom-0 w-8 flex flex-col justify-between text-[10px] text-[#949aab]">
-                      <span>80%</span>
-                      <span>60%</span>
-                      <span>40%</span>
-                      <span>20%</span>
-                    </div>
-                    <div className="ml-10 h-full relative">
-                      <svg className="w-full h-full" viewBox="0 0 300 150" preserveAspectRatio="none">
-                        <path d="M0 60 Q50 50 100 55 T150 45 T200 40 T250 35 T300 30" stroke="#f97316" strokeWidth="1.5" fill="none" />
-                        <path d="M0 80 Q50 85 100 75 T150 80 T200 85 T250 80 T300 85" stroke="#a855f7" strokeWidth="1.5" fill="none" />
-                        <path d="M0 100 Q50 95 100 105 T150 100 T200 95 T250 100 T300 95" stroke="#22c55e" strokeWidth="1.5" fill="none" />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="flex justify-center gap-6 mt-3 text-xs">
-                    <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-[#f97316]"></div>Your Brand</div>
-                    <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-[#a855f7]"></div>Competitor A</div>
-                    <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-[#22c55e]"></div>Competitor B</div>
-                  </div>
-                </div>
+                <img
+                  src="/visibility-chart.png"
+                  alt="Visibility tracking chart"
+                  className="w-full"
+                />
               )}
               {activeTab === 1 && (
                 <div className="p-4">
