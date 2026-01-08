@@ -59,6 +59,7 @@ const docsNav = [
     items: [
       { title: "Supported Models", href: "#supported-models" },
       { title: "API Key Setup", href: "#api-key-setup" },
+      { title: "Prompt Templates", href: "#prompt-templates" },
       { title: "Budget Tracking", href: "#budget-tracking" },
     ],
   },
@@ -158,6 +159,27 @@ export default function DocsPage() {
                     your business appears in AI-powered search results across ChatGPT, Claude, Gemini, Perplexity,
                     and Grok. Understand your visibility in the AI ecosystem and optimize your presence.
                   </p>
+                </div>
+
+                <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-lg p-6 mb-8">
+                  <h3 className="text-lg font-semibold text-green-900 mb-3">Bring Your Own API Keys</h3>
+                  <p className="text-green-800 mb-4">
+                    Prompt Clarity puts you in full control of your AI visibility monitoring:
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="bg-white/60 rounded-lg p-4">
+                      <div className="font-semibold text-green-900 mb-1">Your API Keys</div>
+                      <p className="text-green-700 text-sm">Connect your own accounts. Pay only for what your use. You control the costs directly.</p>
+                    </div>
+                    <div className="bg-white/60 rounded-lg p-4">
+                      <div className="font-semibold text-green-900 mb-1">Unlimited Prompts</div>
+                      <p className="text-green-700 text-sm">Track as many prompts as you want. Scale your monitoring to match your needs.</p>
+                    </div>
+                    <div className="bg-white/60 rounded-lg p-4">
+                      <div className="font-semibold text-green-900 mb-1">Self-Hosted & Configurable</div>
+                      <p className="text-green-700 text-sm">Run on your own infrastructure. Customize models & templates via simple config files.</p>
+                    </div>
+                  </div>
                 </div>
 
                 <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Why AI Visibility Matters</h2>
@@ -415,28 +437,37 @@ npm install`}
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">The Query Pipeline</h3>
                 <div className="bg-gray-900 rounded-lg p-6 mb-6">
                   <pre className="text-green-400 text-sm">
-{`1. Prompt Execution
-   ├─ Send industry-relevant query to AI platform
-   ├─ "What are the best container orchestration tools?"
-   └─ Execute across ChatGPT, Claude, Gemini, Perplexity, Grok
+                  
+{`1. SEND PROMPT TO AI MODEL
+   ├─ Send industry-relevant query to configured AI model
+   ├─ API Calls to configured models: Response model answers the prompt
+   └─ Returns full response text + cited sources/URLs
 
-2. Response Capture
-   ├─ Store full AI response text
-   ├─ Record timestamp and platform metadata
-   └─ Track response latency and token usage
+2. EXTRACT URLS FROM RESPONSE
+   ├─ Parse any URLs the AI cited in its response
+   └─ Fetch page metadata (title, description) for each URL
 
-3. Entity Extraction
-   ├─ Identify all brand/product mentions
-   ├─ Extract cited sources and URLs
-   └─ Detect competitor mentions
+3. ANALYZE RESPONSE FOR MENTIONS
+   ├─ API Calls GPT-4o-mini to analyze the response via mention-analysis prompt
+   └─ This detects:
+      ├─ Was your brand mentioned?
+      ├─ What position in rankings? (1st, 2nd, 3rd...)
+      ├─ Which competitors were mentioned?
+      ├─ Sentiment (positive/neutral/negative)
+      └─ Source types (editorial, UGC, reference, etc.)
 
-4. Analysis & Scoring
-   ├─ Calculate visibility score (mentioned = 1, not = 0)
-   ├─ Determine position in rankings/lists
-   ├─ Analyze sentiment context around mentions
-   └─ Map source citations to domains`}
+4. CALCULATE & STORE
+   ├─ Calculate visibility score and share of voice
+   ├─ Save results to database
+   └─ Update dashboard in real-time`}
+
+
                   </pre>
                 </div>
+
+                <p className="text-gray-600 text-sm mb-6">
+                  The mention analysis prompt is fully configurable. See <a href="https://github.com/promptclarity/promptclarity/blob/main/config/prompts/mention-analysis.yaml" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-600">mention-analysis.yaml</a> on GitHub.
+                </p>
 
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">What We Extract From Each Response</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
@@ -471,6 +502,38 @@ npm install`}
                 <p className="text-gray-600 mb-6">
                   Understanding how we calculate your visibility metrics and what they mean for your brand.
                 </p>
+
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">How Visibility is Calculated</h3>
+                <p className="text-gray-600 mb-4">
+                  All visibility metrics are calculated from stored execution data—<strong>no additional API calls</strong>.
+                </p>
+                <div className="bg-gray-900 rounded-lg p-6 mb-6">
+                  <pre className="text-green-400 text-sm">
+
+{`1. QUERY EXECUTION DATA
+   ├─ Get all prompt executions from database for date range
+   └─ Each execution has: business_visibility, competitor_visibilities,
+      mention_analysis (position, sentiment)
+
+2. CALCULATE VISIBILITY SCORES
+   ├─ Business visibility = (executions with brand mentioned / total) × 100
+   ├─ Competitor visibility = (executions with competitor mentioned / total) × 100
+   └─ Store per-platform breakdown for model comparison
+
+3. EXTRACT POSITION & SENTIMENT
+   ├─ Parse mention_analysis JSON from each execution
+   ├─ Position = brandPosition field (1st, 2nd, 3rd...)
+   ├─ Sentiment = brandSentiment or brandSentimentScore (0-100)
+   └─ Average across all executions where brand appeared
+
+4. CALCULATE PERIOD-OVER-PERIOD CHANGES
+   ├─ Query previous period (same duration, before start date)
+   ├─ Compare visibility, sentiment, position
+   └─ Return change values (e.g., +5.2%, -1 position)`}
+
+
+                  </pre>
+                </div>
 
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">Core Metrics</h3>
 
@@ -579,27 +642,59 @@ Negative indicators (-):
                 </p>
 
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">How We Generate Recommendations</h3>
+                <p className="text-gray-600 mb-4">
+                  Content recommendations are generated entirely from your existing execution data.
+                </p>
                 <div className="bg-gray-900 rounded-lg p-6 mb-6">
                   <pre className="text-green-400 text-sm">
-{`1. Topic Gap Analysis
-   ├─ Identify prompts where competitors appear but you don't
-   ├─ Extract common themes from high-visibility responses
-   └─ Flag topics where your brand has low sentiment
 
-2. Source Pattern Analysis
-   ├─ Which content types get cited most? (docs, blogs, tutorials)
-   ├─ What domains does AI trust in your industry?
-   └─ Which of your pages are being cited vs ignored?
+{`1. QUERY EXECUTION DATA
+   ├─ Get all prompts and executions from database
+   ├─ Each execution has: brand_mentions (0 or 1),
+   │  competitors_mentioned (JSON array), sources (JSON array)
+   └─ Group executions by prompt_id
 
-3. Keyword Extraction
-   ├─ Terms frequently associated with top-ranked brands
-   ├─ Questions users ask that AI struggles to answer
-   └─ Feature comparisons where you're missing
+2. IDENTIFY CONTENT GAPS
+   ├─ For each prompt, count: brandWins (brand_mentions > 0)
+   ├─ Count: competitorWins (competitors_mentioned.length > 0)
+   ├─ If competitorWins > brandWins → create content gap
+   ├─ yourVisibility = (brandWins / totalExecutions) × 100
+   ├─ competitorVisibility = (competitorWins / totalExecutions) × 100
+   └─ Track which competitors are winning and sources they cite
 
-4. Content Scoring
-   ├─ Prioritize by potential visibility impact
-   ├─ Estimate effort vs reward
-   └─ Match to your existing content calendar`}
+3. DETECT SEGMENTS (regex pattern matching)
+   ├─ Industry: /law firm|legal/ → "Law Firms"
+   │            /healthcare|medical/ → "Healthcare"
+   │            /e-commerce|retail/ → "E-commerce"
+   │            /saas|software|cloud/ → "SaaS"
+   ├─ Use-case: /remote team|work from home/ → "Remote Teams"
+   │            /small business|startup/ → "Small Business"
+   │            /enterprise|corporation/ → "Enterprise"
+   └─ Persona:  /developer|engineer/ → "Developers"
+                /marketer|marketing/ → "Marketers"
+                /sales|salesperson/ → "Sales Teams"
+
+4. EXTRACT TARGET KEYWORDS
+   ├─ Split prompt text into words
+   ├─ Filter stop words: the, a, what, how, best, for, to, in, of, and, or
+   ├─ Keep words longer than 3 characters
+   ├─ Capitalize first letter, return up to 5 keywords
+   └─ Example: "best CRM tools for startups" → ["Crm", "Tools", "Startups"]
+
+5. SUGGEST CONTENT TYPE (keyword matching)
+   ├─ "compare" or "vs" → Comparison guide
+   ├─ "how to" → Step-by-step tutorial
+   ├─ "best" or "top" → Listicle or roundup
+   ├─ "review" → In-depth review
+   └─ "price" or "cost" → Pricing guide
+
+6. CALCULATE & PRIORITIZE
+   ├─ Gap score = (competitorVisibility - yourVisibility) × 0.5
+   │              + competitorsWinning.length × 10 + totalExecutions × 2
+   ├─ Estimated impact = gap score (capped at 100)
+   └─ Sort all recommendations by impact (highest first)`}
+
+
                   </pre>
                 </div>
 
@@ -659,28 +754,70 @@ Negative indicators (-):
                   AI models rely on external sources to form recommendations. We analyze which sites get cited to identify strategic partnership and PR opportunities.
                 </p>
 
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Source Authority Analysis</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">How Opportunities are Generated</h3>
                 <p className="text-gray-600 mb-4">
-                  We track every domain AI models cite and calculate their &quot;AI Authority Score&quot; based on:
+                  Off-page opportunities are generated from your execution data.
                 </p>
                 <div className="bg-gray-900 rounded-lg p-6 mb-6">
                   <pre className="text-green-400 text-sm">
-{`AI Authority Score factors:
 
-1. Citation Frequency
-   └─ How often does this domain appear in AI responses?
+{`1. EXTRACT SOURCES FROM EXECUTIONS
+   ├─ Query all executions from database
+   ├─ Each execution has sources JSON: [{domain, url, type}, ...]
+   ├─ For each source, track per domain:
+   │    frequency: how many times this domain appears
+   │    brandPresent: count of executions where brand was also mentioned
+   │    competitorPresent: count where competitors were mentioned
+   │    promptsAppearing: which prompts cited this source
+   │    urls: list of specific URLs cited
+   └─ Skip your own domain (business.website)
 
-2. Context Quality
-   └─ Is it cited as primary source or just mentioned?
+2. CATEGORIZE SOURCES BY TYPE (domain pattern matching)
+   ├─ UGC patterns: reddit.com, quora.com, facebook.com, twitter.com,
+   │               x.com, linkedin.com, medium.com, dev.to,
+   │               stackoverflow.com, *discourse*, *forum*,
+   │               *community*, *groups*, *discuss*
+   ├─ Reference patterns: wikipedia.org, britannica.com, *.gov,
+   │                     *.edu, *.org, statista.com, *pew*,
+   │                     *research*, *institute*, *foundation*
+   ├─ Competitor: domain contains competitor name or website
+   │             (matched against competitor list from database)
+   └─ Editorial: everything else (news, blogs, publications)
 
-3. Cross-Platform Presence
-   └─ Does it appear across ChatGPT, Claude, Perplexity, etc.?
+3. CALCULATE PRIORITY SCORES
+   ├─ Higher score = higher priority opportunity
+   ├─ Editorial score = frequency × 5
+   │                    + (100 - brandPresenceRate) × 0.3
+   │                    + competitorPresenceRate × 0.5
+   ├─ UGC score = frequency × 4
+   │              + (100 - brandPresenceRate) × 0.4
+   │              + competitorPresenceRate × 0.6
+   ├─ Reference score = frequency × 6
+   │                    + (100 - brandPresenceRate) × 0.2
+   │                    + competitorPresenceRate × 0.3
+   └─ brandPresenceRate = (brandPresent / frequency) × 100
 
-4. Topic Relevance
-   └─ Is it cited for your industry specifically?
+4. GENERATE OUTREACH RECOMMENDATIONS
+   ├─ Editorial actions based on brand presence:
+   │    0% + competitor > 50% → "High-priority PR outreach"
+   │    0% → "Pitch for inclusion in articles"
+   │    < competitor → "Increase presence via guest posts"
+   ├─ UGC engagement strategies by platform:
+   │    Reddit → "Answer questions authentically, avoid self-promotion"
+   │    LinkedIn → "Share thought leadership, engage discussions"
+   │    Quora → "Answer thoroughly with data and examples"
+   │    Stack Overflow → "Provide detailed technical answers"
+   └─ Pitch types based on domain:
+        techcrunch/venturebeat/wired → "Tech industry story"
+        forbes/inc/entrepreneur → "Business/leadership angle"
+        *review*/pcmag/cnet → "Product review or comparison"
 
-Score = (Frequency × 0.4) + (Quality × 0.3) +
-        (Cross-Platform × 0.2) + (Relevance × 0.1)`}
+5. PRIORITIZE & SORT
+   ├─ Estimated impact = priority score × multiplier (capped at 100)
+   │    Editorial: × 1.5, UGC: × 1.2, Reference: × 2.0
+   └─ Sort all targets by estimated impact (highest first)`}
+
+
                   </pre>
                 </div>
 
@@ -747,6 +884,67 @@ Score = (Frequency × 0.4) + (Quality × 0.3) +
                 <p className="text-gray-600 mb-6">
                   Optimize your website to be better understood and cited by AI models. Our audits analyze how AI-friendly your site structure and content are.
                 </p>
+
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">How the Audit Works</h3>
+                <p className="text-gray-600 mb-4">
+                  Site audits <strong>fetch and parse your actual pages</strong> to analyze their AI-readiness.
+                </p>
+                <div className="bg-gray-900 rounded-lg p-6 mb-6">
+                  <pre className="text-green-400 text-sm">
+
+{`1. DISCOVER URLS
+   ├─ Try sitemap.xml, sitemap_index.xml, sitemap/sitemap.xml
+   ├─ If no sitemap: crawl homepage and extract internal links
+   └─ Limit to 50 pages per audit
+
+2. FETCH EACH PAGE (HTTP request)
+   ├─ GET request with PromptClarity User-Agent
+   ├─ 30 second timeout per page
+   └─ Record load time in milliseconds
+
+3. PARSE HTML (using node-html-parser)
+   ├─ Extract: title, meta description, headings (H1-H6)
+   ├─ Find schema markup: JSON-LD scripts → extract @type
+   ├─ Count: words, lists, tables, images, links
+   └─ Check: Q&A format, canonical URL, robots meta
+
+4. CALCULATE SCORES (0-100)
+   ├─ Structure: title + meta + H1 count + heading hierarchy
+   ├─ Content: word count + Q&A format + lists + images with alt
+   ├─ Technical: load time + schema count + canonical + robots
+   └─ Overall: average of structure, content, technical
+
+5. GENERATE ISSUES & RECOMMENDATIONS
+   ├─ Issues: missing title, no H1, thin content, slow load
+   └─ Recommendations: add FAQ schema, improve headings, add lists`}
+
+
+                  </pre>
+                </div>
+
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Score Calculation</h3>
+                <div className="bg-gray-900 rounded-lg p-6 mb-6">
+                  <pre className="text-green-400 text-sm">
+{`Structure Score (100 points):
+  Title present (15) + optimal length 30-60 chars (+10)
+  Meta description present (15) + optimal length 70-160 chars (+10)
+  Exactly one H1 (20) + H2 headings present (+10) + H3 present (+5)
+  Proper heading hierarchy H1>H2>H3 (+15)
+
+Content Score (100 points):
+  Word count: 1500+ (30), 1000+ (25), 500+ (20), 300+ (10)
+  Q&A format detected (+25)
+  Has lists (+10) + has tables (+5)
+  Internal links 5+ (15), 2+ (10), 1+ (5)
+  Images with alt text (up to 15 based on ratio)
+
+Technical Score (100 points):
+  Load time: <1s (35), <2s (30), <3s (20), <5s (10)
+  Schema types: 3+ (35), 2+ (30), 1+ (20)
+  Has canonical URL (+15)
+  Not blocking with noindex (+15)`}
+                  </pre>
+                </div>
 
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">What We Analyze</h3>
                 <div className="space-y-4 mb-6">
@@ -1247,91 +1445,155 @@ Allow: /products/`}
               {/* Supported Models */}
               <section id="supported-models" className="mb-16">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Supported AI Models</h2>
+                <p className="text-gray-600 mb-6">
+                  Prompt Clarity supports 5 major AI platforms out of the box. All platforms are fully configurable via YAML configuration files.
+                </p>
 
-                <div className="space-y-4">
+                <div className="space-y-4 mb-8">
                   {/* ChatGPT */}
                   <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="w-10 h-10 bg-[#10a37f] rounded-lg flex items-center justify-center">
-                        <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364l2.0201-1.1638a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/>
-                        </svg>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-[#10a37f] rounded-lg flex items-center justify-center">
+                          <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364l2.0201-1.1638a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/>
+                          </svg>
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-gray-900">ChatGPT</h3>
+                          <p className="text-gray-500 text-sm">OpenAI</p>
+                        </div>
                       </div>
-                      <div>
-                        <h3 className="font-semibold text-gray-900">ChatGPT</h3>
-                        <p className="text-gray-500 text-sm">OpenAI GPT-4o</p>
-                      </div>
+                      <code className="bg-gray-200 px-3 py-1 rounded text-sm font-mono text-gray-700">gpt-5.1</code>
                     </div>
                   </div>
 
                   {/* Claude */}
                   <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="w-10 h-10 bg-[#D77655] rounded-lg flex items-center justify-center">
-                        <svg className="w-6 h-6" viewBox="0 0 16 16" fill="#FCF2EE">
-                          <path d="m3.127 10.604 3.135-1.76.053-.153-.053-.085H6.11l-.525-.032-1.791-.048-1.554-.065-1.505-.08-.38-.081L0 7.832l.036-.234.32-.214.455.04 1.009.069 1.513.105 1.097.064 1.626.17h.259l.036-.105-.089-.065-.068-.064-1.566-1.062-1.695-1.121-.887-.646-.48-.327-.243-.306-.104-.67.435-.48.585.04.15.04.593.456 1.267.981 1.654 1.218.242.202.097-.068.012-.049-.109-.181-.9-1.626-.96-1.655-.428-.686-.113-.411a2 2 0 0 1-.068-.484l.496-.674L4.446 0l.662.089.279.242.411.94.666 1.48 1.033 2.014.302.597.162.553.06.17h.105v-.097l.085-1.134.157-1.392.154-1.792.052-.504.25-.605.497-.327.387.186.319.456-.045.294-.19 1.23-.37 1.93-.243 1.29h.142l.161-.16.654-.868 1.097-1.372.484-.545.565-.601.363-.287h.686l.505.751-.226.775-.707.895-.585.759-.839 1.13-.524.904.048.072.125-.012 1.897-.403 1.024-.186 1.223-.21.553.258.06.263-.218.536-1.307.323-1.533.307-2.284.54-.028.02.032.04 1.029.098.44.024h1.077l2.005.15.525.346.315.424-.053.323-.807.411-3.631-.863-.872-.218h-.12v.073l.726.71 1.331 1.202 1.667 1.55.084.383-.214.302-.226-.032-1.464-1.101-.565-.497-1.28-1.077h-.084v.113l.295.432 1.557 2.34.08.718-.112.234-.404.141-.444-.08-.911-1.28-.94-1.44-.759-1.291-.093.053-.448 4.821-.21.246-.484.186-.403-.307-.214-.496.214-.98.258-1.28.21-1.016.19-1.263.112-.42-.008-.028-.092.012-.953 1.307-1.448 1.957-1.146 1.227-.274.109-.477-.247.045-.44.266-.39 1.586-2.018.956-1.25.617-.723-.004-.105h-.036l-4.212 2.736-.75.096-.324-.302.04-.496.154-.162 1.267-.871z"/>
-                        </svg>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-[#D77655] rounded-lg flex items-center justify-center">
+                          <svg className="w-6 h-6" viewBox="0 0 16 16" fill="#FCF2EE">
+                            <path d="m3.127 10.604 3.135-1.76.053-.153-.053-.085H6.11l-.525-.032-1.791-.048-1.554-.065-1.505-.08-.38-.081L0 7.832l.036-.234.32-.214.455.04 1.009.069 1.513.105 1.097.064 1.626.17h.259l.036-.105-.089-.065-.068-.064-1.566-1.062-1.695-1.121-.887-.646-.48-.327-.243-.306-.104-.67.435-.48.585.04.15.04.593.456 1.267.981 1.654 1.218.242.202.097-.068.012-.049-.109-.181-.9-1.626-.96-1.655-.428-.686-.113-.411a2 2 0 0 1-.068-.484l.496-.674L4.446 0l.662.089.279.242.411.94.666 1.48 1.033 2.014.302.597.162.553.06.17h.105v-.097l.085-1.134.157-1.392.154-1.792.052-.504.25-.605.497-.327.387.186.319.456-.045.294-.19 1.23-.37 1.93-.243 1.29h.142l.161-.16.654-.868 1.097-1.372.484-.545.565-.601.363-.287h.686l.505.751-.226.775-.707.895-.585.759-.839 1.13-.524.904.048.072.125-.012 1.897-.403 1.024-.186 1.223-.21.553.258.06.263-.218.536-1.307.323-1.533.307-2.284.54-.028.02.032.04 1.029.098.44.024h1.077l2.005.15.525.346.315.424-.053.323-.807.411-3.631-.863-.872-.218h-.12v.073l.726.71 1.331 1.202 1.667 1.55.084.383-.214.302-.226-.032-1.464-1.101-.565-.497-1.28-1.077h-.084v.113l.295.432 1.557 2.34.08.718-.112.234-.404.141-.444-.08-.911-1.28-.94-1.44-.759-1.291-.093.053-.448 4.821-.21.246-.484.186-.403-.307-.214-.496.214-.98.258-1.28.21-1.016.19-1.263.112-.42-.008-.028-.092.012-.953 1.307-1.448 1.957-1.146 1.227-.274.109-.477-.247.045-.44.266-.39 1.586-2.018.956-1.25.617-.723-.004-.105h-.036l-4.212 2.736-.75.096-.324-.302.04-.496.154-.162 1.267-.871z"/>
+                          </svg>
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-gray-900">Claude</h3>
+                          <p className="text-gray-500 text-sm">Anthropic</p>
+                        </div>
                       </div>
-                      <div>
-                        <h3 className="font-semibold text-gray-900">Claude</h3>
-                        <p className="text-gray-500 text-sm">Anthropic Claude Sonnet 4</p>
-                      </div>
+                      <code className="bg-gray-200 px-3 py-1 rounded text-sm font-mono text-gray-700">claude-sonnet-4-20250514</code>
                     </div>
                   </div>
 
                   {/* Gemini */}
                   <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center border border-gray-200">
-                        <svg className="w-6 h-6" viewBox="0 0 65 65" fill="none">
-                          <path d="M32.447 0c.68 0 1.273.465 1.439 1.125a38.904 38.904 0 001.999 5.905c2.152 5 5.105 9.376 8.854 13.125 3.751 3.75 8.126 6.703 13.125 8.855a38.98 38.98 0 005.906 1.999c.66.166 1.124.758 1.124 1.438 0 .68-.464 1.273-1.125 1.439a38.902 38.902 0 00-5.905 1.999c-5 2.152-9.375 5.105-13.125 8.854-3.749 3.751-6.702 8.126-8.854 13.125a38.973 38.973 0 00-2 5.906 1.485 1.485 0 01-1.438 1.124c-.68 0-1.272-.464-1.438-1.125a38.913 38.913 0 00-2-5.905c-2.151-5-5.103-9.375-8.854-13.125-3.75-3.749-8.125-6.702-13.125-8.854a38.973 38.973 0 00-5.905-2A1.485 1.485 0 010 32.448c0-.68.465-1.272 1.125-1.438a38.903 38.903 0 005.905-2c5-2.151 9.376-5.104 13.125-8.854 3.75-3.749 6.703-8.125 8.855-13.125a38.972 38.972 0 001.999-5.905A1.485 1.485 0 0132.447 0z" fill="url(#gemini-gradient)"/>
-                          <defs>
-                            <linearGradient id="gemini-gradient" x1="0" y1="32" x2="65" y2="32" gradientUnits="userSpaceOnUse">
-                              <stop offset="0%" stopColor="#4285F4"/>
-                              <stop offset="25%" stopColor="#9B72CB"/>
-                              <stop offset="50%" stopColor="#D96570"/>
-                              <stop offset="75%" stopColor="#D96570"/>
-                              <stop offset="100%" stopColor="#4285F4"/>
-                            </linearGradient>
-                          </defs>
-                        </svg>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center border border-gray-200">
+                          <svg className="w-6 h-6" viewBox="0 0 65 65" fill="none">
+                            <path d="M32.447 0c.68 0 1.273.465 1.439 1.125a38.904 38.904 0 001.999 5.905c2.152 5 5.105 9.376 8.854 13.125 3.751 3.75 8.126 6.703 13.125 8.855a38.98 38.98 0 005.906 1.999c.66.166 1.124.758 1.124 1.438 0 .68-.464 1.273-1.125 1.439a38.902 38.902 0 00-5.905 1.999c-5 2.152-9.375 5.105-13.125 8.854-3.749 3.751-6.702 8.126-8.854 13.125a38.973 38.973 0 00-2 5.906 1.485 1.485 0 01-1.438 1.124c-.68 0-1.272-.464-1.438-1.125a38.913 38.913 0 00-2-5.905c-2.151-5-5.103-9.375-8.854-13.125-3.75-3.749-8.125-6.702-13.125-8.854a38.973 38.973 0 00-5.905-2A1.485 1.485 0 010 32.448c0-.68.465-1.272 1.125-1.438a38.903 38.903 0 005.905-2c5-2.151 9.376-5.104 13.125-8.854 3.75-3.749 6.703-8.125 8.855-13.125a38.972 38.972 0 001.999-5.905A1.485 1.485 0 0132.447 0z" fill="url(#gemini-gradient)"/>
+                            <defs>
+                              <linearGradient id="gemini-gradient" x1="0" y1="32" x2="65" y2="32" gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stopColor="#4285F4"/>
+                                <stop offset="25%" stopColor="#9B72CB"/>
+                                <stop offset="50%" stopColor="#D96570"/>
+                                <stop offset="75%" stopColor="#D96570"/>
+                                <stop offset="100%" stopColor="#4285F4"/>
+                              </linearGradient>
+                            </defs>
+                          </svg>
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-gray-900">Gemini</h3>
+                          <p className="text-gray-500 text-sm">Google</p>
+                        </div>
                       </div>
-                      <div>
-                        <h3 className="font-semibold text-gray-900">Gemini</h3>
-                        <p className="text-gray-500 text-sm">Google Gemini 2.5 Pro</p>
-                      </div>
+                      <code className="bg-gray-200 px-3 py-1 rounded text-sm font-mono text-gray-700">gemini-2.0-flash</code>
                     </div>
                   </div>
 
                   {/* Perplexity */}
                   <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="w-10 h-10 bg-[#1F1F1F] rounded-lg flex items-center justify-center">
-                        <svg className="w-6 h-6" viewBox="0 0 512 509.64" fill="none">
-                          <path fill="#fff" fillRule="nonzero" d="M348.851 128.063l-68.946 58.302h68.946v-58.302zm-83.908 48.709l100.931-85.349v94.942h32.244v143.421h-38.731v90.004l-94.442-86.662v83.946h-17.023v-83.906l-96.596 86.246v-89.628h-37.445V186.365h38.732V90.768l95.309 84.958v-83.16h17.023l-.002 84.206zm-29.209 26.616c-34.955.02-69.893 0-104.83 0v109.375h20.415v-27.121l84.415-82.254zm41.445 0l82.208 82.324v27.051h21.708V203.388c-34.617 0-69.274.02-103.916 0zm-42.874-17.023l-64.669-57.646v57.646h64.669zm13.617 124.076v-95.2l-79.573 77.516v88.731l79.573-71.047zm17.252-95.022v94.863l77.19 70.8c0-29.485-.012-58.943-.012-88.425l-77.178-77.268z"/>
-                        </svg>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-[#1F1F1F] rounded-lg flex items-center justify-center">
+                          <svg className="w-6 h-6" viewBox="0 0 512 509.64" fill="none">
+                            <path fill="#fff" fillRule="nonzero" d="M348.851 128.063l-68.946 58.302h68.946v-58.302zm-83.908 48.709l100.931-85.349v94.942h32.244v143.421h-38.731v90.004l-94.442-86.662v83.946h-17.023v-83.906l-96.596 86.246v-89.628h-37.445V186.365h38.732V90.768l95.309 84.958v-83.16h17.023l-.002 84.206zm-29.209 26.616c-34.955.02-69.893 0-104.83 0v109.375h20.415v-27.121l84.415-82.254zm41.445 0l82.208 82.324v27.051h21.708V203.388c-34.617 0-69.274.02-103.916 0zm-42.874-17.023l-64.669-57.646v57.646h64.669zm13.617 124.076v-95.2l-79.573 77.516v88.731l79.573-71.047zm17.252-95.022v94.863l77.19 70.8c0-29.485-.012-58.943-.012-88.425l-77.178-77.268z"/>
+                          </svg>
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-gray-900">Perplexity</h3>
+                          <p className="text-gray-500 text-sm">Perplexity AI</p>
+                        </div>
                       </div>
-                      <div>
-                        <h3 className="font-semibold text-gray-900">Perplexity</h3>
-                        <p className="text-gray-500 text-sm">sonar-deep-research</p>
-                      </div>
+                      <code className="bg-gray-200 px-3 py-1 rounded text-sm font-mono text-gray-700">sonar-pro</code>
                     </div>
                   </div>
 
                   {/* Grok */}
                   <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center">
-                        <svg className="w-6 h-6" viewBox="0 0 512 509.641" fill="none">
-                          <path fill="#fff" d="M213.235 306.019l178.976-180.002v.169l51.695-51.763c-.924 1.32-1.86 2.605-2.785 3.89-39.281 54.164-58.46 80.649-43.07 146.922l-.09-.101c10.61 45.11-.744 95.137-37.398 131.836-46.216 46.306-120.167 56.611-181.063 14.928l42.462-19.675c38.863 15.278 81.392 8.57 111.947-22.03 30.566-30.6 37.432-75.159 22.065-112.252-2.92-7.025-11.67-8.795-17.792-4.263l-124.947 92.341zm-25.786 22.437l-.033.034L68.094 435.217c7.565-10.429 16.957-20.294 26.327-30.149 26.428-27.803 52.653-55.359 36.654-94.302-21.422-52.112-8.952-113.177 30.724-152.898 41.243-41.254 101.98-51.661 152.706-30.758 11.23 4.172 21.016 10.114 28.638 15.639l-42.359 19.584c-39.44-16.563-84.629-5.299-112.207 22.313-37.298 37.308-44.84 102.003-1.128 143.81z"/>
-                        </svg>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center">
+                          <svg className="w-6 h-6" viewBox="0 0 512 509.641" fill="none">
+                            <path fill="#fff" d="M213.235 306.019l178.976-180.002v.169l51.695-51.763c-.924 1.32-1.86 2.605-2.785 3.89-39.281 54.164-58.46 80.649-43.07 146.922l-.09-.101c10.61 45.11-.744 95.137-37.398 131.836-46.216 46.306-120.167 56.611-181.063 14.928l42.462-19.675c38.863 15.278 81.392 8.57 111.947-22.03 30.566-30.6 37.432-75.159 22.065-112.252-2.92-7.025-11.67-8.795-17.792-4.263l-124.947 92.341zm-25.786 22.437l-.033.034L68.094 435.217c7.565-10.429 16.957-20.294 26.327-30.149 26.428-27.803 52.653-55.359 36.654-94.302-21.422-52.112-8.952-113.177 30.724-152.898 41.243-41.254 101.98-51.661 152.706-30.758 11.23 4.172 21.016 10.114 28.638 15.639l-42.359 19.584c-39.44-16.563-84.629-5.299-112.207 22.313-37.298 37.308-44.84 102.003-1.128 143.81z"/>
+                          </svg>
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-gray-900">Grok</h3>
+                          <p className="text-gray-500 text-sm">xAI</p>
+                        </div>
                       </div>
-                      <div>
-                        <h3 className="font-semibold text-gray-900">Grok</h3>
-                        <p className="text-gray-500 text-sm">xAI Grok 3</p>
-                      </div>
+                      <code className="bg-gray-200 px-3 py-1 rounded text-sm font-mono text-gray-700">grok-2-1212</code>
                     </div>
                   </div>
+                </div>
+
+                {/* Platform Configuration */}
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Platform Configuration</h3>
+                <p className="text-gray-600 mb-4">
+                  Platforms are configured via <code className="bg-gray-100 px-2 py-1 rounded">config/platforms/platforms.yaml</code>. You can customize models, add new platforms, or disable existing ones:
+                </p>
+                <div className="bg-gray-900 rounded-lg p-6 mb-6 overflow-x-auto">
+                  <pre className="text-green-400 text-sm">
+{`# config/platforms/platforms.yaml
+platforms:
+  chatgpt:
+    name: ChatGPT
+    provider: openai
+    model: gpt-5.1
+
+  claude:
+    name: Anthropic Claude
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+
+  gemini:
+    name: Google Gemini
+    provider: google
+    model: gemini-2.0-flash
+
+  perplexity:
+    name: Perplexity
+    provider: perplexity
+    model: sonar-pro
+
+  grok:
+    name: Grok
+    provider: xai
+    model: grok-2-1212`}
+                  </pre>
+                </div>
+
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+                  <h4 className="font-semibold text-blue-900 mb-2">Customization Options</h4>
+                  <ul className="text-blue-800 text-sm space-y-1">
+                    <li>• Change model versions by updating the <code className="bg-blue-100 px-1 rounded">model</code> field</li>
+                    <li>• Disable a platform by removing or commenting out its section</li>
+                    <li>• Add new platforms by following the same YAML structure</li>
+                    <li>• Restart the server after making configuration changes</li>
+                  </ul>
                 </div>
               </section>
 
@@ -1373,6 +1635,70 @@ Allow: /products/`}
                       console.x.ai →
                     </a>
                   </div>
+                </div>
+              </section>
+
+              {/* Prompt Templates */}
+              <section id="prompt-templates" className="mb-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Prompt Templates</h2>
+                <p className="text-gray-600 mb-6">
+                  Customize how Prompt Clarity generates topics, prompts, competitors, and analyzes responses via YAML configuration files in <code className="bg-gray-100 px-2 py-1 rounded">config/prompts/</code>.
+                </p>
+
+                <div className="overflow-x-auto mb-6">
+                  <table className="min-w-full bg-white border border-gray-200 rounded-lg">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 border-b">File</th>
+                        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 border-b">Purpose</th>
+                        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 border-b">Variables</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="px-4 py-3 text-sm font-mono text-gray-700 border-b"><a href="https://github.com/promptclarity/promptclarity/blob/main/config/prompts/onboarding-topics.yaml" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-600">onboarding-topics.yaml</a></td>
+                        <td className="px-4 py-3 text-sm text-gray-600 border-b">Generate business topics during onboarding</td>
+                        <td className="px-4 py-3 text-sm text-gray-500 border-b">businessName, website</td>
+                      </tr>
+                      <tr>
+                        <td className="px-4 py-3 text-sm font-mono text-gray-700 border-b"><a href="https://github.com/promptclarity/promptclarity/blob/main/config/prompts/onboarding-prompts.yaml" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-600">onboarding-prompts.yaml</a></td>
+                        <td className="px-4 py-3 text-sm text-gray-600 border-b">Generate search prompts for tracking</td>
+                        <td className="px-4 py-3 text-sm text-gray-500 border-b">businessName, website, topics</td>
+                      </tr>
+                      <tr>
+                        <td className="px-4 py-3 text-sm font-mono text-gray-700 border-b"><a href="https://github.com/promptclarity/promptclarity/blob/main/config/prompts/onboarding-competitors.yaml" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-600">onboarding-competitors.yaml</a></td>
+                        <td className="px-4 py-3 text-sm text-gray-600 border-b">Identify competitors automatically</td>
+                        <td className="px-4 py-3 text-sm text-gray-500 border-b">businessName, website, topics</td>
+                      </tr>
+                      <tr>
+                        <td className="px-4 py-3 text-sm font-mono text-gray-700"><a href="https://github.com/promptclarity/promptclarity/blob/main/config/prompts/mention-analysis.yaml" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-600">mention-analysis.yaml</a></td>
+                        <td className="px-4 py-3 text-sm text-gray-600">Analyze AI responses for brand mentions</td>
+                        <td className="px-4 py-3 text-sm text-gray-500">brandName, competitors, response</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Template Format</h3>
+                <div className="bg-gray-900 rounded-lg p-6 mb-6 overflow-x-auto">
+                  <pre className="text-green-400 text-sm">
+{`# config/prompts/onboarding-topics.yaml
+systemPrompt: Optional system prompt for the AI
+
+userPromptTemplate: |
+  For the business {{businessName}} ({{website}}),
+  generate 5-7 relevant topic categories...
+
+temperature: 0.7
+maxOutputTokens: 15000`}
+                  </pre>
+                </div>
+
+                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                  <h4 className="font-semibold text-yellow-900 mb-2">Template Variables</h4>
+                  <p className="text-yellow-800 text-sm">
+                    Use <code className="bg-yellow-100 px-1 rounded">{"{{variableName}}"}</code> syntax in templates. Variables are automatically replaced at runtime with actual values from your business configuration.
+                  </p>
                 </div>
               </section>
 
